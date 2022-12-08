@@ -256,10 +256,6 @@
         <OutputVar>medIncBHC</OutputVar>
         <Parameters>
           <Parameter>
-            <Name>WeightVar</Name>
-            <VarName>weight</VarName>
-          </Parameter>
-          <Parameter>
             <Name>IncomeVar</Name>
             <VarName>eqDispy</VarName>
           </Parameter>
@@ -269,10 +265,6 @@
         <CalculationType>CalculateMedian</CalculationType>
         <OutputVar>medIncAHC</OutputVar>
         <Parameters>
-          <Parameter>
-            <Name>WeightVar</Name>
-            <VarName>weight</VarName>
-          </Parameter>
           <Parameter>
             <Name>IncomeVar</Name>
             <VarName>eqDispyAHC</VarName>

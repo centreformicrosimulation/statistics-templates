@@ -3590,36 +3590,36 @@ scenario (i.e. baseline or reform).</span></p>]]>
           </ReformColumns>
           <Rows>
             <Row>
-			  <Name>Poverty Headcount</Name>
+			        <Name>Poverty Headcount</Name>
               <CellAction>
                 <CalculationType>CalculatePopulationCount</CalculationType>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
-			    <Parameters>
-                  <Parameter>
-                    <Reform>true</Reform>
-                    <Name>BaseVar</Name>
-                    <VarName>IsPoorFloat</VarName>
-                  </Parameter>
-                </Parameters>
-			  </CellAction>
+			            <Parameters>
+                    <Parameter>
+                      <Reform>true</Reform>
+                      <Name>BaseVar</Name>
+                      <VarName>IsPoorFloat</VarName>
+                    </Parameter>
+                  </Parameters>
+			        </CellAction>
             </Row>
             <Row>
-			  <Name>Poverty Headcount number</Name>
+			        <Name>Poverty Headcount number</Name>
               <CellAction>
                 <CalculationType>CalculatePopulationCount</CalculationType>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
-			    <Parameters>
+                <Parameters>
                   <Parameter>
                     <Reform>true</Reform>
                     <Name>BaseVar</Name>
                     <VarName>IsPoorFloat</VarName>
                   </Parameter>
                   <Parameter>
-				    <Name>GiveTotals</Name>
-					<BoolValue>true</BoolValue>
+                    <Name>GiveTotals</Name>
+                    <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
-			  </CellAction>
+              </CellAction>
               <StringFormat>0,00</StringFormat>
             </Row>
             <Row>
@@ -3674,8 +3674,17 @@ scenario (i.e. baseline or reform).</span></p>]]>
               <RowName>Poverty Headcount</RowName>
               <ColName>Difference base</ColName>
             </ReformCell>
+            <ReformCell>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[(REF_COL[refSys] - BASE_COL[baseSys])]]></FormulaString>
+              </CellAction>
+              <RowName>Poverty Headcount number</RowName>
+              <ColName>Difference base</ColName>
+              <StringFormat>0,00</StringFormat>
+            </ReformCell>
           </ReformCells>
-		</Table>
+		    </Table>
         <Table>
           <Title>Poverty indicators (based on incomes AHC)</Title>
           <CellAction>
@@ -3713,7 +3722,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           </ReformColumns>
           <Rows>
             <Row>
-			  <Name>Poverty Headcount</Name>
+              <Name>Poverty Headcount</Name>
               <CellAction>
                 <CalculationType>CalculatePopulationCount</CalculationType>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
@@ -3724,25 +3733,25 @@ scenario (i.e. baseline or reform).</span></p>]]>
                     <VarName>IsPoorFloatAHC</VarName>
                   </Parameter>
                 </Parameters>
-			  </CellAction>
+			        </CellAction>
             </Row>
             <Row>
-			  <Name>Poverty Headcount number</Name>
+			        <Name>Poverty Headcount number</Name>
               <CellAction>
                 <CalculationType>CalculatePopulationCount</CalculationType>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
-			    <Parameters>
+			          <Parameters>
                   <Parameter>
                     <Reform>true</Reform>
                     <Name>BaseVar</Name>
                     <VarName>IsPoorFloatAHC</VarName>
                   </Parameter>
                   <Parameter>
-				    <Name>GiveTotals</Name>
-					<BoolValue>true</BoolValue>
+				            <Name>GiveTotals</Name>
+					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
-			  </CellAction>
+			        </CellAction>
               <StringFormat>0,00</StringFormat>
             </Row>
             <Row>
@@ -3799,8 +3808,17 @@ scenario (i.e. baseline or reform).</span></p>]]>
               <RowName>Poverty Headcount</RowName>
               <ColName>Difference base</ColName>
             </ReformCell>
+            <ReformCell>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[(REF_COL[refSys] - BASE_COL[baseSys])]]></FormulaString>
+              </CellAction>
+              <RowName>Poverty Headcount number</RowName>
+              <ColName>Difference base</ColName>
+              <StringFormat>0,00</StringFormat>
+            </ReformCell>
           </ReformCells>
-		</Table>
+		    </Table>
         <Table>
           <Title>Poverty headcount by decile (based on incomes BHC)</Title>
           <CellAction>
@@ -6351,8 +6369,8 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
               <HasSeparatorBefore>True</HasSeparatorBefore>
             </Column>
           </Columns>
-		  <ReformColumns>
-		    <ReformColumn>
+          <ReformColumns>
+            <ReformColumn>
               <Name>refSysDisp</Name>
               <Title>[refSys] Disposable Income</Title>
               <CellAction>
@@ -6368,7 +6386,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
                 </Parameters>
               </CellAction>
               <TiesWith>baseSysDisp</TiesWith>
-		    </ReformColumn>
+		        </ReformColumn>
             <ReformColumn>
               <Title><![CDATA[Difference <br />to base]]></Title>
               <CellAction>
@@ -6377,7 +6395,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
               </CellAction>
               <TiesWith>baseSysDisp</TiesWith>
             </ReformColumn>
-		    <ReformColumn>
+		        <ReformColumn>
               <Name>refSysOrig</Name>
               <Title>[refSys] Original Income</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
@@ -6394,7 +6412,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
                 </Parameters>
               </CellAction>
               <TiesWith>baseSysOrig</TiesWith>
-		    </ReformColumn>
+		        </ReformColumn>
             <ReformColumn>
               <Title><![CDATA[Difference <br />to base]]></Title>
               <CellAction>
@@ -6403,7 +6421,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
               </CellAction>
               <TiesWith>baseSysOrig</TiesWith>
             </ReformColumn>
-		  </ReformColumns>
+		      </ReformColumns>
           <Rows>
             <Row>
               <Name>Decile</Name>
@@ -6465,24 +6483,24 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
               <HasSeparatorBefore>True</HasSeparatorBefore>
             </Column>
           </Columns>
-		  <ReformColumns>
-		    <ReformColumn>
+          <ReformColumns>
+            <ReformColumn>
               <Name>refSysDisp</Name>
               <Title>[refSys] Disposable Income</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
                     <Name>VarDecSum</Name>
-                    <VarName>ilsDispy</VarName>
+                    <VarName>ilsDispyAHC</VarName>
                   </Parameter>
                   <Parameter>
                     <Name>VarTotSum</Name>
-                    <VarName>totalDispy</VarName>
+                    <VarName>totalDispyAHC</VarName>
                   </Parameter>
                 </Parameters>
               </CellAction>
               <TiesWith>baseSysDisp</TiesWith>
-		    </ReformColumn>
+            </ReformColumn>
             <ReformColumn>
               <Title><![CDATA[Difference <br />to base]]></Title>
               <CellAction>
@@ -6491,7 +6509,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
               </CellAction>
               <TiesWith>baseSysDisp</TiesWith>
             </ReformColumn>
-		    <ReformColumn>
+            <ReformColumn>
               <Name>refSysOrig</Name>
               <Title>[refSys] Original Income</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
@@ -6508,7 +6526,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
                 </Parameters>
               </CellAction>
               <TiesWith>baseSysOrig</TiesWith>
-		    </ReformColumn>
+            </ReformColumn>
             <ReformColumn>
               <Title><![CDATA[Difference <br />to base]]></Title>
               <CellAction>
@@ -6517,7 +6535,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
               </CellAction>
               <TiesWith>baseSysOrig</TiesWith>
             </ReformColumn>
-		  </ReformColumns>
+          </ReformColumns>
           <Rows>
             <Row>
               <Name>Decile</Name>
@@ -6715,11 +6733,11 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
                 <Parameters>
                   <Parameter>
                     <Name>VarDecSum</Name>
-                    <VarName>ilsDispy</VarName>
+                    <VarName>ilsDispyAHC</VarName>
                   </Parameter>
                   <Parameter>
                     <Name>VarTotSum</Name>
-                    <VarName>totalDispy</VarName>
+                    <VarName>totalDispyAHC</VarName>
                   </Parameter>
                 </Parameters>
               </CellAction>
@@ -7025,11 +7043,11 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
                 <Parameters>
                   <Parameter>
                     <Name>VarDecSum</Name>
-                    <VarName>ilsDispy</VarName>
+                    <VarName>ilsDispyAHC</VarName>
                   </Parameter>
                   <Parameter>
                     <Name>VarTotSum</Name>
-                    <VarName>totalDispy</VarName>
+                    <VarName>totalDispyAHC</VarName>
                   </Parameter>
                 </Parameters>
               </CellAction>
@@ -7357,11 +7375,11 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
                 <Parameters>
                   <Parameter>
                     <Name>VarDecSum</Name>
-                    <VarName>ilsDispy</VarName>
+                    <VarName>ilsDispyAHC</VarName>
                   </Parameter>
                   <Parameter>
                     <Name>VarTotSum</Name>
-                    <VarName>totalDispy</VarName>
+                    <VarName>totalDispyAHC</VarName>
                   </Parameter>
                 </Parameters>
               </CellAction>

@@ -2262,36 +2262,36 @@ scenario for the baseline and reform results.</span></p>]]>
           </ReformColumns>
           <Rows>
             <Row>
-			  <Name>Poverty Headcount</Name>
+			        <Name>Poverty Headcount</Name>
               <CellAction>
                 <CalculationType>CalculatePopulationCount</CalculationType>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
-			    <Parameters>
+			          <Parameters>
                   <Parameter>
                     <Reform>true</Reform>
                     <Name>BaseVar</Name>
                     <VarName>IsPoor</VarName>
                   </Parameter>
                 </Parameters>
-			  </CellAction>
+			        </CellAction>
             </Row>
             <Row>
-			  <Name>Poverty Headcount number</Name>
+			        <Name>Poverty Headcount number</Name>
               <CellAction>
                 <CalculationType>CalculatePopulationCount</CalculationType>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
-			    <Parameters>
+			          <Parameters>
                   <Parameter>
                     <Reform>true</Reform>
                     <Name>BaseVar</Name>
                     <VarName>IsPoor</VarName>
                   </Parameter>
                   <Parameter>
-				    <Name>GiveTotals</Name>
-					<BoolValue>true</BoolValue>
+				            <Name>GiveTotals</Name>
+					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
-			  </CellAction>
+			        </CellAction>
               <StringFormat>0,00</StringFormat>
             </Row>
             <Row>

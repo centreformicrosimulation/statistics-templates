@@ -16285,7 +16285,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
       </Description>
       <Tables>
         <Table>
-          <Title>Tax incentives by income decile</Title>
+          <Title>Tax incentives by income decile (MTR, NRR and PTR in percentage points)</Title>
           <CellAction>
             <CalculationType>CalculateWeightedAverage</CalculationType>
             <FormulaString><![CDATA[DATA_VAR[@AverageVar]]]></FormulaString>
@@ -16433,7 +16433,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
           </Rows>
         </Table>
         <Table>
-          <Title>Tax incentives by family type</Title>
+          <Title>Tax incentives by family type (MTR, NRR and PTR in percentage points)</Title>
           <CellAction>
             <CalculationType>CalculateWeightedAverage</CalculationType>
             <FormulaString><![CDATA[DATA_VAR[@AverageVar]]]></FormulaString>
@@ -16633,7 +16633,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
           </Rows>
         </Table>
         <Table>
-          <Title>Histogram of MTRs (population count by MTR range in %)</Title>
+          <Title>Histogram of MTRs (population count by MTR percentage point range)</Title>
           <CellAction>
             <CalculationType>CalculateArithmetic</CalculationType>
           </CellAction>
@@ -17035,7 +17035,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
           </ReformCells>
         </Table>
         <Table>
-          <Title>Histogram of NRRs (population count by NRR range in %)</Title>
+          <Title>Histogram of NRRs (population count by NRR percentage point range)</Title>
           <CellAction>
             <CalculationType>CalculateArithmetic</CalculationType>
           </CellAction>
@@ -17437,7 +17437,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
           </ReformCells>
         </Table>
         <Table>
-          <Title>Histogram of PTRs (population count by PTR range in %)</Title>
+          <Title>Histogram of PTRs (population count by PTR percentage point range)</Title>
           <CellAction>
             <CalculationType>CalculateArithmetic</CalculationType>
           </CellAction>

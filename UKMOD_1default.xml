@@ -119,6 +119,9 @@ ils_sicdy = ils_sicee + ils_sicse + ils_sicot</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Direct taxes: ils_tax = tin_s + tmu</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Simulated taxes: ils_taxsim = tin_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Personal Income Tax: tin_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Devolved taxes in Scotland: tin11_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Devolved taxes in Wales: tin12_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Non-devolved taxes: tin00_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Council tax: tmu</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Simulated Employee National Insurance contributions: ils_sicee = tscee_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Simulated Self-employed National Insurance contributions: ils_sicse = tscse_s</p>
@@ -128,31 +131,35 @@ ils_sicdy = ils_sicee + ils_sicse + ils_sicot</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'><b>Credited National Insurance contributions</b> (not part of disposable income) (in 2020 only with simulation of Covid-19 shocks): ils_sicct = tscct_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>&nbsp;</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'><b>Government expenditure on benefits and tax credits</b> in more detail:</p>
-<p style='margin-bottom:8.0pt;line-height:105%;'>Means-tested non-pension benefits: ils_benmt = bwkmt_s  + bfamt_s + bsa_s
-+ bsadi_s + boamt_s + bho_s + bmu_s + bunmt_s + bmamt_s + bmascmt_s + bsauc_s + bchmt_s -
-brd_s - brduc_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Means-tested non-pension benefits: ils_benmt = bsauc_s - brduc_s + bsa_s + bunmt_s + bsadi_s 
++ boamt_s + bmu_s + bho_s - brd_s + bwkmt_s + bfamt_s + bmamt_s + bmascmt_s + bchmt_s + bchmt01_s + bmascmt01_s + bched01_s + bched02_s + bhosc01_s + bsaec_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Non-means-tested non-pension benefits: ils_bennt = bedes + bedsl + bdioa
 + bdisc + bdimb + bdiscwa + bdimbwa + bdict01 + bdict02 + bdiwi + bcrdi + bcrdicm_s + bdisv
 + bhlwk + buntr + bot + bmaer + bmana + boaht_s + bch_s + bunct_s + bchht_s + bwkmcee_s (in 2020) + bwkmcse_s (in 2020)</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Pensions: ils_pen = boact00 + boactcm + boawr + bsuwd </p>
-<p style='margin-bottom:8.0pt;line-height:105%;'>Simulated benefits: ils_bensim = bwkmt_s  + bfamt_s + bsa_s + bsadi_s +
-boamt_s + bho_s + bmu_s + bunmt_s + bmamt_s + bmascmt_s + bsauc_s + boaht_s + bch_s + bunct_s + bchmt_s + bcrdicm_s + bchht_s + bwkmcee_s (in 2020) + bwkmcse_s (in 2020) - brd_s - brduc_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Simulated benefits: ils_bensim = bwkmt_s + bfamt_s + bsa_s + bsadi_s +
+boamt_s + bho_s + bmu_s + bunmt_s + bmamt_s + bmascmt_s + bsauc_s + boaht_s + bch_s + bunct_s + bchmt_s + bcrdicm_s + bchht_s + bwkmcee_s (in 2020) + bwkmcse_s (in 2020) - brd_s - brduc_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>&nbsp;</p>
-<p style='margin-bottom:8.0pt;line-height:105%;'>Working Tax Credit: bwkmt_s </p>
-<p style='margin-bottom:8.0pt;line-height:105%;'>Child Tax Credit: bfamt_s</p>
-<p style='margin-bottom:8.0pt;line-height:105%;'>Income Support &amp; income-based Jobseekers Allowance (unless simulated
-separately): bsa_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Universal Credit: bsauc_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Benefit cap (reducing Universal Credit): brduc_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Income Support &amp; income-based Jobseekers Allowance (unless simulated separately): bsa_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Income-based Jobseeker's Allowance: bunmt_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Income-related Employment and Support Allowance: bsadi_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Pension Credit: boamt_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Council Tax Benefit/Reduction: bmu_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Housing Benefit: bho_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Benefit cap (reducing Housing Benefit): brd_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Working Tax Credit: bwkmt_s </p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Child Tax Credit: bfamt_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Sure Start Maternity Grant: bmamt_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Best Start Grant (Scotland): bmascmt_s</p>
-<p style='margin-bottom:8.0pt;line-height:105%;'>Council Tax Benefit/Reduction: bmu_s</p>
-<p style='margin-bottom:8.0pt;line-height:105%;'>Universal Credit: bsauc_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Scottish Child Payment: bchmt_s</p>
-<p style='margin-bottom:8.0pt;line-height:105%;'>Benefit cap (reducing Housing Benefit): brd_s</p>
-<p style='margin-bottom:8.0pt;line-height:105%;'>Benefit cap (reducing Universal Credit): brduc_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Scottish Child Payment Bridging Payment: bchmt01_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Best Start foods (Scotland): bmascmt01_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Free School meals (Scotland): bched01_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>School clothing grant (Scotland): bched02_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Discretionary Housing Payments (Scotland): bhosc01_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Cost of Living Payment: bsaec_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Winter Fuel Allowance: boaht_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Child Benefit: bch_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Contribution-based Jobseeker's Allowance: bunct_s</p>
@@ -458,6 +465,18 @@ separately): bsa_s</p>
         <ReadVar>tin_s</ReadVar>
       </OptionalVariable>
       <OptionalVariable>
+        <Name>tin00_s</Name>
+        <ReadVar>tin00_s</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>tin11_s</Name>
+        <ReadVar>tin11_s</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>tin12_s</Name>
+        <ReadVar>tin12_s</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
         <Name>tmu</Name>
         <ReadVar>tmu</ReadVar>
       </OptionalVariable>
@@ -492,6 +511,36 @@ separately): bsa_s</p>
       <OptionalVariable>
         <Name>bwkmcse_s</Name>
         <ReadVar>bwkmcse_s</ReadVar>
+        <DefaultValue>0</DefaultValue>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>bchmt01_s</Name>
+        <ReadVar>bchmt01_s</ReadVar>
+        <DefaultValue>0</DefaultValue>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>bmascmt01_s</Name>
+        <ReadVar>bmascmt01_s</ReadVar>
+        <DefaultValue>0</DefaultValue>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>bched01_s</Name>
+        <ReadVar>bched01_s</ReadVar>
+        <DefaultValue>0</DefaultValue>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>bched02_s</Name>
+        <ReadVar>bched02_s</ReadVar>
+        <DefaultValue>0</DefaultValue>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>bhosc01_s</Name>
+        <ReadVar>bhosc01_s</ReadVar>
+        <DefaultValue>0</DefaultValue>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>bsaec_s</Name>
+        <ReadVar>bsaec_s</ReadVar>
         <DefaultValue>0</DefaultValue>
       </OptionalVariable>
     </OptionalVariables>
@@ -665,6 +714,11 @@ separately): bsa_s</p>
             <VarName>EqScaleFam</VarName>
           </Parameter>
         </Parameters>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>bchmttot_s</OutputVar>
+        <FormulaString><![CDATA[DATA_VAR[@bchmt_s] - DATA_VAR[@bchmt01_s]]]></FormulaString>
       </Action>
       <Action>
         <CalculationType>CreateArithmetic</CalculationType>
@@ -1232,6 +1286,45 @@ in UKMOD.</span></p>]]>
               </CellAction>
             </Row>
             <Row>
+              <BackgroundColour>#D9D9D9</BackgroundColour>
+              <Name>......... Devolved taxes in Scotland</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>tin11_s</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <BackgroundColour>#D9D9D9</BackgroundColour>
+              <Name>......... Devolved taxes in Wales</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>tin12_s</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <BackgroundColour>#D9D9D9</BackgroundColour>
+              <Name>......... Non-devolved taxes</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>tin00_s</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
               <Name>(non-simulated taxes)</Name>
               <CellAction>
@@ -1354,12 +1447,12 @@ in UKMOD.</span></p>]]>
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Working Tax Credit</Name>
+              <Name>Universal Credit</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
                     <Name>BasePar</Name>
-                    <VarName>bwkmt_s</VarName>
+                    <VarName>bsauc_s</VarName>
                     <Reform>false</Reform>
                   </Parameter>
                 </Parameters>
@@ -1367,12 +1460,12 @@ in UKMOD.</span></p>]]>
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Child Tax Credit</Name>
+              <Name>(-) Benefit cap (reducing Universal Credit)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
                     <Name>BasePar</Name>
-                    <VarName>bfamt_s</VarName>
+                    <VarName>brduc_s</VarName>
                     <Reform>false</Reform>
                   </Parameter>
                 </Parameters>
@@ -1432,12 +1525,64 @@ in UKMOD.</span></p>]]>
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
+              <Name>Council Tax Benefit/Reduction</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>bmu_s</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <BackgroundColour>#D9D9D9</BackgroundColour>
               <Name>Housing Benefit</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
                     <Name>BasePar</Name>
                     <VarName>bho_s</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <BackgroundColour>#D9D9D9</BackgroundColour>
+              <Name>(-) Benefit cap (reducing Housing Benefit)</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>brd_s</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <BackgroundColour>#D9D9D9</BackgroundColour>
+              <Name>Working Tax Credit</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>bwkmt_s</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <BackgroundColour>#D9D9D9</BackgroundColour>
+              <Name>Child Tax Credit</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>bfamt_s</VarName>
                     <Reform>false</Reform>
                   </Parameter>
                 </Parameters>
@@ -1471,12 +1616,12 @@ in UKMOD.</span></p>]]>
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Council Tax Benefit/Reduction</Name>
+              <Name>Scottish Child Payment (including bridging)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
                     <Name>BasePar</Name>
-                    <VarName>bmu_s</VarName>
+                    <VarName>bchmttot_s</VarName>
                     <Reform>false</Reform>
                   </Parameter>
                 </Parameters>
@@ -1484,12 +1629,12 @@ in UKMOD.</span></p>]]>
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Universal Credit</Name>
+              <Name>Best Start foods (Scotland)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
                     <Name>BasePar</Name>
-                    <VarName>bsauc_s</VarName>
+                    <VarName>bmascmt01_s</VarName>
                     <Reform>false</Reform>
                   </Parameter>
                 </Parameters>
@@ -1497,12 +1642,12 @@ in UKMOD.</span></p>]]>
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Scottish Child Payment</Name>
+              <Name>Free School meals (Scotland)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
                     <Name>BasePar</Name>
-                    <VarName>bchmt_s</VarName>
+                    <VarName>bched01_s</VarName>
                     <Reform>false</Reform>
                   </Parameter>
                 </Parameters>
@@ -1510,12 +1655,12 @@ in UKMOD.</span></p>]]>
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>(-) Benefit cap (reducing Housing Benefit)</Name>
+              <Name>School clothing grant (Scotland)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
                     <Name>BasePar</Name>
-                    <VarName>brd_s</VarName>
+                    <VarName>bched02_s</VarName>
                     <Reform>false</Reform>
                   </Parameter>
                 </Parameters>
@@ -1523,12 +1668,25 @@ in UKMOD.</span></p>]]>
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>(-) Benefit cap (reducing Universal Credit)</Name>
+              <Name>Discretionary Housing Payments (Scotland)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
                     <Name>BasePar</Name>
-                    <VarName>brduc_s</VarName>
+                    <VarName>bhosc01_s</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <BackgroundColour>#D9D9D9</BackgroundColour>
+              <Name>Cost of Living Payments</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>bsaec_s</VarName>
                     <Reform>false</Reform>
                   </Parameter>
                 </Parameters>

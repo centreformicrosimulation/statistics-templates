@@ -155,6 +155,10 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
         <ReadVar>bfalp_s</ReadVar>
       </RequiredVariable>
       <RequiredVariable>
+        <Name>bfalpt_s</Name>
+        <ReadVar>bfalpt_s</ReadVar>
+      </RequiredVariable>
+      <RequiredVariable>
         <Name>bhors_s</Name>
         <ReadVar>bhors_s</ReadVar>
       </RequiredVariable>
@@ -189,6 +193,10 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
       <RequiredVariable>
         <Name>bfaot</Name>
         <ReadVar>bfaot</ReadVar>
+      </RequiredVariable>
+      <RequiredVariable>
+        <Name>bca_s</Name>
+        <ReadVar>bca_s</ReadVar>
       </RequiredVariable>
       <RequiredVariable>
         <Name>bed</Name>
@@ -266,6 +274,22 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
       <RequiredVariable>
         <Name>ilsDispy</Name>
         <ReadVar>ils_dispy</ReadVar>
+      </RequiredVariable>
+      <RequiredVariable>
+        <Name>ilsDispyM</Name>
+        <ReadVar>ils_dispy_m</ReadVar>
+      </RequiredVariable>
+      <RequiredVariable>
+        <Name>ilsDispyF</Name>
+        <ReadVar>ils_dispy_f</ReadVar>
+      </RequiredVariable>
+      <RequiredVariable>
+        <Name>ilsDispyE</Name>
+        <ReadVar>ils_dispy_e</ReadVar>
+      </RequiredVariable>
+      <RequiredVariable>
+        <Name>ilsDispyNE</Name>
+        <ReadVar>ils_dispy_ne</ReadVar>
       </RequiredVariable>
       <RequiredVariable>
         <Name>ilsOrigy</Name>
@@ -404,12 +428,12 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
           <Parameter>
             <Name>EquivalenceScaleBand</Name>
             <VarName>FilterEquivAdult</VarName>
-            <NumericValue>0.5</NumericValue>
+            <NumericValue>0.66</NumericValue>
           </Parameter>
           <Parameter>
             <Name>EquivalenceScaleBand</Name>
             <VarName>FilterEquivChild</VarName>
-            <NumericValue>0.3</NumericValue>
+            <NumericValue>0.33</NumericValue>
           </Parameter>
           <Parameter>
             <Name>EquivalenceFirstPerson</Name>
@@ -441,12 +465,12 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
           <Parameter>
             <Name>EquivalenceScaleBand</Name>
             <VarName>FilterEquivAdult</VarName>
-            <NumericValue>0.5</NumericValue>
+            <NumericValue>0.66</NumericValue>
           </Parameter>
           <Parameter>
             <Name>EquivalenceScaleBand</Name>
             <VarName>FilterEquivChild</VarName>
-            <NumericValue>0.3</NumericValue>
+            <NumericValue>0.33</NumericValue>
           </Parameter>
           <Parameter>
             <Name>EquivalenceFirstPerson</Name>
@@ -1193,6 +1217,154 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
         <OutputVar>NoChange_TUB</OutputVar>
         <Filter>
           <FormulaString><![CDATA[DATA_VAR[@Gain_TUB] == 0.0 && DATA_VAR[@Loss_TUB] == 0.0]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <CalculationLevel>TUB</CalculationLevel>
+        <OutputVar>changeDispy_TUBM</OutputVar>
+        <FormulaString><![CDATA[DATA_VAR[@ilsDispyM] - DATA_VAR[@ilsDispyM_Base]]]></FormulaString>
+        <Parameters>
+          <Parameter>
+            <Reform>false</Reform>
+            <Name>ilsDispyM_Base</Name>
+            <VarName>ilsDispyM</VarName>
+          </Parameter>
+        </Parameters>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <CalculationLevel>TUB</CalculationLevel>
+        <OutputVar>changeDispy_TUBF</OutputVar>
+        <FormulaString><![CDATA[DATA_VAR[@ilsDispyF] - DATA_VAR[@ilsDispyF_Base]]]></FormulaString>
+        <Parameters>
+          <Parameter>
+            <Reform>false</Reform>
+            <Name>ilsDispyF_Base</Name>
+            <VarName>ilsDispyF</VarName>
+          </Parameter>
+        </Parameters>
+      </Action>
+      <Action>
+        <CalculationType>CreateFlag</CalculationType>
+        <CalculationLevel>TUB</CalculationLevel>
+        <OutputVar>Loss_TUBM</OutputVar>
+        <Filter>
+          <FormulaString><![CDATA[(DATA_VAR[@changeDispy_TUBM] * 12.0 / 365.0 * 7.0) < (-0.5)]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateFlag</CalculationType>
+        <CalculationLevel>TUB</CalculationLevel>
+        <OutputVar>Gain_TUBM</OutputVar>
+        <Filter>
+          <FormulaString><![CDATA[(DATA_VAR[@changeDispy_TUBM] * 12.0 / 365.0 * 7.0) > 0.5]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateFlag</CalculationType>
+        <CalculationLevel>TUB</CalculationLevel>
+        <OutputVar>NoChange_TUBM</OutputVar>
+        <Filter>
+          <FormulaString><![CDATA[DATA_VAR[@Gain_TUBM] == 0.0 && DATA_VAR[@Loss_TUBM] == 0.0]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateFlag</CalculationType>
+        <CalculationLevel>TUB</CalculationLevel>
+        <OutputVar>Loss_TUBF</OutputVar>
+        <Filter>
+          <FormulaString><![CDATA[(DATA_VAR[@changeDispy_TUBF] * 12.0 / 365.0 * 7.0) < (-0.5)]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateFlag</CalculationType>
+        <CalculationLevel>TUB</CalculationLevel>
+        <OutputVar>Gain_TUBF</OutputVar>
+        <Filter>
+          <FormulaString><![CDATA[(DATA_VAR[@changeDispy_TUBF] * 12.0 / 365.0 * 7.0) > 0.5]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateFlag</CalculationType>
+        <CalculationLevel>TUB</CalculationLevel>
+        <OutputVar>NoChange_TUBF</OutputVar>
+        <Filter>
+          <FormulaString><![CDATA[DATA_VAR[@Gain_TUBF] == 0.0 && DATA_VAR[@Loss_TUBF] == 0.0]]></FormulaString>
+        </Filter>
+      </Action>der 
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <CalculationLevel>TUB</CalculationLevel>
+        <OutputVar>changeDispy_TUBE</OutputVar>
+        <FormulaString><![CDATA[DATA_VAR[@ilsDispyE] - DATA_VAR[@ilsDispyE_Base]]]></FormulaString>
+        <Parameters>
+          <Parameter>
+            <Reform>false</Reform>
+            <Name>ilsDispyE_Base</Name>
+            <VarName>ilsDispyE</VarName>
+          </Parameter>
+        </Parameters>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <CalculationLevel>TUB</CalculationLevel>
+        <OutputVar>changeDispy_TUBNE</OutputVar>
+        <FormulaString><![CDATA[DATA_VAR[@ilsDispyNE] - DATA_VAR[@ilsDispyNE_Base]]]></FormulaString>
+        <Parameters>
+          <Parameter>
+            <Reform>false</Reform>
+            <Name>ilsDispyNE_Base</Name>
+            <VarName>ilsDispyNE</VarName>
+          </Parameter>
+        </Parameters>
+      </Action>
+      <Action>
+        <CalculationType>CreateFlag</CalculationType>
+        <CalculationLevel>TUB</CalculationLevel>
+        <OutputVar>Loss_TUBE</OutputVar>
+        <Filter>
+          <FormulaString><![CDATA[(DATA_VAR[@changeDispy_TUBE] * 12.0 / 365.0 * 7.0) < (-0.5)]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateFlag</CalculationType>
+        <CalculationLevel>TUB</CalculationLevel>
+        <OutputVar>Gain_TUBE</OutputVar>
+        <Filter>
+          <FormulaString><![CDATA[(DATA_VAR[@changeDispy_TUBE] * 12.0 / 365.0 * 7.0) > 0.5]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateFlag</CalculationType>
+        <CalculationLevel>TUB</CalculationLevel>
+        <OutputVar>NoChange_TUBE</OutputVar>
+        <Filter>
+          <FormulaString><![CDATA[DATA_VAR[@Gain_TUBE] == 0.0 && DATA_VAR[@Loss_TUBE] == 0.0]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateFlag</CalculationType>
+        <CalculationLevel>TUB</CalculationLevel>
+        <OutputVar>Loss_TUBNE</OutputVar>
+        <Filter>
+          <FormulaString><![CDATA[(DATA_VAR[@changeDispy_TUBNE] * 12.0 / 365.0 * 7.0) < (-0.5)]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateFlag</CalculationType>
+        <CalculationLevel>TUB</CalculationLevel>
+        <OutputVar>Gain_TUBNE</OutputVar>
+        <Filter>
+          <FormulaString><![CDATA[(DATA_VAR[@changeDispy_TUBNE] * 12.0 / 365.0 * 7.0) > 0.5]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateFlag</CalculationType>
+        <CalculationLevel>TUB</CalculationLevel>
+        <OutputVar>NoChange_TUBNE</OutputVar>
+        <Filter>
+          <FormulaString><![CDATA[DATA_VAR[@Gain_TUBNE] == 0.0 && DATA_VAR[@Loss_TUBNE] == 0.0]]></FormulaString>
         </Filter>
       </Action>
       <Action>
@@ -13469,6 +13641,1643 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
       </Tables>
     </Page>
     <Page>
+      <Name>GenderImpact</Name>
+      <Title>Gender Impact - Disposable Income</Title>
+      <Button>Gender Impact</Button>
+      <Description>
+        <![CDATA[
+      <p style='line-height:1.5'>Quintiles are built by grouping population into equal number of units (i.e. Tax Unit, Income Sharing Unit or Households) 
+      with respect to baseline equivalised disposable income of the unit. <br>
+      The equivalence scale is that of the Central Statistics Office which attributes a weight of 1 to the first adult, 0.66 to each subsequent adult 
+      (aged 14+ living in the household) and 0.33 to each child aged less than 14. <br>
+      Units with equal income are kept in the same quintile, even if this leads to an unequal distribution of units over quiniles. <br>
+      Income and income changes as displayed in the tables refer to unequivalised disposable income.</p>
+      <p style='line-height:1.5'><b><span style='color:#0070C0'>Percentage Change in Disposable Income:</span></b> <br>
+      Table shows total change in disposable income of the respective group divided by total baseline disposable income of the respective group.</p>
+      <p style='line-height:1.5'><b><span style='color:#0070C0'>Average Change in Disposable Income:</span></b> <br>
+      Table shows total change in disposable income of the respective group divided by number of units in the respective group.</p>
+      <p style='line-height:1.5'><b><span style='color:#0070C0'>Aggregate Change in Disposable Income:</span></b> <br>
+      Table shows total change in disposable income of the respective group. Column Total is the sum of the group columns. Row All is the sum of the group rows.</p>
+      ]]>
+      </Description>
+      <Tables>
+        <Table>
+          <Title>1.1. Men </Title>
+          <Subtitle><![CDATA[Percentage Change in Disposable Income of Men by income quintile, defined at the tax-unit level <br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
+          <StringFormat>#,0.00</StringFormat>
+          <CellAction>
+            <CalculationType>CalculateSumWeighted</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@changeDispy_TUBM] / DATA_VAR[@ilsDispyM] * 100]]></FormulaString>
+            <CalculationLevel>TUB</CalculationLevel>
+            <Parameters>
+              <Parameter>
+                <Name>changeDispy_TUBM</Name>
+                <VarName>changeDispy_TUBM</VarName>
+              </Parameter>
+              <Parameter>
+                <Reform>false</Reform>
+                <Name>ilsDispyM</Name>
+                <VarName>ilsDispyM</VarName>
+              </Parameter>
+            </Parameters>
+            <Filter>
+              <FormulaString><![CDATA[DATA_VAR[@GainLoss] == 1.0 && (TEMP_VAR[@DecNo] == 0.0 || DATA_VAR[@Dec] == TEMP_VAR[@DecNo])]]></FormulaString>
+              <Parameters>
+                <Parameter>
+                  <Reform>false</Reform>
+                  <Name>Dec</Name>
+                  <VarName>quintiles_eqDispy_TUB</VarName>
+                </Parameter>
+                <Parameter>
+                  <Name>DecNo</Name>
+                  <NumericValue>0</NumericValue>
+                </Parameter>
+              </Parameters>
+            </Filter>
+          </CellAction>
+          <Columns>
+            <Column>
+              <Name>Cut off</Name>
+              <Title><![CDATA[Eq.DI €pw up to]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[SAVED_VAR[@CutOff] * 12.0 / 365.0 * 7.0]]></FormulaString>
+                <Filter>
+                  <!-- to avoid inheriting the filter from the table-action -->
+                  <FormulaString><![CDATA[true]]></FormulaString>
+                </Filter>
+              </CellAction>
+            </Column>
+          </Columns>
+          <ReformColumns>
+            <ReformColumn>
+              <Name><![CDATA[Loss > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Loss_TUBM</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>No Change</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>NoChange_TUBM</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name><![CDATA[Gain > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Gain_TUBM</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>Total</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Const_1</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Quintile 1</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~1</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>1</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 2</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~2</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>2</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 3</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~3</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>3</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 4</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~4</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>4</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 5</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~5</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>5</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+          </Rows>
+          <Cells>
+            <Cell>
+              <CellAction>
+                <CalculationType>Empty</CalculationType>
+              </CellAction>
+              <RowName>Quintile 5</RowName>
+              <ColName>Cut off</ColName>
+            </Cell>
+            <Cell>
+              <CellAction>
+                <CalculationType>Empty</CalculationType>
+              </CellAction>
+              <RowName>All</RowName>
+              <ColName>Cut off</ColName>
+            </Cell>
+          </Cells>
+        </Table>
+        <Table>
+          <Title>1.2. Men</Title>
+          <Subtitle><![CDATA[Average Change in Disposable Income (€pw) <br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
+          <CellAction>
+            <CalculationType>CalculateSumWeighted</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@changeDispy_TUBM] / DATA_VAR[@Const_1] * 12.0 / 365.0 * 7.0]]></FormulaString>
+            <CalculationLevel>TUB</CalculationLevel>
+            <Parameters>
+              <Parameter>
+                <Name>changeDispy_TUBM</Name>
+                <VarName>changeDispy_TUBM</VarName>
+              </Parameter>
+              <Parameter>
+                <Name>Const_1</Name>
+                <VarName>Const_1</VarName>
+              </Parameter>
+            </Parameters>
+            <Filter>
+              <FormulaString><![CDATA[DATA_VAR[@GainLoss] == 1.0 && (TEMP_VAR[@DecNo] == 0.0 || DATA_VAR[@Dec] == TEMP_VAR[@DecNo])]]></FormulaString>
+              <Parameters>
+                <Parameter>
+                  <Reform>false</Reform>
+                  <Name>Dec</Name>
+                  <VarName>quintiles_eqDispy_TUB</VarName>
+                </Parameter>
+                <Parameter>
+                  <Name>DecNo</Name>
+                  <NumericValue>0</NumericValue>
+                </Parameter>
+              </Parameters>
+            </Filter>
+          </CellAction>
+          <StringFormat>#,0.00</StringFormat>
+          <Columns>
+            <Column>
+              <Name>Cut off</Name>
+              <Title><![CDATA[Eq.DI €pw up to]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[SAVED_VAR[@CutOff] * 12.0 / 365.0 * 7.0]]></FormulaString>
+                <Filter>
+                  <!-- to avoid inheriting the filter from the table-action -->
+                  <FormulaString><![CDATA[true]]></FormulaString>
+                </Filter>
+              </CellAction>
+            </Column>
+          </Columns>
+          <ReformColumns>
+            <ReformColumn>
+              <Name><![CDATA[Loss > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Loss_TUBM</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>No Change</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>NoChange_TUBM</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name><![CDATA[Gain > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Gain_TUBM</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>Total</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Const_1</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Quintile 1</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~1</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>1</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 2</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~2</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>2</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 3</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~3</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>3</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 4</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~4</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>4</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 5</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~5</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>5</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+          </Rows>
+          <Cells>
+            <Cell>
+              <CellAction>
+                <CalculationType>Empty</CalculationType>
+              </CellAction>
+              <RowName>Quintile 5</RowName>
+              <ColName>Cut off</ColName>
+            </Cell>
+            <Cell>
+              <CellAction>
+                <CalculationType>Empty</CalculationType>
+              </CellAction>
+              <RowName>All</RowName>
+              <ColName>Cut off</ColName>
+            </Cell>
+          </Cells>
+        </Table>
+        <Table>
+          <Title>1.3. Men</Title>
+          <Subtitle><![CDATA[Aggregate Change in Disposable Income (€m pa) <br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
+          <CellAction>
+            <CalculationType>CalculateSumWeighted</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@changeDispy_TUBM] * 12 / 1000000]]></FormulaString>
+            <CalculationLevel>TUB</CalculationLevel>
+            <Parameters>
+              <Parameter>
+                <Name>changeDispy_TUBM</Name>
+                <VarName>changeDispy_TUBM</VarName>
+              </Parameter>
+            </Parameters>
+            <Filter>
+              <FormulaString><![CDATA[DATA_VAR[@GainLoss] == 1.0 && (TEMP_VAR[@DecNo] == 0.0 || DATA_VAR[@Dec] == TEMP_VAR[@DecNo])]]></FormulaString>
+              <Parameters>
+                <Parameter>
+                  <Reform>false</Reform>
+                  <Name>Dec</Name>
+                  <VarName>quintiles_eqDispy_TUB</VarName>
+                </Parameter>
+                <Parameter>
+                  <Name>DecNo</Name>
+                  <NumericValue>0</NumericValue>
+                </Parameter>
+              </Parameters>
+            </Filter>
+          </CellAction>
+          <StringFormat>#,0.00</StringFormat>
+          <Columns>
+            <Column>
+              <Name>Cut off</Name>
+              <Title><![CDATA[Eq.DI €pw up to]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[SAVED_VAR[@CutOff] * 12.0 / 365.0 * 7.0]]></FormulaString>
+                <Filter>
+                  <!-- to avoid inheriting the filter from the table-action -->
+                  <FormulaString><![CDATA[true]]></FormulaString>
+                </Filter>
+              </CellAction>
+            </Column>
+          </Columns>
+          <ReformColumns>
+            <ReformColumn>
+              <Name><![CDATA[Loss > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Loss_TUBM</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>No Change</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>NoChange_TUBM</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name><![CDATA[Gain > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Gain_TUBM</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>Total</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Const_1</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Quintile 1</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~1</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>1</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 2</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~2</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>2</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 3</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~3</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>3</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 4</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~4</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>4</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 5</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~5</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>5</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+          </Rows>
+          <Cells>
+            <Cell>
+              <CellAction>
+                <CalculationType>Empty</CalculationType>
+              </CellAction>
+              <RowName>Quintile 5</RowName>
+              <ColName>Cut off</ColName>
+            </Cell>
+            <Cell>
+              <CellAction>
+                <CalculationType>Empty</CalculationType>
+              </CellAction>
+              <RowName>All</RowName>
+              <ColName>Cut off</ColName>
+            </Cell>
+          </Cells>
+        </Table>    
+        <Table>
+          <Title>2.1. Women</Title>
+          <Subtitle><![CDATA[Percentage Change in Disposable Income of Women by income quintile, defined at the tax-unit level <br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
+          <StringFormat>#,0.00</StringFormat>
+          <CellAction>
+            <CalculationType>CalculateSumWeighted</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@changeDispy_TUBF] / DATA_VAR[@ilsDispyF] * 100]]></FormulaString>
+            <CalculationLevel>TUB</CalculationLevel>
+            <Parameters>
+              <Parameter>
+                <Name>changeDispy_TUBF</Name>
+                <VarName>changeDispy_TUBF</VarName>
+              </Parameter>
+              <Parameter>
+                <Reform>false</Reform>
+                <Name>ilsDispyF</Name>
+                <VarName>ilsDispyF</VarName>
+              </Parameter>
+            </Parameters>
+            <Filter>
+              <FormulaString><![CDATA[DATA_VAR[@GainLoss] == 1.0 && (TEMP_VAR[@DecNo] == 0.0 || DATA_VAR[@Dec] == TEMP_VAR[@DecNo])]]></FormulaString>
+              <Parameters>
+                <Parameter>
+                  <Reform>false</Reform>
+                  <Name>Dec</Name>
+                  <VarName>quintiles_eqDispy_TUB</VarName>
+                </Parameter>
+                <Parameter>
+                  <Name>DecNo</Name>
+                  <NumericValue>0</NumericValue>
+                </Parameter>
+              </Parameters>
+            </Filter>
+          </CellAction>
+          <Columns>
+            <Column>
+              <Name>Cut off</Name>
+              <Title><![CDATA[Eq.DI €pw up to]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[SAVED_VAR[@CutOff] * 12.0 / 365.0 * 7.0]]></FormulaString>
+                <Filter>
+                  <!-- to avoid inheriting the filter from the table-action -->
+                  <FormulaString><![CDATA[true]]></FormulaString>
+                </Filter>
+              </CellAction>
+            </Column>
+          </Columns>
+          <ReformColumns>
+            <ReformColumn>
+              <Name><![CDATA[Loss > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Loss_TUBF</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>No Change</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>NoChange_TUBF</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name><![CDATA[Gain > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Gain_TUBF</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>Total</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Const_1</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Quintile 1</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~1</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>1</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 2</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~2</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>2</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 3</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~3</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>3</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 4</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~4</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>4</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 5</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~5</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>5</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+          </Rows>
+          <Cells>
+            <Cell>
+              <CellAction>
+                <CalculationType>Empty</CalculationType>
+              </CellAction>
+              <RowName>Quintile 5</RowName>
+              <ColName>Cut off</ColName>
+            </Cell>
+            <Cell>
+              <CellAction>
+                <CalculationType>Empty</CalculationType>
+              </CellAction>
+              <RowName>All</RowName>
+              <ColName>Cut off</ColName>
+            </Cell>
+          </Cells>
+        </Table>
+        <Table>
+          <Title>2.2. Women</Title>
+          <Subtitle><![CDATA[Average Change in Disposable Income (€pw) <br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
+          <CellAction>
+            <CalculationType>CalculateSumWeighted</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@changeDispy_TUBF] / DATA_VAR[@Const_1] * 12.0 / 365.0 * 7.0]]></FormulaString>
+            <CalculationLevel>TUB</CalculationLevel>
+            <Parameters>
+              <Parameter>
+                <Name>changeDispy_TUBF</Name>
+                <VarName>changeDispy_TUBF</VarName>
+              </Parameter>
+              <Parameter>
+                <Name>Const_1</Name>
+                <VarName>Const_1</VarName>
+              </Parameter>
+            </Parameters>
+            <Filter>
+              <FormulaString><![CDATA[DATA_VAR[@GainLoss] == 1.0 && (TEMP_VAR[@DecNo] == 0.0 || DATA_VAR[@Dec] == TEMP_VAR[@DecNo])]]></FormulaString>
+              <Parameters>
+                <Parameter>
+                  <Reform>false</Reform>
+                  <Name>Dec</Name>
+                  <VarName>quintiles_eqDispy_TUB</VarName>
+                </Parameter>
+                <Parameter>
+                  <Name>DecNo</Name>
+                  <NumericValue>0</NumericValue>
+                </Parameter>
+              </Parameters>
+            </Filter>
+          </CellAction>
+          <StringFormat>#,0.00</StringFormat>
+          <Columns>
+            <Column>
+              <Name>Cut off</Name>
+              <Title><![CDATA[Eq.DI €pw up to]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[SAVED_VAR[@CutOff] * 12.0 / 365.0 * 7.0]]></FormulaString>
+                <Filter>
+                  <!-- to avoid inheriting the filter from the table-action -->
+                  <FormulaString><![CDATA[true]]></FormulaString>
+                </Filter>
+              </CellAction>
+            </Column>
+          </Columns>
+          <ReformColumns>
+            <ReformColumn>
+              <Name><![CDATA[Loss > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Loss_TUBF</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>No Change</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>NoChange_TUBF</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name><![CDATA[Gain > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Gain_TUBF</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>Total</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Const_1</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Quintile 1</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~1</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>1</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 2</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~2</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>2</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 3</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~3</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>3</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 4</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~4</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>4</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 5</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~5</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>5</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+          </Rows>
+          <Cells>
+            <Cell>
+              <CellAction>
+                <CalculationType>Empty</CalculationType>
+              </CellAction>
+              <RowName>Quintile 5</RowName>
+              <ColName>Cut off</ColName>
+            </Cell>
+            <Cell>
+              <CellAction>
+                <CalculationType>Empty</CalculationType>
+              </CellAction>
+              <RowName>All</RowName>
+              <ColName>Cut off</ColName>
+            </Cell>
+          </Cells>
+        </Table>
+        <Table>
+          <Title>2.3. Women</Title>
+          <Subtitle><![CDATA[Aggregate Change in Disposable Income (€m pa) <br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
+          <CellAction>
+            <CalculationType>CalculateSumWeighted</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@changeDispy_TUBF] * 12 / 1000000]]></FormulaString>
+            <CalculationLevel>TUB</CalculationLevel>
+            <Parameters>
+              <Parameter>
+                <Name>changeDispy_TUBF</Name>
+                <VarName>changeDispy_TUBF</VarName>
+              </Parameter>
+            </Parameters>
+            <Filter>
+              <FormulaString><![CDATA[DATA_VAR[@GainLoss] == 1.0 && (TEMP_VAR[@DecNo] == 0.0 || DATA_VAR[@Dec] == TEMP_VAR[@DecNo])]]></FormulaString>
+              <Parameters>
+                <Parameter>
+                  <Reform>false</Reform>
+                  <Name>Dec</Name>
+                  <VarName>quintiles_eqDispy_TUB</VarName>
+                </Parameter>
+                <Parameter>
+                  <Name>DecNo</Name>
+                  <NumericValue>0</NumericValue>
+                </Parameter>
+              </Parameters>
+            </Filter>
+          </CellAction>
+          <StringFormat>#,0.00</StringFormat>
+          <Columns>
+            <Column>
+              <Name>Cut off</Name>
+              <Title><![CDATA[Eq.DI €pw up to]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[SAVED_VAR[@CutOff] * 12.0 / 365.0 * 7.0]]></FormulaString>
+                <Filter>
+                  <!-- to avoid inheriting the filter from the table-action -->
+                  <FormulaString><![CDATA[true]]></FormulaString>
+                </Filter>
+              </CellAction>
+            </Column>
+          </Columns>
+          <ReformColumns>
+            <ReformColumn>
+              <Name><![CDATA[Loss > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Loss_TUBF</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>No Change</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>NoChange_TUBF</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name><![CDATA[Gain > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Gain_TUBF</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>Total</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Const_1</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Quintile 1</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~1</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>1</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 2</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~2</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>2</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 3</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~3</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>3</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 4</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~4</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>4</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 5</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~5</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>5</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+          </Rows>
+          <Cells>
+            <Cell>
+              <CellAction>
+                <CalculationType>Empty</CalculationType>
+              </CellAction>
+              <RowName>Quintile 5</RowName>
+              <ColName>Cut off</ColName>
+            </Cell>
+            <Cell>
+              <CellAction>
+                <CalculationType>Empty</CalculationType>
+              </CellAction>
+              <RowName>All</RowName>
+              <ColName>Cut off</ColName>
+            </Cell>
+          </Cells>
+        </Table>
+      </Tables>
+    </Page>
+    <Page>
       <Name>FamilyType</Name>
       <Title>Impact by Family Type</Title>
       <Button>Family Type</Button>
@@ -14936,6 +16745,1081 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
       </Tables>
     </Page>
     <Page>
+      <Name>EarningNonearning</Name>
+      <Title>Impact on Earning and non-earning households - Disposable Income</Title>
+      <Button>Earning Non-earning</Button>
+      <Description>
+        <![CDATA[
+      <p style='line-height:1.5'>Quintiles are built by grouping population into equal number of units (i.e. Tax Unit, Income Sharing Unit or Households) 
+      with respect to baseline equivalised disposable income of the unit. <br>
+      The equivalence scale is that of the Central Statistics Office which attributes a weight of 1 to the first adult, 0.66 to each subsequent adult 
+      (aged 14+ living in the household) and 0.33 to each child aged less than 14. <br>
+      Units with equal income are kept in the same quintile, even if this leads to an unequal distribution of units over quiniles. <br>
+      Income and income changes as displayed in the tables refer to unequivalised disposable income.</p>
+      <p style='line-height:1.5'><b><span style='color:#0070C0'>Percentage Change in Disposable Income:</span></b> <br>
+      Table shows total change in disposable income of the respective group divided by total baseline disposable income of the respective group.</p>
+      ]]>
+      </Description>
+      <Tables>
+        <Table>
+          <Title>1.1. Earning - quintile effect </Title>
+          <Subtitle><![CDATA[Percentage Change in Disposable Income of earning households by income quintile, defined at the tax-unit level. <br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
+          <StringFormat>#,0.00</StringFormat>
+          <CellAction>
+            <CalculationType>CalculateSumWeighted</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@changeDispy_TUBE] / DATA_VAR[@ilsDispyE] * 100]]></FormulaString>
+            <CalculationLevel>TUB</CalculationLevel>
+            <Parameters>
+              <Parameter>
+                <Name>changeDispy_TUBE</Name>
+                <VarName>changeDispy_TUBE</VarName>
+              </Parameter>
+              <Parameter>
+                <Reform>false</Reform>
+                <Name>ilsDispyE</Name>
+                <VarName>ilsDispyE</VarName>
+              </Parameter>
+            </Parameters>
+            <Filter>
+              <FormulaString><![CDATA[DATA_VAR[@GainLoss] == 1.0 && (TEMP_VAR[@DecNo] == 0.0 || DATA_VAR[@Dec] == TEMP_VAR[@DecNo])]]></FormulaString>
+              <Parameters>
+                <Parameter>
+                  <Reform>false</Reform>
+                  <Name>Dec</Name>
+                  <VarName>quintiles_eqDispy_TUB</VarName>
+                </Parameter>
+                <Parameter>
+                  <Name>DecNo</Name>
+                  <NumericValue>0</NumericValue>
+                </Parameter>
+              </Parameters>
+            </Filter>
+          </CellAction>
+          <Columns>
+            <Column>
+              <Name>Cut off</Name>
+              <Title><![CDATA[Eq.DI €pw up to]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[SAVED_VAR[@CutOff] * 12.0 / 365.0 * 7.0]]></FormulaString>
+                <Filter>
+                  <!-- to avoid inheriting the filter from the table-action -->
+                  <FormulaString><![CDATA[true]]></FormulaString>
+                </Filter>
+              </CellAction>
+            </Column>
+          </Columns>
+          <ReformColumns>
+            <ReformColumn>
+              <Name><![CDATA[Loss > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Loss_TUBE</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>No Change</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>NoChange_TUBE</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name><![CDATA[Gain > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Gain_TUBE</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>Total</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Const_1</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Quintile 1</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~1</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>1</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 2</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~2</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>2</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 3</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~3</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>3</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 4</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~4</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>4</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 5</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~5</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>5</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+          </Rows>
+          <Cells>
+            <Cell>
+              <CellAction>
+                <CalculationType>Empty</CalculationType>
+              </CellAction>
+              <RowName>Quintile 5</RowName>
+              <ColName>Cut off</ColName>
+            </Cell>
+            <Cell>
+              <CellAction>
+                <CalculationType>Empty</CalculationType>
+              </CellAction>
+              <RowName>All</RowName>
+              <ColName>Cut off</ColName>
+            </Cell>
+          </Cells>
+        </Table>
+        <Table>
+          <Title>1.2. Earning - family type</Title>
+          <Subtitle><![CDATA[Percentage Change in Disposable Income of earning households by family type, defined at the tax-unit level. (%) <br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
+          <StringFormat>#,0.00</StringFormat>
+          <CellAction>
+            <CalculationType>CalculateSumWeighted</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@changeDispy_TUBE] / DATA_VAR[@ilsDispyE] * 100]]></FormulaString>
+            <CalculationLevel>TUB</CalculationLevel>
+            <Parameters>
+              <Parameter>
+                <Name>changeDispy_TUBE</Name>
+                <VarName>changeDispy_TUBE</VarName>
+              </Parameter>
+              <Parameter>
+                <Reform>false</Reform>
+                <Name>ilsDispyE</Name>
+                <VarName>ilsDispyE</VarName>
+              </Parameter>
+            </Parameters>
+            <Filter>
+              <FormulaString><![CDATA[DATA_VAR[@GainLoss] == 1.0 && (TEMP_VAR[@DecNo] == 0.0 || DATA_VAR[@Dec] == TEMP_VAR[@DecNo])]]></FormulaString>
+              <Parameters>
+                <Parameter>
+                  <Reform>false</Reform>
+                  <Name>Dec</Name>
+                  <VarName>FamType</VarName>
+                </Parameter>
+                <Parameter>
+                  <Reform>false</Reform>
+                  <Name>DecNo</Name>
+                  <NumericValue>0</NumericValue>
+                </Parameter>
+              </Parameters>
+            </Filter>
+          </CellAction>
+          <Columns>
+          </Columns>
+          <ReformColumns>
+            <ReformColumn>
+              <Name><![CDATA[Loss > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Loss_TUBE</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>No Change</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>NoChange_TUBE</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name><![CDATA[Gain > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Gain_TUBE</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>Total</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Const_1</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Single working-age without children</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Reform>false</Reform>
+                      <Name>DecNo</Name>
+                      <NumericValue>1</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Lone parent</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Reform>false</Reform>
+                      <Name>DecNo</Name>
+                      <NumericValue>2</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Working-age couple without children</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Reform>false</Reform>
+                      <Name>DecNo</Name>
+                      <NumericValue>3</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Working-age couple with children</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Reform>false</Reform>
+                      <Name>DecNo</Name>
+                      <NumericValue>4</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Single retirement-age (>= 66)</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Reform>false</Reform>
+                      <Name>DecNo</Name>
+                      <NumericValue>5</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Retirement-age couple (at least one >=66)</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Reform>false</Reform>
+                      <Name>DecNo</Name>
+                      <NumericValue>6</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Other</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Reform>false</Reform>
+                      <Name>DecNo</Name>
+                      <NumericValue>7</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+          </Rows>
+        </Table>
+        <Table>
+          <Title>2.1. Non-earning - quintile effect</Title>
+          <Subtitle><![CDATA[Percentage Change in Disposable Income of non-earning households by income quintile, defined at the tax-unit level <br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
+          <StringFormat>#,0.00</StringFormat>
+          <CellAction>
+            <CalculationType>CalculateSumWeighted</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@changeDispy_TUBNE] / DATA_VAR[@ilsDispyNE] * 100]]></FormulaString>
+            <CalculationLevel>TUB</CalculationLevel>
+            <Parameters>
+              <Parameter>
+                <Name>changeDispy_TUBNE</Name>
+                <VarName>changeDispy_TUBNE</VarName>
+              </Parameter>
+              <Parameter>
+                <Reform>false</Reform>
+                <Name>ilsDispyNE</Name>
+                <VarName>ilsDispyNE</VarName>
+              </Parameter>
+            </Parameters>
+            <Filter>
+              <FormulaString><![CDATA[DATA_VAR[@GainLoss] == 1.0 && (TEMP_VAR[@DecNo] == 0.0 || DATA_VAR[@Dec] == TEMP_VAR[@DecNo])]]></FormulaString>
+              <Parameters>
+                <Parameter>
+                  <Reform>false</Reform>
+                  <Name>Dec</Name>
+                  <VarName>quintiles_eqDispy_TUB</VarName>
+                </Parameter>
+                <Parameter>
+                  <Name>DecNo</Name>
+                  <NumericValue>0</NumericValue>
+                </Parameter>
+              </Parameters>
+            </Filter>
+          </CellAction>
+          <Columns>
+            <Column>
+              <Name>Cut off</Name>
+              <Title><![CDATA[Eq.DI €pw up to]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[SAVED_VAR[@CutOff] * 12.0 / 365.0 * 7.0]]></FormulaString>
+                <Filter>
+                  <!-- to avoid inheriting the filter from the table-action -->
+                  <FormulaString><![CDATA[true]]></FormulaString>
+                </Filter>
+              </CellAction>
+            </Column>
+          </Columns>
+          <ReformColumns>
+            <ReformColumn>
+              <Name><![CDATA[Loss > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Loss_TUBNE</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>No Change</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>NoChange_TUBNE</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name><![CDATA[Gain > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Gain_TUBNE</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>Total</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Const_1</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Quintile 1</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~1</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>1</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 2</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~2</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>2</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 3</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~3</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>3</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 4</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~4</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>4</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Quintile 5</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>CutOff</Name>
+                    <VarName>quintiles_eqDispy_TUB~dec~5</VarName>
+                  </Parameter>
+                </Parameters>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>DecNo</Name>
+                      <NumericValue>5</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+          </Rows>
+          <Cells>
+            <Cell>
+              <CellAction>
+                <CalculationType>Empty</CalculationType>
+              </CellAction>
+              <RowName>Quintile 5</RowName>
+              <ColName>Cut off</ColName>
+            </Cell>
+            <Cell>
+              <CellAction>
+                <CalculationType>Empty</CalculationType>
+              </CellAction>
+              <RowName>All</RowName>
+              <ColName>Cut off</ColName>
+            </Cell>
+          </Cells>
+        </Table>  
+        <Table>
+          <Title>2.2. Non-earning - family type</Title>
+          <Subtitle><![CDATA[Percentage Change in Disposable Income of non-earning households by family type, defined at the tax-unit level. (%) <br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
+          <StringFormat>#,0.00</StringFormat>
+          <CellAction>
+            <CalculationType>CalculateSumWeighted</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@changeDispy_TUBNE] / DATA_VAR[@ilsDispyNE] * 100]]></FormulaString>
+            <CalculationLevel>TUB</CalculationLevel>
+            <Parameters>
+              <Parameter>
+                <Name>changeDispy_TUBNE</Name>
+                <VarName>changeDispy_TUBNE</VarName>
+              </Parameter>
+              <Parameter>
+                <Reform>false</Reform>
+                <Name>ilsDispyNE</Name>
+                <VarName>ilsDispyNE</VarName>
+              </Parameter>
+            </Parameters>
+            <Filter>
+              <FormulaString><![CDATA[DATA_VAR[@GainLoss] == 1.0 && (TEMP_VAR[@DecNo] == 0.0 || DATA_VAR[@Dec] == TEMP_VAR[@DecNo])]]></FormulaString>
+              <Parameters>
+                <Parameter>
+                  <Reform>false</Reform>
+                  <Name>Dec</Name>
+                  <VarName>FamType</VarName>
+                </Parameter>
+                <Parameter>
+                  <Reform>false</Reform>
+                  <Name>DecNo</Name>
+                  <NumericValue>0</NumericValue>
+                </Parameter>
+              </Parameters>
+            </Filter>
+          </CellAction>
+          <Columns>
+          </Columns>
+          <ReformColumns>
+            <ReformColumn>
+              <Name><![CDATA[Loss > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Loss_TUBNE</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>No Change</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>NoChange_TUBNE</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name><![CDATA[Gain > €0.50 pw]]></Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Gain_TUBNE</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>Total</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Name>GainLoss</Name>
+                      <VarName>Const_1</VarName>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Single working-age without children</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Reform>false</Reform>
+                      <Name>DecNo</Name>
+                      <NumericValue>1</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Lone parent</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Reform>false</Reform>
+                      <Name>DecNo</Name>
+                      <NumericValue>2</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Working-age couple without children</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Reform>false</Reform>
+                      <Name>DecNo</Name>
+                      <NumericValue>3</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Working-age couple with children</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Reform>false</Reform>
+                      <Name>DecNo</Name>
+                      <NumericValue>4</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Single retirement-age (>= 66)</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Reform>false</Reform>
+                      <Name>DecNo</Name>
+                      <NumericValue>5</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Retirement-age couple (at least one >=66)</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Reform>false</Reform>
+                      <Name>DecNo</Name>
+                      <NumericValue>6</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Other</Name>
+              <CellAction>
+                <Filter>
+                  <Parameters>
+                    <Parameter>
+                      <Reform>false</Reform>
+                      <Name>DecNo</Name>
+                      <NumericValue>7</NumericValue>
+                    </Parameter>
+                  </Parameters>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+          </Rows>
+        </Table>
+      </Tables>
+    </Page>
+    <Page>
       <Name>SocialWelfare</Name>
       <Title><![CDATA[Social Welfare - Expenditure & Recipients]]></Title>
       <Subtitle><![CDATA[Primary statistical disclosure controls are applied.]]></Subtitle>
@@ -15167,6 +18051,17 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               </CellAction>
             </Row>
             <Row>
+              <Name>Jobseeker's Transitional Payment (JST)</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>Var</Name>
+                    <VarName>bfalpt_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
               <Name>Rent or Mortgage Supplement (SWA)</Name>
               <CellAction>
                 <Parameters>
@@ -15261,6 +18156,17 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   <Parameter>
                     <Name>Var</Name>
                     <VarName>bfaot</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name>Carer's Allowance</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>Var</Name>
+                    <VarName>bca_s</VarName>
                   </Parameter>
                 </Parameters>
               </CellAction>
@@ -16281,11 +19187,13 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
       <Button>Tax Incentives</Button>
       <Description>
         <![CDATA[<p style='line-height:1.5'><span lang=EN>The following tables report three statistics that describe alternative measures of tax incentives for employment: marginal tax rates (MTRs), net replacement rates (NRRs) and participation tax rates (PTRs). MTRs report the tax rate applied to the last unit of currency earned from employment. A MTR is calculated for each individual with some employment income described by the input data (ils_earns > 0). NRRs report the proportional impact on disposable income of moving from employment to unemployment. NRRs are calculated both for any individual described by the input data with some employment income (ils_earns > 0), and for working aged individuals reported as unemployed (les = 5 or (les=7 & dag>18 & dag<65) or (les=9 & dag>18 & dag<65)). PTRs report the average effective tax rate applied to employment income. PTRs are calculated for the same population as considered for NRRs.</span></p>
-        <p style='line-height:1.5'><span lang=EN>Income deciles are built by ranking the population by baseline equivalised disposable income, and then dividing the income parade into approximately equal numbers of tax units. The equivalence scale is the same as used by the Central Statistics Office, which attributes a weight of 1 to the first adult, 0.66 to each subsequent adult (aged 14+ living in the household) and 0.33 to each child aged less than 14. Units with equal income are allocated to the same decile, so that the total number of tax units may vary between decile groups.]]>
+        <p style='line-height:1.5'><span lang=EN>Income deciles here are built by ranking all individuals in the population by their respective baseline household equivalised disposable incomes, and then dividing the income parade into approximately equal numbers of persons. The equivalence scale is the same as used by the Central Statistics Office, which attributes a weight of 1 to the first adult, 0.66 to each subsequent adult (aged 14+ living in the household) and 0.33 to each child aged less than 14. Units with equal income are allocated to the same decile, so that the total number of people may vary between decile groups. The reported statistics average only over those individuals for whom the respective statistic (MTR, NRR, or PTR) was calculated. For example, a population comprised of 100 individuals, might be divided into 10 deciles, each comprised of 10 individuals, ranked in order of ascending household disposable income. If an MTR was calculated for only 3 individuals in the lowest decile, then the respective decile average would be obtained by averaging only over those three individuals.</span></p>
+        <p style='line-height:1.5'><span lang=EN><b>Note:</b> In contrast to the decile groups reported on the "Decile Ranges" page, the current page focuses on deciles by household (rather than tax unit) income.</span></p>]]>
       </Description>
       <Tables>
         <Table>
-          <Title>Tax incentives by income decile (MTR, NRR and PTR in percentage points)</Title>
+          <Title>1.1 Marginal tax rates (MTRs) by income decile</Title>
+          <Subtitle><![CDATA[Decile averages in percentage points<br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
           <CellAction>
             <CalculationType>CalculateWeightedAverage</CalculationType>
             <FormulaString><![CDATA[DATA_VAR[@AverageVar]]]></FormulaString>
@@ -16294,7 +19202,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
           <Columns>
             <Column>
               <Name>baseSysMTR</Name>
-              <Title>[baseSys] MTR</Title>
+              <Title>[baseSys] (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -16307,46 +19215,17 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
               </CellAction>
-            </Column>
-            <Column>
-              <Name>baseSysNRR</Name>
-              <Title>[baseSys] NRR</Title>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>AverageVar</Name>
-                    <VarName>nrrpc</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>WeightVar</Name>
-                    <VarName>nrrWeight</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-              <HasSeparatorBefore>True</HasSeparatorBefore>
-            </Column>
-            <Column>
-              <Name>baseSysPTR</Name>
-              <Title>[baseSys] PTR</Title>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>AverageVar</Name>
-                    <VarName>ptrpc</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>WeightVar</Name>
-                    <VarName>nrrWeight</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-              <HasSeparatorBefore>True</HasSeparatorBefore>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Column>
           </Columns>
           <ReformColumns>
             <ReformColumn>
               <Name>refSysMTR</Name>
-              <Title>[refSys] MTR</Title>
+              <Title>[refSys] (ref)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -16360,6 +19239,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 </Parameters>
               </CellAction>
               <TiesWith>baseSysMTR</TiesWith>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformColumn>
             <ReformColumn>
               <Title><![CDATA[change]]></Title>
@@ -16368,72 +19252,38 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <FormulaString><![CDATA[REF_COL[refSysMTR] - BASE_COL[baseSysMTR]]]></FormulaString>
               </CellAction>
               <TiesWith>baseSysMTR</TiesWith>
-            </ReformColumn>
-            <ReformColumn>
-              <Name>refSysNRR</Name>
-              <Title>[refSys] NRR</Title>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>AverageVar</Name>
-                    <VarName>nrrpc</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>WeightVar</Name>
-                    <VarName>nrrWeight</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-              <TiesWith>baseSysNRR</TiesWith>
-            </ReformColumn>
-            <ReformColumn>
-              <Title><![CDATA[change]]></Title>
-              <CellAction>
-                <CalculationType>CalculateArithmetic</CalculationType>
-                <FormulaString><![CDATA[REF_COL[refSysNRR] - BASE_COL[baseSysNRR]]]></FormulaString>
-              </CellAction>
-              <TiesWith>baseSysNRR</TiesWith>
-            </ReformColumn>
-            <ReformColumn>
-              <Name>refSysPTR</Name>
-              <Title>[refSys] PTR</Title>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>AverageVar</Name>
-                    <VarName>ptrpc</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>WeightVar</Name>
-                    <VarName>nrrWeight</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-              <TiesWith>baseSysPTR</TiesWith>
-            </ReformColumn>
-            <ReformColumn>
-              <Title><![CDATA[change]]></Title>
-              <CellAction>
-                <CalculationType>CalculateArithmetic</CalculationType>
-                <FormulaString><![CDATA[REF_COL[refSysPTR] - BASE_COL[baseSysPTR]]]></FormulaString>
-              </CellAction>
-              <TiesWith>baseSysPTR</TiesWith>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformColumn>
           </ReformColumns>
           <Rows>
             <Row>
               <Name>Decile</Name>
               <ForEachValueOf>deciles_eqDispy</ForEachValueOf>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>All</Name>
               <HasSeparatorBefore>true</HasSeparatorBefore>
               <Strong>true</Strong>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
           </Rows>
         </Table>
         <Table>
-          <Title>Tax incentives by family type (MTR, NRR and PTR in percentage points)</Title>
+          <Title>1.2 Net replacement rates (NRRs) by income decile</Title>
+          <Subtitle><![CDATA[Decile averages in percentage points<br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
           <CellAction>
             <CalculationType>CalculateWeightedAverage</CalculationType>
             <FormulaString><![CDATA[DATA_VAR[@AverageVar]]]></FormulaString>
@@ -16441,24 +19291,8 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
           <StringFormat>0.0</StringFormat>
           <Columns>
             <Column>
-              <Name>baseSysMTR</Name>
-              <Title>[baseSys] MTR</Title>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>AverageVar</Name>
-                    <VarName>mtrpc</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>WeightVar</Name>
-                    <VarName>mtrWeight</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-            </Column>
-            <Column>
               <Name>baseSysNRR</Name>
-              <Title>[baseSys] NRR</Title>
+              <Title>[baseSys] (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -16471,11 +19305,85 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
               <HasSeparatorBefore>True</HasSeparatorBefore>
             </Column>
+          </Columns>
+          <ReformColumns>
+            <ReformColumn>
+              <Name>refSysNRR</Name>
+              <Title>[refSys] (ref)</Title>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>nrrpc</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>WeightVar</Name>
+                    <VarName>nrrWeight</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+              <TiesWith>baseSysNRR</TiesWith>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+            <ReformColumn>
+              <Title><![CDATA[change]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[REF_COL[refSysNRR] - BASE_COL[baseSysNRR]]]></FormulaString>
+              </CellAction>
+              <TiesWith>baseSysNRR</TiesWith>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Decile</Name>
+              <ForEachValueOf>deciles_eqDispy</ForEachValueOf>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+          </Rows>
+        </Table>
+        <Table>
+          <Title>1.3 Participation tax rates (PTRs) by income decile</Title>
+          <Subtitle><![CDATA[Decile averages in percentage points<br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
+          <CellAction>
+            <CalculationType>CalculateWeightedAverage</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@AverageVar]]]></FormulaString>
+          </CellAction>
+          <StringFormat>0.0</StringFormat>
+          <Columns>
             <Column>
               <Name>baseSysPTR</Name>
-              <Title>[baseSys] PTR</Title>
+              <Title>[baseSys] (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -16488,63 +19396,18 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
               <HasSeparatorBefore>True</HasSeparatorBefore>
             </Column>
           </Columns>
           <ReformColumns>
             <ReformColumn>
-              <Name>refSysMTR</Name>
-              <Title>[refSys] MTR</Title>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>AverageVar</Name>
-                    <VarName>mtrpc</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>WeightVar</Name>
-                    <VarName>mtrWeight</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-              <TiesWith>baseSysMTR</TiesWith>
-            </ReformColumn>
-            <ReformColumn>
-              <Title><![CDATA[change]]></Title>
-              <CellAction>
-                <CalculationType>CalculateArithmetic</CalculationType>
-                <FormulaString><![CDATA[REF_COL[refSysMTR] - BASE_COL[baseSysMTR]]]></FormulaString>
-              </CellAction>
-              <TiesWith>baseSysMTR</TiesWith>
-            </ReformColumn>
-            <ReformColumn>
-              <Name>refSysNRR</Name>
-              <Title>[refSys] NRR</Title>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>AverageVar</Name>
-                    <VarName>nrrpc</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>WeightVar</Name>
-                    <VarName>nrrWeight</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-              <TiesWith>baseSysNRR</TiesWith>
-            </ReformColumn>
-            <ReformColumn>
-              <Title><![CDATA[change]]></Title>
-              <CellAction>
-                <CalculationType>CalculateArithmetic</CalculationType>
-                <FormulaString><![CDATA[REF_COL[refSysNRR] - BASE_COL[baseSysNRR]]]></FormulaString>
-              </CellAction>
-              <TiesWith>baseSysNRR</TiesWith>
-            </ReformColumn>
-            <ReformColumn>
               <Name>refSysPTR</Name>
-              <Title>[refSys] PTR</Title>
+              <Title>[refSys] (ref)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -16558,6 +19421,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 </Parameters>
               </CellAction>
               <TiesWith>baseSysPTR</TiesWith>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformColumn>
             <ReformColumn>
               <Title><![CDATA[change]]></Title>
@@ -16565,6 +19433,447 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysPTR] - BASE_COL[baseSysPTR]]]></FormulaString>
               </CellAction>
+              <TiesWith>baseSysPTR</TiesWith>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Decile</Name>
+              <ForEachValueOf>deciles_eqDispy</ForEachValueOf>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+          </Rows>
+        </Table>
+        <Table>
+          <Title>1.4 Marginal tax rates (MTRs) by family type</Title>
+          <Subtitle><![CDATA[Decile averages in percentage points<br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
+          <CellAction>
+            <CalculationType>CalculateWeightedAverage</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@AverageVar]]]></FormulaString>
+          </CellAction>
+          <StringFormat>0.0</StringFormat>
+          <Columns>
+            <Column>
+              <Name>baseSysMTR</Name>
+              <Title>[baseSys] (base)</Title>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>mtrpc</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>WeightVar</Name>
+                    <VarName>mtrWeight</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Column>
+          </Columns>
+          <ReformColumns>
+            <ReformColumn>
+              <Name>refSysMTR</Name>
+              <Title>[refSys] (ref)</Title>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>mtrpc</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>WeightVar</Name>
+                    <VarName>mtrWeight</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+              <TiesWith>baseSysMTR</TiesWith>
+            </ReformColumn>
+            <ReformColumn>
+              <Title><![CDATA[change]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[REF_COL[refSysMTR] - BASE_COL[baseSysMTR]]]></FormulaString>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+              <TiesWith>baseSysMTR</TiesWith>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Single working-age without children</Name>
+              <CellAction>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=1]]></FormulaString>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Lone parent</Name>
+              <CellAction>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=2]]></FormulaString>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Working-age couple without children</Name>
+              <CellAction>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=3]]></FormulaString>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Working-age couple with children</Name>
+              <CellAction>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=4]]></FormulaString>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Single retirement-age (>= 66)</Name>
+              <CellAction>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=5]]></FormulaString>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Retirement-age couple (at least one >=66)</Name>
+              <CellAction>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=6]]></FormulaString>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Other</Name>
+              <CellAction>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=7]]></FormulaString>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+          </Rows>
+        </Table>
+        <Table>
+          <Title>1.5 Net replacement rates (NRRs) by family type</Title>
+          <Subtitle><![CDATA[Decile averages in percentage points<br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
+          <CellAction>
+            <CalculationType>CalculateWeightedAverage</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@AverageVar]]]></FormulaString>
+          </CellAction>
+          <StringFormat>0.0</StringFormat>
+          <Columns>
+            <Column>
+              <Name>baseSysNRR</Name>
+              <Title>[baseSys] (base)</Title>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>nrrpc</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>WeightVar</Name>
+                    <VarName>nrrWeight</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+              <HasSeparatorBefore>True</HasSeparatorBefore>
+            </Column>
+          </Columns>
+          <ReformColumns>
+            <ReformColumn>
+              <Name>refSysNRR</Name>
+              <Title>[refSys] (ref)</Title>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>nrrpc</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>WeightVar</Name>
+                    <VarName>nrrWeight</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+              <TiesWith>baseSysNRR</TiesWith>
+            </ReformColumn>
+            <ReformColumn>
+              <Title><![CDATA[change]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[REF_COL[refSysNRR] - BASE_COL[baseSysNRR]]]></FormulaString>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+              <TiesWith>baseSysNRR</TiesWith>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Single working-age without children</Name>
+              <CellAction>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=1]]></FormulaString>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Lone parent</Name>
+              <CellAction>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=2]]></FormulaString>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Working-age couple without children</Name>
+              <CellAction>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=3]]></FormulaString>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Working-age couple with children</Name>
+              <CellAction>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=4]]></FormulaString>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Single retirement-age (>= 66)</Name>
+              <CellAction>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=5]]></FormulaString>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Retirement-age couple (at least one >=66)</Name>
+              <CellAction>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=6]]></FormulaString>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>Other</Name>
+              <CellAction>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=7]]></FormulaString>
+                </Filter>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+            </Row>
+          </Rows>
+        </Table>
+        <Table>
+          <Title>1.6 Participation tax rates (PTRs) by family type</Title>
+          <Subtitle><![CDATA[Decile averages in percentage points<br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
+          <CellAction>
+            <CalculationType>CalculateWeightedAverage</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@AverageVar]]]></FormulaString>
+          </CellAction>
+          <StringFormat>0.0</StringFormat>
+          <Columns>
+            <Column>
+              <Name>baseSysPTR</Name>
+              <Title>[baseSys] (base)</Title>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>ptrpc</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>WeightVar</Name>
+                    <VarName>nrrWeight</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+              <HasSeparatorBefore>True</HasSeparatorBefore>
+            </Column>
+          </Columns>
+          <ReformColumns>
+            <ReformColumn>
+              <Name>refSysPTR</Name>
+              <Title>[refSys] (ref)</Title>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>ptrpc</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>WeightVar</Name>
+                    <VarName>nrrWeight</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
+              <TiesWith>baseSysPTR</TiesWith>
+            </ReformColumn>
+            <ReformColumn>
+              <Title><![CDATA[change]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[REF_COL[refSysPTR] - BASE_COL[baseSysPTR]]]></FormulaString>
+              </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
               <TiesWith>baseSysPTR</TiesWith>
             </ReformColumn>
           </ReformColumns>
@@ -16576,6 +19885,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   <FormulaString><![CDATA[DATA_VAR[@FamType]=1]]></FormulaString>
                 </Filter>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>Lone parent</Name>
@@ -16584,6 +19898,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   <FormulaString><![CDATA[DATA_VAR[@FamType]=2]]></FormulaString>
                 </Filter>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>Working-age couple without children</Name>
@@ -16592,6 +19911,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   <FormulaString><![CDATA[DATA_VAR[@FamType]=3]]></FormulaString>
                 </Filter>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>Working-age couple with children</Name>
@@ -16600,6 +19924,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   <FormulaString><![CDATA[DATA_VAR[@FamType]=4]]></FormulaString>
                 </Filter>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>Single retirement-age (>= 66)</Name>
@@ -16608,6 +19937,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   <FormulaString><![CDATA[DATA_VAR[@FamType]=5]]></FormulaString>
                 </Filter>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>Retirement-age couple (at least one >=66)</Name>
@@ -16616,6 +19950,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   <FormulaString><![CDATA[DATA_VAR[@FamType]=6]]></FormulaString>
                 </Filter>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>Other</Name>
@@ -16624,16 +19963,27 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   <FormulaString><![CDATA[DATA_VAR[@FamType]=7]]></FormulaString>
                 </Filter>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>All</Name>
               <HasSeparatorBefore>true</HasSeparatorBefore>
               <Strong>true</Strong>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
           </Rows>
         </Table>
         <Table>
-          <Title>Histogram of MTRs (population count by MTR percentage point range)</Title>
+          <Title>2.1 Histogram of MTRs</Title>
+          <Subtitle><![CDATA[Population count by MTR percentage point range<br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
           <CellAction>
             <CalculationType>CalculateArithmetic</CalculationType>
           </CellAction>
@@ -16645,6 +19995,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <CellAction>
                 <FormulaString><![CDATA[SAVED_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Column>
           </Columns>
           <ReformColumns>
@@ -16655,6 +20010,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <FormulaString><![CDATA[SAVED_VAR[@RefVar]]]></FormulaString>
               </CellAction>
               <TiesWith>baseSys</TiesWith>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformColumn>
             <ReformColumn>
               <Name>diff</Name>
@@ -16663,6 +20023,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
               <TiesWith>baseSys</TiesWith>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformColumn>
           </ReformColumns>
           <Rows>
@@ -16683,6 +20048,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>less than 0</Name>
@@ -16701,6 +20071,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>0</Name>
@@ -16719,6 +20094,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>1-10</Name>
@@ -16737,6 +20117,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>11-20</Name>
@@ -16755,6 +20140,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>21-30</Name>
@@ -16773,6 +20163,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>31-40</Name>
@@ -16791,6 +20186,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>41-50</Name>
@@ -16809,6 +20209,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>51-60</Name>
@@ -16827,6 +20232,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>61-70</Name>
@@ -16845,6 +20255,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>71-80</Name>
@@ -16863,6 +20278,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>81-90</Name>
@@ -16881,6 +20301,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>91-100</Name>
@@ -16899,6 +20324,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>over 100</Name>
@@ -16917,6 +20347,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
           </Rows>
           <ReformCells>
@@ -16927,6 +20362,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>less than 0</RowName>
@@ -16935,6 +20375,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>0</RowName>
@@ -16943,6 +20388,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>1-10</RowName>
@@ -16951,6 +20401,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>11-20</RowName>
@@ -16959,6 +20414,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>21-30</RowName>
@@ -16967,6 +20427,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>31-40</RowName>
@@ -16975,6 +20440,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>41-50</RowName>
@@ -16983,6 +20453,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>51-60</RowName>
@@ -16991,6 +20466,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>61-70</RowName>
@@ -16999,6 +20479,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>71-80</RowName>
@@ -17007,6 +20492,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>81-90</RowName>
@@ -17015,6 +20505,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>91-100</RowName>
@@ -17023,6 +20518,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>over 100</RowName>
@@ -17031,11 +20531,17 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
           </ReformCells>
         </Table>
         <Table>
-          <Title>Histogram of NRRs (population count by NRR percentage point range)</Title>
+          <Title>2.2 Histogram of NRRs</Title>
+          <Subtitle><![CDATA[Population count by NRR percentage point range<br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
           <CellAction>
             <CalculationType>CalculateArithmetic</CalculationType>
           </CellAction>
@@ -17437,7 +20943,8 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
           </ReformCells>
         </Table>
         <Table>
-          <Title>Histogram of PTRs (population count by PTR percentage point range)</Title>
+          <Title>2.3 Histogram of PTRs</Title>
+          <Subtitle><![CDATA[Population count by PTR percentage point range<br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
           <CellAction>
             <CalculationType>CalculateArithmetic</CalculationType>
           </CellAction>
@@ -17449,6 +20956,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <CellAction>
                 <FormulaString><![CDATA[SAVED_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Column>
           </Columns>
           <ReformColumns>
@@ -17459,6 +20971,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <FormulaString><![CDATA[SAVED_VAR[@RefVar]]]></FormulaString>
               </CellAction>
               <TiesWith>baseSys</TiesWith>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformColumn>
             <ReformColumn>
               <Name>diff</Name>
@@ -17467,6 +20984,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
               <TiesWith>baseSys</TiesWith>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformColumn>
           </ReformColumns>
           <Rows>
@@ -17487,6 +21009,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>less than 0</Name>
@@ -17505,6 +21032,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>0</Name>
@@ -17523,6 +21055,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>1-10</Name>
@@ -17559,6 +21096,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>21-30</Name>
@@ -17577,6 +21119,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>31-40</Name>
@@ -17595,6 +21142,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>41-50</Name>
@@ -17613,6 +21165,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>51-60</Name>
@@ -17631,6 +21188,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>61-70</Name>
@@ -17649,6 +21211,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>71-80</Name>
@@ -17667,6 +21234,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>81-90</Name>
@@ -17685,6 +21257,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>91-100</Name>
@@ -17703,6 +21280,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
             <Row>
               <Name>over 100</Name>
@@ -17721,6 +21303,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
 			        </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </Row>
           </Rows>
           <ReformCells>
@@ -17731,6 +21318,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>less than 0</RowName>
@@ -17739,6 +21331,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>0</RowName>
@@ -17747,6 +21344,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>1-10</RowName>
@@ -17755,6 +21357,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>11-20</RowName>
@@ -17763,6 +21370,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>21-30</RowName>
@@ -17771,6 +21383,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>31-40</RowName>
@@ -17779,6 +21396,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>41-50</RowName>
@@ -17787,6 +21409,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>51-60</RowName>
@@ -17795,6 +21422,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>61-70</RowName>
@@ -17803,6 +21435,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>71-80</RowName>
@@ -17811,6 +21448,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>81-90</RowName>
@@ -17819,6 +21461,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>91-100</RowName>
@@ -17827,6 +21474,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
             <ReformCell>
               <RowName>over 100</RowName>
@@ -17835,6 +21487,11 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
+              <SDCDefinition>
+                <SecondaryGroups>
+                  <AutoGroup/>
+                </SecondaryGroups>
+              </SDCDefinition>
             </ReformCell>
           </ReformCells>
         </Table>

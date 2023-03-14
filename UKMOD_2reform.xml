@@ -132,13 +132,13 @@ ils_sicdy = ils_sicee + ils_sicse + ils_sicot</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>&nbsp;</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'><b>Government expenditure on benefits and tax credits</b> in more detail:</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Means-tested non-pension benefits: ils_benmt = bsauc_s - brduc_s + bsa_s + bunmt_s + bsadi_s 
-+ boamt_s + bmu_s + bho_s - brd_s + bwkmt_s + bfamt_s + bmamt_s + bmascmt_s + bchmt_s + bchmt01_s + bmascmt01_s + bched01_s + bched02_s + bhosc01_s + bsaec_s</p>
++ boamt_s + bmu_s + bho_s - brd_s + bwkmt_s + bfamt_s + bmamt_s + bmamt01_s + bmascmt_s + bchmt_s + bchmt01_s + bmascmt01_s + bched01_s + bched02_s + bhosc01_s + bsaec_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Non-means-tested non-pension benefits: ils_bennt = bedes + bedsl + bdioa
 + bdisc + bdimb + bdiscwa + bdimbwa + bdict01 + bdict02 + bdiwi + bcrdi + bcrdicm_s + bdisv
 + bhlwk + buntr + bot + bmaer + bmana + boaht_s + bch_s + bunct_s + bchht_s + bwkmcee_s (in 2020) + bwkmcse_s (in 2020)</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Pensions: ils_pen = boact00 + boactcm + boawr + bsuwd </p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Simulated benefits: ils_bensim = bwkmt_s + bfamt_s + bsa_s + bsadi_s +
-boamt_s + bho_s + bmu_s + bunmt_s + bmamt_s + bmascmt_s + bsauc_s + boaht_s + bch_s + bunct_s + bchmt_s + bcrdicm_s + bchht_s + bwkmcee_s (in 2020) + bwkmcse_s (in 2020) - brd_s - brduc_s</p>
+boamt_s + bho_s + bmu_s + bunmt_s + bmamt_s + bmamt01_s + bmascmt_s + bsauc_s + boaht_s + bch_s + bunct_s + bchmt_s + bcrdicm_s + bchht_s + bwkmcee_s (in 2020) + bwkmcse_s (in 2020) - brd_s - brduc_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>&nbsp;</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Universal Credit: bsauc_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Benefit cap (reducing Universal Credit): brduc_s</p>
@@ -152,6 +152,7 @@ boamt_s + bho_s + bmu_s + bunmt_s + bmamt_s + bmascmt_s + bsauc_s + boaht_s + bc
 <p style='margin-bottom:8.0pt;line-height:105%;'>Working Tax Credit: bwkmt_s </p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Child Tax Credit: bfamt_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Sure Start Maternity Grant: bmamt_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Healthy Start (food) voucher: bmamt01_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Best Start Grant (Scotland): bmascmt_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Scottish Child Payment: bchmt_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Scottish Child Payment Bridging Payment: bchmt01_s</p>
@@ -361,8 +362,14 @@ boamt_s + bho_s + bmu_s + bunmt_s + bmamt_s + bmascmt_s + bsauc_s + boaht_s + bc
         <ReadVar>bmamt_s</ReadVar>
       </OptionalVariable>
       <OptionalVariable>
+        <Name>bmamt01_s</Name>
+        <ReadVar>bmamt01_s</ReadVar>
+        <DefaultValue>0</DefaultValue>
+      </OptionalVariable>
+      <OptionalVariable>
         <Name>bmascmt_s</Name>
         <ReadVar>bmascmt_s</ReadVar>
+        <DefaultValue>0</DefaultValue>
       </OptionalVariable>
       <OptionalVariable>
         <Name>bmu_s</Name>
@@ -1682,6 +1689,23 @@ in EUROMOD.</span></p>]]>
                   <Parameter>
                     <Name>RefPar</Name>
                     <VarName>bmamt_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <BackgroundColour>#D9D9D9</BackgroundColour>
+              <Name>Healthy Start (food) voucher</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>bmamt01_s</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefPar</Name>
+                    <VarName>bmamt01_s</VarName>
                   </Parameter>
                 </Parameters>
               </CellAction>

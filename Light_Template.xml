@@ -2,7 +2,7 @@
   <TemplateInfo>
     <Name>UKMOD Statistics - Baseline/Reform</Name>
     <Title>UKMOD Statistics - Baseline vs Reforms</Title>
-    <Subtitle>Results for [baseCountry]: [baseSys] vs [refSysList]</Subtitle>
+    <Subtitle>Results for [baseCountry]: [baseSys]</Subtitle>
     <Button>[baseSys]</Button>
     <Description>
       <![CDATA[{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang2057{\fonttbl{\f0\fswiss\fprq2\fcharset0 Calibri;}{\f1\fnil\fcharset0 Calibri;}}
@@ -783,12 +783,12 @@ boamt_s + bho_s + bmu_s + bunmt_s + bmamt_s + bmamt01_s + bmascmt_s + bsauc_s + 
       </Action>
       <Action>
         <CalculationType>CalculateArithmetic</CalculationType>
-	    <FormulaString><![CDATA[iif(DATA_VAR[@spl_bhc]>0,DATA_VAR[@spl_bhc],SAVED_VAR[@deciles_eqDispy~dec~5] * 0.6)]]></FormulaString>
+        <FormulaString><![CDATA[SAVED_VAR[@deciles_eqDispy~dec~5] * 0.6]]></FormulaString>
         <OutputVar>povLine</OutputVar>
       </Action>
       <Action>
         <CalculationType>CalculateArithmetic</CalculationType>
-	    <FormulaString><![CDATA[iif(DATA_VAR[@spl_ahc]>0,DATA_VAR[@spl_ahc],SAVED_VAR[@deciles_eqDispyAHC~dec~5] * 0.6)]]></FormulaString>
+        <FormulaString><![CDATA[SAVED_VAR[@deciles_eqDispyAHC~dec~5] * 0.6]]></FormulaString>
         <OutputVar>povLineAHC</OutputVar>
       </Action>
       <Action>
@@ -1114,7 +1114,7 @@ in EUROMOD.</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSys Amounts</Name>
-              <Title>[baseSys] Amounts (base)</Title>
+              <Title>Amounts (base)</Title>
               <CellAction>
                 <CalculationType>CalculateSumWeighted</CalculationType>
                 <FormulaString><![CDATA[DATA_VAR[@BasePar] * 12 / 1000000]]></FormulaString>
@@ -1122,7 +1122,7 @@ in EUROMOD.</span></p>]]>
             </Column>
             <Column>
               <Name>baseSys Reciepients/payers</Name>
-              <Title>[baseSys] Reciepients/payers (base)</Title>
+              <Title>Reciepients/payers (base)</Title>
               <CellAction>
                 <CalculationType>CalculatePopulationCount</CalculationType>
                 <FormulaString><![CDATA[DATA_VAR[@BasePar]]]></FormulaString>
@@ -1138,7 +1138,7 @@ in EUROMOD.</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>refSys Amounts</Name>
-              <Title>[refSys] Amounts</Title>
+              <Title>Amounts (reform)</Title>
               <TiesWith>baseSys Amounts</TiesWith>
               <CellAction>
                 <CalculationType>CalculateSumWeighted</CalculationType>
@@ -1156,7 +1156,7 @@ in EUROMOD.</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>refSys Reciepients/payers</Name>
-              <Title>[refSys] Reciepients/payers</Title>
+              <Title>Reciepients/payers (reform)</Title>
               <TiesWith>baseSys Reciepients/payers</TiesWith>
               <CellAction>
                 <CalculationType>CalculatePopulationCount</CalculationType>
@@ -2382,7 +2382,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSys</Name>
-              <Title>[baseSys] (base)</Title>
+              <Title>Base</Title>
               <CellAction>
                 <FormulaString><![CDATA[SAVED_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -2392,7 +2392,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>refSys</Name>
-              <Title>[refSys]</Title>
+              <Title>Reform</Title>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
                 <FormulaString><![CDATA[SAVED_VAR[@RefVar]]]></FormulaString>
@@ -2520,7 +2520,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSys</Name>
-              <Title>[baseSys] (base)</Title>
+              <Title>Base</Title>
               <CellAction>
                 <FormulaString><![CDATA[SAVED_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -2530,7 +2530,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>refSys</Name>
-              <Title>[refSys]</Title>
+              <Title>Reform</Title>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
                 <FormulaString><![CDATA[SAVED_VAR[@RefVar]]]></FormulaString>
@@ -2671,7 +2671,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <Columns>
             <Column>
               <Name>Poverty Rates for baseSys</Name>
-              <Title>Poverty Rates for [baseSys] (base)</Title>
+              <Title>Poverty Rates (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -2680,7 +2680,7 @@ scenario for the baseline and reform results.</span></p>]]>
             </Column>
             <Column>
               <Name>Poverty Count for baseSys</Name>
-              <Title>Poverty Count for [baseSys] (base)</Title>
+              <Title>Poverty Count (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
                 <Parameters>
@@ -2698,7 +2698,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>Poverty Rates for refSys</Name>
-              <Title>Poverty Rates for [refSys]</Title>
+              <Title>Poverty Rates (reform)</Title>
               <TiesWith>Poverty Rates for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -2708,7 +2708,7 @@ scenario for the baseline and reform results.</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>Poverty Count for refSys</Name>
-              <Title>Poverty Count for [refSys]</Title>
+              <Title>Poverty Count (reform)</Title>
               <TiesWith>Poverty Count for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -2775,7 +2775,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <Columns>
             <Column>
               <Name>Poverty Rates for baseSys</Name>
-              <Title>Poverty Rates for [baseSys] (base)</Title>
+              <Title>Poverty Rates (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -2784,7 +2784,7 @@ scenario for the baseline and reform results.</span></p>]]>
             </Column>
             <Column>
               <Name>Poverty Count for baseSys</Name>
-              <Title>Poverty Count for [baseSys] (base)</Title>
+              <Title>Poverty Count (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
                 <Parameters>
@@ -2802,7 +2802,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>Poverty Rates for refSys</Name>
-              <Title>Poverty Rates for [refSys]</Title>
+              <Title>Poverty Rates (reform)</Title>
               <TiesWith>Poverty Rates for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -2812,7 +2812,7 @@ scenario for the baseline and reform results.</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>Poverty Count for refSys</Name>
-              <Title>Poverty Count for [refSys]</Title>
+              <Title>Poverty Count (reform)</Title>
               <TiesWith>Poverty Count for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -2879,7 +2879,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <Columns>
             <Column>
               <Name>Poverty Rates for baseSys</Name>
-              <Title>Poverty Rates for [baseSys] (base)</Title>
+              <Title>Poverty Rates (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -2888,7 +2888,7 @@ scenario for the baseline and reform results.</span></p>]]>
             </Column>
             <Column>
               <Name>Poverty Count for baseSys</Name>
-              <Title>Poverty Count for [baseSys] (base)</Title>
+              <Title>Poverty Count (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
                 <Parameters>
@@ -2906,7 +2906,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>Poverty Rates for refSys</Name>
-              <Title>Poverty Rates for [refSys]</Title>
+              <Title>Poverty Rates (reform)</Title>
               <TiesWith>Poverty Rates for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -2916,7 +2916,7 @@ scenario for the baseline and reform results.</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>Poverty Count for refSys</Name>
-              <Title>Poverty Count for [refSys]</Title>
+              <Title>Poverty Count (reform)</Title>
               <TiesWith>Poverty Count for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -2997,7 +2997,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <Columns>
             <Column>
               <Name>Poverty Rates for baseSys</Name>
-              <Title>Poverty Rates for [baseSys] (base)</Title>
+              <Title>Poverty Rates (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -3006,7 +3006,7 @@ scenario for the baseline and reform results.</span></p>]]>
             </Column>
             <Column>
               <Name>Poverty Count for baseSys</Name>
-              <Title>Poverty Count for [baseSys] (base)</Title>
+              <Title>Poverty Count (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
                 <Parameters>
@@ -3024,7 +3024,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>Poverty Rates for refSys</Name>
-              <Title>Poverty Rates for [refSys]</Title>
+              <Title>Poverty Rates (reform)</Title>
               <TiesWith>Poverty Rates for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -3034,7 +3034,7 @@ scenario for the baseline and reform results.</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>Poverty Count for refSys</Name>
-              <Title>Poverty Count for [refSys]</Title>
+              <Title>Poverty Count (reform)</Title>
               <TiesWith>Poverty Count for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -3115,7 +3115,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <Columns>
             <Column>
               <Name>Poverty Rates for baseSys</Name>
-              <Title>Poverty Rates for [baseSys] (base)</Title>
+              <Title>Poverty Rates (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -3124,7 +3124,7 @@ scenario for the baseline and reform results.</span></p>]]>
             </Column>
             <Column>
               <Name>Poverty Count for baseSys</Name>
-              <Title>Poverty Count for [baseSys] (base)</Title>
+              <Title>Poverty Count (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
                 <Parameters>
@@ -3142,7 +3142,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>Poverty Rates for refSys</Name>
-              <Title>Poverty Rates for [refSys]</Title>
+              <Title>Poverty Rates (reform)</Title>
               <TiesWith>Poverty Rates for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -3152,7 +3152,7 @@ scenario for the baseline and reform results.</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>Poverty Count for refSys</Name>
-              <Title>Poverty Count for [refSys]</Title>
+              <Title>Poverty Count (reform)</Title>
               <TiesWith>Poverty Count for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -3287,7 +3287,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <Columns>
             <Column>
               <Name>Poverty Rates for baseSys</Name>
-              <Title>Poverty Rates for [baseSys] (base)</Title>
+              <Title>Poverty Rates (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -3296,7 +3296,7 @@ scenario for the baseline and reform results.</span></p>]]>
             </Column>
             <Column>
               <Name>Poverty Count for baseSys</Name>
-              <Title>Poverty Count for [baseSys] (base)</Title>
+              <Title>Poverty Count (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
                 <Parameters>
@@ -3314,7 +3314,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>Poverty Rates for refSys</Name>
-              <Title>Poverty Rates for [refSys]</Title>
+              <Title>Poverty Rates (reform)</Title>
               <TiesWith>Poverty Rates for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -3324,7 +3324,7 @@ scenario for the baseline and reform results.</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>Poverty Count for refSys</Name>
-              <Title>Poverty Count for [refSys]</Title>
+              <Title>Poverty Count (reform)</Title>
               <TiesWith>Poverty Count for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -3459,7 +3459,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <Columns>
             <Column>
               <Name>Poverty Rates for baseSys</Name>
-              <Title>Poverty Rates for [baseSys] (base)</Title>
+              <Title>Poverty Rates (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -3468,7 +3468,7 @@ scenario for the baseline and reform results.</span></p>]]>
             </Column>
             <Column>
               <Name>Poverty Count for baseSys</Name>
-              <Title>Poverty Count for [baseSys] (base)</Title>
+              <Title>Poverty Count (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
                 <Parameters>
@@ -3486,7 +3486,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>Poverty Rates for refSys</Name>
-              <Title>Poverty Rates for [refSys]</Title>
+              <Title>Poverty Rates (reform)</Title>
               <TiesWith>Poverty Rates for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -3496,7 +3496,7 @@ scenario for the baseline and reform results.</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>Poverty Count for refSys</Name>
-              <Title>Poverty Count for [refSys]</Title>
+              <Title>Poverty Count (reform)</Title>
               <TiesWith>Poverty Count for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -3595,7 +3595,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <Columns>
             <Column>
               <Name>Poverty Rates for baseSys</Name>
-              <Title>Poverty Rates for [baseSys] (base)</Title>
+              <Title>Poverty Rates (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -3604,7 +3604,7 @@ scenario for the baseline and reform results.</span></p>]]>
             </Column>
             <Column>
               <Name>Poverty Count for baseSys</Name>
-              <Title>Poverty Count for [baseSys] (base)</Title>
+              <Title>Poverty Count (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
                 <Parameters>
@@ -3622,7 +3622,7 @@ scenario for the baseline and reform results.</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>Poverty Rates for refSys</Name>
-              <Title>Poverty Rates for [refSys]</Title>
+              <Title>Poverty Rates (reform)</Title>
               <TiesWith>Poverty Rates for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -3632,7 +3632,7 @@ scenario for the baseline and reform results.</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>Poverty Count for refSys</Name>
-              <Title>Poverty Count for [refSys]</Title>
+              <Title>Poverty Count (reform)</Title>
               <TiesWith>Poverty Count for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -3734,7 +3734,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSys</Name>
-              <Title>[baseSys] (base)</Title>
+              <Title>Base</Title>
               <CellAction>
                 <FormulaString><![CDATA[SAVED_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -3744,7 +3744,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>refSys</Name>
-              <Title>[refSys]</Title>
+              <Title>Reform</Title>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
                 <FormulaString><![CDATA[SAVED_VAR[@RefVar]]]></FormulaString>
@@ -3866,7 +3866,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSys</Name>
-              <Title>[baseSys] (base)</Title>
+              <Title>Base</Title>
               <CellAction>
                 <FormulaString><![CDATA[SAVED_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -3876,7 +3876,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>refSys</Name>
-              <Title>[refSys]</Title>
+              <Title>Reform</Title>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
                 <FormulaString><![CDATA[SAVED_VAR[@RefVar]]]></FormulaString>
@@ -4011,7 +4011,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <Columns>
             <Column>
               <Name>Poverty Rates for baseSys</Name>
-              <Title>Poverty Rates for [baseSys] (base)</Title>
+              <Title>Poverty Rates (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -4020,7 +4020,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
             </Column>
             <Column>
               <Name>Poverty Count for baseSys</Name>
-              <Title>Poverty Count for [baseSys] (base)</Title>
+              <Title>Poverty Count (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
                 <Parameters>
@@ -4038,7 +4038,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>Poverty Rates for refSys</Name>
-              <Title>Poverty Rates for [refSys]</Title>
+              <Title>Poverty Rates (reform)</Title>
               <TiesWith>Poverty Rates for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -4048,7 +4048,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>Poverty Count for refSys</Name>
-              <Title>Poverty Count for [refSys]</Title>
+              <Title>Poverty Count (reform)</Title>
               <TiesWith>Poverty Count for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -4115,7 +4115,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <Columns>
             <Column>
               <Name>Poverty Rates for baseSys</Name>
-              <Title>Poverty Rates for [baseSys] (base)</Title>
+              <Title>Poverty Rates (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -4124,7 +4124,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
             </Column>
             <Column>
               <Name>Poverty Count for baseSys</Name>
-              <Title>Poverty Count for [baseSys] (base)</Title>
+              <Title>Poverty Count (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
                 <Parameters>
@@ -4142,7 +4142,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>Poverty Rates for refSys</Name>
-              <Title>Poverty Rates for [refSys]</Title>
+              <Title>Poverty Rates (reform)</Title>
               <TiesWith>Poverty Rates for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -4152,7 +4152,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>Poverty Count for refSys</Name>
-              <Title>Poverty Count for [refSys]</Title>
+              <Title>Poverty Count (reform)</Title>
               <TiesWith>Poverty Count for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -4219,7 +4219,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <Columns>
             <Column>
               <Name>Poverty Rates for baseSys</Name>
-              <Title>Poverty Rates for [baseSys] (base)</Title>
+              <Title>Poverty Rates (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -4228,7 +4228,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
             </Column>
             <Column>
               <Name>Poverty Count for baseSys</Name>
-              <Title>Poverty Count for [baseSys] (base)</Title>
+              <Title>Poverty Count (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
                 <Parameters>
@@ -4246,7 +4246,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>Poverty Rates for refSys</Name>
-              <Title>Poverty Rates for [refSys]</Title>
+              <Title>Poverty Rates (reform)</Title>
               <TiesWith>Poverty Rates for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -4256,7 +4256,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>Poverty Count for refSys</Name>
-              <Title>Poverty Count for [refSys]</Title>
+              <Title>Poverty Count (reform)</Title>
               <TiesWith>Poverty Count for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -4337,7 +4337,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <Columns>
             <Column>
               <Name>Poverty Rates for baseSys</Name>
-              <Title>Poverty Rates for [baseSys] (base)</Title>
+              <Title>Poverty Rates (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -4346,7 +4346,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
             </Column>
             <Column>
               <Name>Poverty Count for baseSys</Name>
-              <Title>Poverty Count for [baseSys] (base)</Title>
+              <Title>Poverty Count (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
                 <Parameters>
@@ -4364,7 +4364,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>Poverty Rates for refSys</Name>
-              <Title>Poverty Rates for [refSys]</Title>
+              <Title>Poverty Rates (reform)</Title>
               <TiesWith>Poverty Rates for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -4374,7 +4374,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>Poverty Count for refSys</Name>
-              <Title>Poverty Count for [refSys]</Title>
+              <Title>Poverty Count (reform)</Title>
               <TiesWith>Poverty Count for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -4455,7 +4455,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <Columns>
             <Column>
               <Name>Poverty Rates for baseSys</Name>
-              <Title>Poverty Rates for [baseSys] (base)</Title>
+              <Title>Poverty Rates (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -4464,7 +4464,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
             </Column>
             <Column>
               <Name>Poverty Count for baseSys</Name>
-              <Title>Poverty Count for [baseSys] (base)</Title>
+              <Title>Poverty Count (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
                 <Parameters>
@@ -4482,7 +4482,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>Poverty Rates for refSys</Name>
-              <Title>Poverty Rates for [refSys]</Title>
+              <Title>Poverty Rates (reform)</Title>
               <TiesWith>Poverty Rates for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -4492,7 +4492,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>Poverty Count for refSys</Name>
-              <Title>Poverty Count for [refSys]</Title>
+              <Title>Poverty Count (reform)</Title>
               <TiesWith>Poverty Count for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -4627,7 +4627,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <Columns>
             <Column>
               <Name>Poverty Rates for baseSys</Name>
-              <Title>Poverty Rates for [baseSys] (base)</Title>
+              <Title>Poverty Rates (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -4636,7 +4636,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
             </Column>
             <Column>
               <Name>Poverty Count for baseSys</Name>
-              <Title>Poverty Count for [baseSys] (base)</Title>
+              <Title>Poverty Count (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
                 <Parameters>
@@ -4654,7 +4654,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>Poverty Rates for refSys</Name>
-              <Title>Poverty Rates for [refSys]</Title>
+              <Title>Poverty Rates (reform)</Title>
               <TiesWith>Poverty Rates for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -4664,7 +4664,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>Poverty Count for refSys</Name>
-              <Title>Poverty Count for [refSys]</Title>
+              <Title>Poverty Count (reform)</Title>
               <TiesWith>Poverty Count for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -4799,7 +4799,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <Columns>
             <Column>
               <Name>Poverty Rates for baseSys</Name>
-              <Title>Poverty Rates for [baseSys] (base)</Title>
+              <Title>Poverty Rates (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -4808,7 +4808,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
             </Column>
             <Column>
               <Name>Poverty Count for baseSys</Name>
-              <Title>Poverty Count for [baseSys] (base)</Title>
+              <Title>Poverty Count (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
                 <Parameters>
@@ -4826,7 +4826,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>Poverty Rates for refSys</Name>
-              <Title>Poverty Rates for [refSys]</Title>
+              <Title>Poverty Rates (reform)</Title>
               <TiesWith>Poverty Rates for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -4836,7 +4836,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>Poverty Count for refSys</Name>
-              <Title>Poverty Count for [refSys]</Title>
+              <Title>Poverty Count (reform)</Title>
               <TiesWith>Poverty Count for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -4935,7 +4935,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <Columns>
             <Column>
               <Name>Poverty Rates for baseSys</Name>
-              <Title>Poverty Rates for [baseSys] (base)</Title>
+              <Title>Poverty Rates (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
@@ -4944,7 +4944,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
             </Column>
             <Column>
               <Name>Poverty Count for baseSys</Name>
-              <Title>Poverty Count for [baseSys] (base)</Title>
+              <Title>Poverty Count (base)</Title>
               <CellAction>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
                 <Parameters>
@@ -4962,7 +4962,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>Poverty Rates for refSys</Name>
-              <Title>Poverty Rates for [refSys]</Title>
+              <Title>Poverty Rates (reform)</Title>
               <TiesWith>Poverty Rates for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -4972,7 +4972,7 @@ scenario (i.e. baseline or reform).</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>Poverty Count for refSys</Name>
-              <Title>Poverty Count for [refSys]</Title>
+              <Title>Poverty Count (reform)</Title>
               <TiesWith>Poverty Count for baseSys</TiesWith>
               <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
@@ -5091,7 +5091,7 @@ top and bottom 20% is always based on equivalised household disposable income.</
           <Columns>
             <Column>
               <Name>Gini baseSys</Name>
-              <Title>Gini [baseSys]</Title>
+              <Title>Gini (base)</Title>
               <CellAction>
                 <CalculationType>CalculateGini</CalculationType>
                 <Parameters>
@@ -5105,7 +5105,7 @@ top and bottom 20% is always based on equivalised household disposable income.</
             </Column>
             <Column>
               <Name>S80/S20 baseSys</Name>
-              <Title>S80/S20 [baseSys]</Title>
+              <Title>S80/S20 (base)</Title>
               <CellAction>
                 <CalculationType>CalculateS8020</CalculationType>
                 <Parameters>
@@ -5122,7 +5122,7 @@ top and bottom 20% is always based on equivalised household disposable income.</
           <ReformColumns>
             <ReformColumn>
               <Name>Gini refSys</Name>
-              <Title>Gini [refSys]</Title>
+              <Title>Gini (reform)</Title>
               <TiesWith>Gini baseSys</TiesWith>
               <CellAction>
                 <CalculationType>CalculateGini</CalculationType>
@@ -5137,7 +5137,7 @@ top and bottom 20% is always based on equivalised household disposable income.</
             </ReformColumn>
             <ReformColumn>
               <Name>S80/S20 refSys</Name>
-              <Title>S80/S20 [refSys]</Title>
+              <Title>S80/S20 (reform)</Title>
               <TiesWith>S80/S20 baseSys</TiesWith>
               <CellAction>
                 <CalculationType>CalculateS8020</CalculationType>
@@ -5256,7 +5256,7 @@ top and bottom 20% is always based on equivalised household disposable income.</
           <Columns>
             <Column>
               <Name>Gini baseSys</Name>
-              <Title>Gini [baseSys]</Title>
+              <Title>Gini (base)</Title>
               <CellAction>
                 <CalculationType>CalculateGini</CalculationType>
                 <Parameters>
@@ -5270,7 +5270,7 @@ top and bottom 20% is always based on equivalised household disposable income.</
             </Column>
             <Column>
               <Name>S80/S20 baseSys</Name>
-              <Title>S80/S20 [baseSys]</Title>
+              <Title>S80/S20 (base)</Title>
               <CellAction>
                 <CalculationType>CalculateS8020</CalculationType>
                 <Parameters>
@@ -5287,7 +5287,7 @@ top and bottom 20% is always based on equivalised household disposable income.</
           <ReformColumns>
             <ReformColumn>
               <Name>Gini refSys</Name>
-              <Title>Gini [refSys]</Title>
+              <Title>Gini (reform)</Title>
               <TiesWith>Gini baseSys</TiesWith>
               <CellAction>
                 <CalculationType>CalculateGini</CalculationType>
@@ -5302,7 +5302,7 @@ top and bottom 20% is always based on equivalised household disposable income.</
             </ReformColumn>
             <ReformColumn>
               <Name>S80/S20 refSys</Name>
-              <Title>S80/S20 [refSys]</Title>
+              <Title>S80/S20 (reform)</Title>
               <TiesWith>S80/S20 baseSys</TiesWith>
               <CellAction>
                 <CalculationType>CalculateS8020</CalculationType>
@@ -5445,7 +5445,7 @@ from one group to the other).</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title>[baseSys] Disposable Income (base)</Title>
+              <Title>Disposable Income (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5457,7 +5457,7 @@ from one group to the other).</span></p>]]>
             </Column>
             <Column>
               <Name>baseSysOrig</Name>
-              <Title>[baseSys] Original Income (base)</Title>
+              <Title>Original Income (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5472,7 +5472,7 @@ from one group to the other).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title>[refSys] Disposable Income</Title>
+              <Title>Disposable Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5493,7 +5493,7 @@ from one group to the other).</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>refSysOrig</Name>
-              <Title>[refSys] Original Income</Title>
+              <Title>Original Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5551,7 +5551,7 @@ from one group to the other).</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title>[baseSys] Disposable Income (base)</Title>
+              <Title>Disposable Income (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5563,7 +5563,7 @@ from one group to the other).</span></p>]]>
             </Column>
             <Column>
               <Name>baseSysOrig</Name>
-              <Title>[baseSys] Original Income (base)</Title>
+              <Title>Original Income (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5578,7 +5578,7 @@ from one group to the other).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title>[refSys] Disposable Income</Title>
+              <Title>Disposable Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5599,7 +5599,7 @@ from one group to the other).</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>refSysOrig</Name>
-              <Title>[refSys] Original Income</Title>
+              <Title>Original Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5657,7 +5657,7 @@ from one group to the other).</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title>[baseSys] Disposable Income (base)</Title>
+              <Title>Disposable Income (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5669,7 +5669,7 @@ from one group to the other).</span></p>]]>
             </Column>
             <Column>
               <Name>baseSysOrig</Name>
-              <Title>[baseSys] Original Income (base)</Title>
+              <Title>Original Income (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5684,7 +5684,7 @@ from one group to the other).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title>[refSys] Disposable Income</Title>
+              <Title>Disposable Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5705,7 +5705,7 @@ from one group to the other).</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>refSysOrig</Name>
-              <Title>[refSys] Original Income</Title>
+              <Title>Original Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5777,7 +5777,7 @@ from one group to the other).</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title>[baseSys] Disposable Income (base)</Title>
+              <Title>Disposable Income (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5789,7 +5789,7 @@ from one group to the other).</span></p>]]>
             </Column>
             <Column>
               <Name>baseSysOrig</Name>
-              <Title>[baseSys] Original Income (base)</Title>
+              <Title>Original Income (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5804,7 +5804,7 @@ from one group to the other).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title>[refSys] Disposable Income</Title>
+              <Title>Disposable Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5825,7 +5825,7 @@ from one group to the other).</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>refSysOrig</Name>
-              <Title>[refSys] Original Income</Title>
+              <Title>Original Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5897,7 +5897,7 @@ from one group to the other).</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title>[baseSys] Disposable Income (base)</Title>
+              <Title>Disposable Income (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5909,7 +5909,7 @@ from one group to the other).</span></p>]]>
             </Column>
             <Column>
               <Name>baseSysOrig</Name>
-              <Title>[baseSys] Original Income (base)</Title>
+              <Title>Original Income (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5924,7 +5924,7 @@ from one group to the other).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title>[refSys] Disposable Income</Title>
+              <Title>Disposable Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5945,7 +5945,7 @@ from one group to the other).</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>refSysOrig</Name>
-              <Title>[refSys] Original Income</Title>
+              <Title>Original Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6071,7 +6071,7 @@ from one group to the other).</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title>[baseSys] Disposable Income (base)</Title>
+              <Title>Disposable Income (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6083,7 +6083,7 @@ from one group to the other).</span></p>]]>
             </Column>
             <Column>
               <Name>baseSysOrig</Name>
-              <Title>[baseSys] Original Income (base)</Title>
+              <Title>Original Income (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6098,7 +6098,7 @@ from one group to the other).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title>[refSys] Disposable Income</Title>
+              <Title>Disposable Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6119,7 +6119,7 @@ from one group to the other).</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>refSysOrig</Name>
-              <Title>[refSys] Original Income</Title>
+              <Title>Original Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6245,7 +6245,7 @@ from one group to the other).</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title>[baseSys] Disposable Income (base)</Title>
+              <Title>Disposable Income (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6257,7 +6257,7 @@ from one group to the other).</span></p>]]>
             </Column>
             <Column>
               <Name>baseSysOrig</Name>
-              <Title>[baseSys] Original Income (base)</Title>
+              <Title>Original Income (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6272,7 +6272,7 @@ from one group to the other).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title>[refSys] Disposable Income</Title>
+              <Title>Disposable Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6293,7 +6293,7 @@ from one group to the other).</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>refSysOrig</Name>
-              <Title>[refSys] Original Income</Title>
+              <Title>Original Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6383,7 +6383,7 @@ from one group to the other).</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title>[baseSys] Disposable Income (base)</Title>
+              <Title>Disposable Income (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6395,7 +6395,7 @@ from one group to the other).</span></p>]]>
             </Column>
             <Column>
               <Name>baseSysOrig</Name>
-              <Title>[baseSys] Original Income (base)</Title>
+              <Title>Original Income (base)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6410,7 +6410,7 @@ from one group to the other).</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title>[refSys] Disposable Income</Title>
+              <Title>Disposable Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6431,7 +6431,7 @@ from one group to the other).</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>refSysOrig</Name>
-              <Title>[refSys] Original Income</Title>
+              <Title>Original Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6536,7 +6536,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title>[baseSys] Disposable Income (base)</Title>
+              <Title>Disposable Income (base)</Title>
               <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -6553,7 +6553,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
             </Column>
             <Column>
               <Name>baseSysOrig</Name>
-              <Title>[baseSys] Original Income (base)</Title>
+              <Title>Original Income (base)</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -6573,7 +6573,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title>[refSys] Disposable Income</Title>
+              <Title>Disposable Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6598,7 +6598,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
             </ReformColumn>
 		        <ReformColumn>
               <Name>refSysOrig</Name>
-              <Title>[refSys] Original Income</Title>
+              <Title>Original Income (reform)</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -6650,7 +6650,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title>[baseSys] Disposable Income (base)</Title>
+              <Title>Disposable Income (base)</Title>
               <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -6667,7 +6667,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
             </Column>
             <Column>
               <Name>baseSysOrig</Name>
-              <Title>[baseSys] Original Income (base)</Title>
+              <Title>Original Income (base)</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -6687,7 +6687,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
           <ReformColumns>
             <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title>[refSys] Disposable Income</Title>
+              <Title>Disposable Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6712,7 +6712,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
             </ReformColumn>
             <ReformColumn>
               <Name>refSysOrig</Name>
-              <Title>[refSys] Original Income</Title>
+              <Title>Original Income (reform)</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -6764,7 +6764,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title>[baseSys] Disposable Income (base)</Title>
+              <Title>Disposable Income (base)</Title>
               <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -6781,7 +6781,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
             </Column>
             <Column>
               <Name>baseSysOrig</Name>
-              <Title>[baseSys] Original Income (base)</Title>
+              <Title>Original Income (base)</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -6801,7 +6801,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
 		  <ReformColumns>
 		    <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title>[refSys] Disposable Income</Title>
+              <Title>Disposable Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6826,7 +6826,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
             </ReformColumn>
 		    <ReformColumn>
               <Name>refSysOrig</Name>
-              <Title>[refSys] Original Income</Title>
+              <Title>Original Income (reform)</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -6892,7 +6892,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title>[baseSys] Disposable Income (base)</Title>
+              <Title>Disposable Income (base)</Title>
               <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -6909,7 +6909,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
             </Column>
             <Column>
               <Name>baseSysOrig</Name>
-              <Title>[baseSys] Original Income (base)</Title>
+              <Title>Original Income (base)</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -6929,7 +6929,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
 		  <ReformColumns>
 		    <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title>[refSys] Disposable Income</Title>
+              <Title>Disposable Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6954,7 +6954,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
             </ReformColumn>
 		    <ReformColumn>
               <Name>refSysOrig</Name>
-              <Title>[refSys] Original Income</Title>
+              <Title>Original Income (reform)</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -7020,7 +7020,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title>[baseSys] Disposable Income (base)</Title>
+              <Title>Disposable Income (base)</Title>
               <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -7037,7 +7037,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
             </Column>
             <Column>
               <Name>baseSysOrig</Name>
-              <Title>[baseSys] Original Income (base)</Title>
+              <Title>Original Income (base)</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -7057,7 +7057,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
 		  <ReformColumns>
 		    <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title>[refSys] Disposable Income</Title>
+              <Title>Disposable Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7082,7 +7082,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
             </ReformColumn>
 		    <ReformColumn>
               <Name>refSysOrig</Name>
-              <Title>[refSys] Original Income</Title>
+              <Title>Original Income (reform)</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -7202,7 +7202,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title>[baseSys] Disposable Income (base)</Title>
+              <Title>Disposable Income (base)</Title>
               <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -7219,7 +7219,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
             </Column>
             <Column>
               <Name>baseSysOrig</Name>
-              <Title>[baseSys] Original Income (base)</Title>
+              <Title>Original Income (base)</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -7239,7 +7239,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
 		  <ReformColumns>
 		    <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title>[refSys] Disposable Income</Title>
+              <Title>Disposable Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7264,7 +7264,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
             </ReformColumn>
 		    <ReformColumn>
               <Name>refSysOrig</Name>
-              <Title>[refSys] Original Income</Title>
+              <Title>Original Income (reform)</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -7384,7 +7384,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title>[baseSys] Disposable Income (base)</Title>
+              <Title>Disposable Income (base)</Title>
               <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -7401,7 +7401,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
             </Column>
             <Column>
               <Name>baseSysOrig</Name>
-              <Title>[baseSys] Original Income (base)</Title>
+              <Title>Original Income (base)</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -7421,7 +7421,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
 		  <ReformColumns>
 		    <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title>[refSys] Disposable Income</Title>
+              <Title>Disposable Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7446,7 +7446,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
             </ReformColumn>
 		    <ReformColumn>
               <Name>refSysOrig</Name>
-              <Title>[refSys] Original Income</Title>
+              <Title>Original Income (reform)</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -7534,7 +7534,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title>[baseSys] Disposable Income (base)</Title>
+              <Title>Disposable Income (base)</Title>
               <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -7551,7 +7551,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
             </Column>
             <Column>
               <Name>baseSysOrig</Name>
-              <Title>[baseSys] Original Income (base)</Title>
+              <Title>Original Income (base)</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -7571,7 +7571,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
 		  <ReformColumns>
 		    <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title>[refSys] Disposable Income</Title>
+              <Title>Disposable Income (reform)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7596,7 +7596,7 @@ much income is concentrated at the population at-risk-of-poverty.</span></p>]]>
             </ReformColumn>
 		    <ReformColumn>
               <Name>refSysOrig</Name>
-              <Title>[refSys] Original Income</Title>
+              <Title>Original Income (reform)</Title>
               <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -9450,7 +9450,7 @@ poverty line.</span></p>]]>
           <Columns>
             <Column>
               <Name>baseSys</Name>
-              <Title>[baseSys] (base)</Title>
+              <Title>(base)</Title>
               <CellAction>
 		<CalculationType>Info</CalculationType>
               </CellAction>

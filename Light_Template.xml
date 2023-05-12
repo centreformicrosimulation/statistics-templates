@@ -2,7 +2,7 @@
   <TemplateInfo>
     <Name>UKMOD Statistics - Baseline/Reform</Name>
     <Title>UKMOD Statistics - Baseline vs Reforms</Title>
-    <Subtitle>Results for [baseCountry]: [baseSys]</Subtitle>
+    <Subtitle>Results for [baseSysPretty]</Subtitle>
     <Button>[baseSys]</Button>
     <Description>
       <![CDATA[{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang2057{\fonttbl{\f0\fswiss\fprq2\fcharset0 Calibri;}{\f1\fnil\fcharset0 Calibri;}}

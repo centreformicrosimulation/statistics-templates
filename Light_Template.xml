@@ -119,8 +119,8 @@ ils_sicdy = ils_sicee + ils_sicse + ils_sicot</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Direct taxes: ils_tax = tin_s + tmu</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Simulated taxes: ils_taxsim = tin_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Personal Income Tax: tin_s</p>
-<p style='margin-bottom:8.0pt;line-height:105%;'>Devolved taxes in Scotland: tin11_s</p>
-<p style='margin-bottom:8.0pt;line-height:105%;'>Devolved taxes in Wales: tin12_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Devolved taxes in Scotland: tin12_s</p>
+<p style='margin-bottom:8.0pt;line-height:105%;'>Devolved taxes in Wales: tin11_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Non-devolved taxes: tin00_s</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Council tax: tmu</p>
 <p style='margin-bottom:8.0pt;line-height:105%;'>Simulated Employee National Insurance contributions: ils_sicee = tscee_s</p>
@@ -1296,12 +1296,12 @@ in EUROMOD.</span></p>]]>
                 <Parameters>
                   <Parameter>
                     <Name>BasePar</Name>
-                    <VarName>tin11_s</VarName>
+                    <VarName>tin12_s</VarName>
                     <Reform>false</Reform>
                   </Parameter>
                   <Parameter>
                     <Name>RefPar</Name>
-                    <VarName>tin11_s</VarName>
+                    <VarName>tin12_s</VarName>
                   </Parameter>
                 </Parameters>
               </CellAction>
@@ -1313,12 +1313,12 @@ in EUROMOD.</span></p>]]>
                 <Parameters>
                   <Parameter>
                     <Name>BasePar</Name>
-                    <VarName>tin12_s</VarName>
+                    <VarName>tin11_s</VarName>
                     <Reform>false</Reform>
                   </Parameter>
                   <Parameter>
                     <Name>RefPar</Name>
-                    <VarName>tin12_s</VarName>
+                    <VarName>tin11_s</VarName>
                   </Parameter>
                 </Parameters>
               </CellAction>

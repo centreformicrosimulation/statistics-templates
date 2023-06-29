@@ -28,14 +28,7 @@ minus housing costs, where housing costs are from the Households Below Average I
 (HBAI) micro-data. Housing costs include: rent (gross of housing benefit); water rates; 
 community water charges and council water charges; mortgage interest payments; structural 
 insurance premiums.</p>
-<p style='line-height:1.5'><u>Equivalised household (benefit unit) disposable income</u> 
-is the total disposable income of the household (benefit unit) divided by the <u>OECD</u> 
-scale (which is often referred to as the modified OECD scale), rescaled to a couple without
-children following the HBAI approach. The benefit unit is the nuclear family - the couple 
-(cohabiting or married) or single adult plus any dependent children. The equivalence 
-scale attributes a weight of 0.67 to the head of the household/benefit unit, a weight
-of 0.33 to any other adult aged 16 or above and for any child aged 14-15, and a
-weight of 0.2 to every child aged 0-14.</p>
+<p style='line-height:1.5'><u>Equivalised household (benefit unit) disposable income</u> is the total disposable income of the household (benefit unit) divided by the <u>OECD</u> scale (modified OECD scale), rescaled to a couple without children following the HBAI approach. The benefit unit is the nuclear family - the couple (cohabiting or married) or single adult plus any dependent children. For Before Housing Costs income, the equivalence scale attributes a weight of 0.67 to the head of the household/benefit unit, a weight of 0.33 to any other member aged 14 years or over, and a weight of 0.2 to every child aged under 14 years. For After Housing Costs income, the equivalence scale attributes a weight of 0.58 to the head of the household/benefit unit, 0.42 to any other member aged 14 years or over, and a weight of 0.2 for any child aged under 14 years.</p>
 <p style='line-height:1.5'><u>Decile groups</u> are calculated by ranking individuals 
 according to their <u>equivalised</u> household (benefit unit) disposable income 
 – either BHC or AHC – and dividing them into ten similar-sized groups.</p>
@@ -657,6 +650,27 @@ separately): bsa_s</p>
       <Action>
         <Reform>false</Reform>
         <CalculationType>CreateEquivalenceScale</CalculationType>
+        <OutputVar>EqScaleAHC</OutputVar>
+        <Parameters>
+          <Parameter>
+            <Name>EquivalenceScaleBand</Name>
+            <VarName>FilterEquivAdult</VarName>
+            <NumericValue>0.42</NumericValue>
+          </Parameter>
+          <Parameter>
+            <Name>EquivalenceScaleBand</Name>
+            <VarName>FilterEquivChild</VarName>
+            <NumericValue>0.2</NumericValue>
+          </Parameter>
+          <Parameter>
+            <Name>EquivalenceFirstPerson</Name>
+            <NumericValue>0.58</NumericValue>
+          </Parameter>
+        </Parameters>
+      </Action>
+      <Action>
+        <Reform>false</Reform>
+        <CalculationType>CreateEquivalenceScale</CalculationType>
         <CalculationLevel>Family</CalculationLevel>
         <OutputVar>EqScaleFam</OutputVar>
         <Parameters>
@@ -673,6 +687,28 @@ separately): bsa_s</p>
           <Parameter>
             <Name>EquivalenceFirstPerson</Name>
             <NumericValue>0.67</NumericValue>
+          </Parameter>
+        </Parameters>
+      </Action>
+      <Action>
+        <Reform>false</Reform>
+        <CalculationType>CreateEquivalenceScale</CalculationType>
+        <CalculationLevel>Family</CalculationLevel>
+        <OutputVar>EqScaleFamAHC</OutputVar>
+        <Parameters>
+          <Parameter>
+            <Name>EquivalenceScaleBand</Name>
+            <VarName>FilterEquivAdult</VarName>
+            <NumericValue>0.42</NumericValue>
+          </Parameter>
+          <Parameter>
+            <Name>EquivalenceScaleBand</Name>
+            <VarName>FilterEquivChild</VarName>
+            <NumericValue>0.2</NumericValue>
+          </Parameter>
+          <Parameter>
+            <Name>EquivalenceFirstPerson</Name>
+            <NumericValue>0.58</NumericValue>
           </Parameter>
         </Parameters>
       </Action>
@@ -698,7 +734,7 @@ separately): bsa_s</p>
           </Parameter>
           <Parameter>
             <Name>EquivalenceScale</Name>
-            <VarName>EqScale</VarName>
+            <VarName>EqScaleAHC</VarName>
           </Parameter>
         </Parameters>
       </Action>
@@ -726,7 +762,7 @@ separately): bsa_s</p>
           </Parameter>
           <Parameter>
             <Name>EquivalenceScale</Name>
-            <VarName>EqScaleFam</VarName>
+            <VarName>EqScaleFamAHC</VarName>
           </Parameter>
         </Parameters>
       </Action>

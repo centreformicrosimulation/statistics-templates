@@ -46,7 +46,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
     </GeneralDescription>
     <TemplateType>BaselineReform</TemplateType>
     <SDCDefinition>
-      <HideZeroObs>false</HideZeroObs>
+      <HideZeroObs>true</HideZeroObs>
       <MinObsDefault>30</MinObsDefault>
       <MinObsAlternatives>
         <MinObsAlternative>
@@ -381,6 +381,21 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
         <Reform>false</Reform>
         <Name>FilterEquivChild</Name>
         <FormulaString><![CDATA[DATA_VAR[@age] < 14]]></FormulaString>
+      </Filter>
+      <Filter>
+        <Reform>false</Reform>
+        <Name>FilterMTR</Name>
+        <FormulaString><![CDATA[DATA_VAR[@mtrpc] > 30.0]]></FormulaString>
+      </Filter>
+      <Filter>
+        <Reform>false</Reform>
+        <Name>FilterNRR</Name>
+        <FormulaString><![CDATA[DATA_VAR[@nrrpc] > -990]]></FormulaString>
+      </Filter>
+      <Filter>
+        <Reform>false</Reform>
+        <Name>FilterPTR</Name>
+        <FormulaString><![CDATA[DATA_VAR[@ptrpc] > -990]]></FormulaString>
       </Filter>
     </Filters>
     <Actions>
@@ -19183,12 +19198,12 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
     </Page>
     <Page>
       <Name>TaxIncentiveStats</Name>
-      <Title>Effects of Taxation on Incentives for Employment</Title>
-      <Button>Tax Incentives</Button>
+      <Title>Work Incentive Statistics</Title>
+      <Button>Work Incentives</Button>
       <Description>
-        <![CDATA[<p style='line-height:1.5'><span lang=EN>The following tables report three statistics that describe alternative measures of tax incentives for employment: marginal tax rates (MTRs), net replacement rates (NRRs) and participation tax rates (PTRs). MTRs report the tax rate applied to the last unit of currency earned from employment. A MTR is calculated for each individual with some employment income described by the input data (ils_earns > 0). NRRs report the proportional impact on disposable income of moving from employment to unemployment. NRRs are calculated both for any individual described by the input data with some employment income (ils_earns > 0), and for working aged individuals reported as unemployed (les = 5 or (les=7 & dag>18 & dag<65) or (les=9 & dag>18 & dag<65)). PTRs report the average effective tax rate applied to employment income. PTRs are calculated for the same population as considered for NRRs.</span></p>
-        <p style='line-height:1.5'><span lang=EN>Income deciles here are built by ranking all individuals in the population by their respective baseline household equivalised disposable incomes, and then dividing the income parade into approximately equal numbers of persons. The equivalence scale is the same as used by the Central Statistics Office, which attributes a weight of 1 to the first adult, 0.66 to each subsequent adult (aged 14+ living in the household) and 0.33 to each child aged less than 14. Units with equal income are allocated to the same decile, so that the total number of people may vary between decile groups. The reported statistics average only over those individuals for whom the respective statistic (MTR, NRR, or PTR) was calculated. For example, a population comprised of 100 individuals, might be divided into 10 deciles, each comprised of 10 individuals, ranked in order of ascending household disposable income. If an MTR was calculated for only 3 individuals in the lowest decile, then the respective decile average would be obtained by averaging only over those three individuals.</span></p>
-        <p style='line-height:1.5'><span lang=EN><b>Note:</b> In contrast to the decile groups reported on the "Decile Ranges" page, the current page focuses on deciles by household (rather than tax unit) income.</span></p>]]>
+        <![CDATA[<p style='line-height:1.5'><span lang=EN>The Tables above report statistics on the financial work incentives faced by individuals under a base and reform system. Marginal Tax Rates (MTRs) measure what proportion of a small change in employee earnings is lost to tax payments and forgone state benefit entitlements. It tells us about the strength of the incentive for individuals to increase their earnings slightly, whether through working more hours, or through promotion, qualifying for bonus payments or getting a better-paid job. These are calculated for each individual with some employment income in the input data (ils_earns > 0). Replacement Rates (RRs) give an individual’s out-of-work income as a percentage of their in-work income, while Participation Tax Rates (PTRs) give the proportion of earnings that are taken away in tax or lower benefit entitlements when an individual starts work. They are both calculated both for any individual in the input data with some employment income (ils_earns > 0), and for working aged individuals reported as unemployed (les = 5 or (les=7 & dag>18 & dag 18 & dag) using an estimate of what they would earn if in full-time paid work.</span></p>
+        <p style='line-height:1.5'><span lang=EN>Income deciles here are built by ranking all individuals in the population by their respective baseline household equivalised disposable incomes, and then dividing the income parade into approximately equal numbers of persons. The equivalence scale is the same as used by the Central Statistics Office, which attributes a weight of 1 to the first adult, 0.66 to each subsequent adult (aged 14+ living in the household) and 0.33 to each child aged less than 14. Units with equal income are allocated to the same decile, so that the total number of people may vary between decile groups. In contrast to the decile groups reported on the "Decile Ranges" page, the statistics above focus on deciles by household (rather than tax unit) income.</span></p>
+        <p style='line-height:1.5'><span lang=EN>The reported statistics average only over those individuals for whom the respective statistic (MTR, RR, or PTR) was calculated. For example, a population comprised of 100 individuals, might be divided into 10 deciles, each comprised of 10 individuals, ranked in order of ascending household disposable income. If an MTR was calculated for only 3 individuals in the lowest decile, then the respective decile average would be obtained by averaging only over those three individuals.</span></p>]]>
       </Description>
       <Tables>
         <Table>
@@ -19215,11 +19230,6 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
               </CellAction>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </Column>
           </Columns>
           <ReformColumns>
@@ -19239,11 +19249,6 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 </Parameters>
               </CellAction>
               <TiesWith>baseSysMTR</TiesWith>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </ReformColumn>
             <ReformColumn>
               <Title><![CDATA[change]]></Title>
@@ -19252,37 +19257,22 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <FormulaString><![CDATA[REF_COL[refSysMTR] - BASE_COL[baseSysMTR]]]></FormulaString>
               </CellAction>
               <TiesWith>baseSysMTR</TiesWith>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </ReformColumn>
           </ReformColumns>
           <Rows>
             <Row>
               <Name>Decile</Name>
               <ForEachValueOf>deciles_eqDispy</ForEachValueOf>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </Row>
             <Row>
               <Name>All</Name>
               <HasSeparatorBefore>true</HasSeparatorBefore>
               <Strong>true</Strong>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </Row>
           </Rows>
         </Table>
         <Table>
-          <Title>1.2 Net replacement rates (NRRs) by income decile</Title>
+          <Title>1.2 Replacement rates (RRs) by income decile</Title>
           <Subtitle><![CDATA[Decile averages in percentage points<br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
           <CellAction>
             <CalculationType>CalculateWeightedAverage</CalculationType>
@@ -19487,11 +19477,6 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
               </CellAction>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </Column>
           </Columns>
           <ReformColumns>
@@ -19510,11 +19495,6 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                   </Parameter>
                 </Parameters>
               </CellAction>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
               <TiesWith>baseSysMTR</TiesWith>
             </ReformColumn>
             <ReformColumn>
@@ -19523,11 +19503,6 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysMTR] - BASE_COL[baseSysMTR]]]></FormulaString>
               </CellAction>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
               <TiesWith>baseSysMTR</TiesWith>
             </ReformColumn>
           </ReformColumns>
@@ -19536,107 +19511,67 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <Name>Single working-age without children</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=1]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]==1 && DATA_VAR[@mtrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </Row>
             <Row>
               <Name>Lone parent</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=2]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=2 && DATA_VAR[@mtrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </Row>
             <Row>
               <Name>Working-age couple without children</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=3]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=3 && DATA_VAR[@mtrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </Row>
             <Row>
               <Name>Working-age couple with children</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=4]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=4 && DATA_VAR[@mtrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </Row>
             <Row>
               <Name>Single retirement-age (>= 66)</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=5]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=5 && DATA_VAR[@mtrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </Row>
             <Row>
               <Name>Retirement-age couple (at least one >=66)</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=6]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=6 && DATA_VAR[@mtrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </Row>
             <Row>
               <Name>Other</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=7]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=7 && DATA_VAR[@mtrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </Row>
             <Row>
               <Name>All</Name>
               <HasSeparatorBefore>true</HasSeparatorBefore>
               <Strong>true</Strong>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </Row>
           </Rows>
         </Table>
         <Table>
-          <Title>1.5 Net replacement rates (NRRs) by family type</Title>
+          <Title>1.5 Replacement rates (RRs) by family type</Title>
           <Subtitle><![CDATA[Decile averages in percentage points<br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
           <CellAction>
             <CalculationType>CalculateWeightedAverage</CalculationType>
@@ -19709,7 +19644,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <Name>Single working-age without children</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=1]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=1 && DATA_VAR[@nrrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
               <SDCDefinition>
@@ -19722,7 +19657,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <Name>Lone parent</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=2]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=2 && DATA_VAR[@nrrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
               <SDCDefinition>
@@ -19735,7 +19670,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <Name>Working-age couple without children</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=3]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=3 && DATA_VAR[@nrrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
               <SDCDefinition>
@@ -19748,7 +19683,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <Name>Working-age couple with children</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=4]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=4 && DATA_VAR[@nrrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
               <SDCDefinition>
@@ -19761,7 +19696,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <Name>Single retirement-age (>= 66)</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=5]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=5 && DATA_VAR[@nrrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
               <SDCDefinition>
@@ -19774,7 +19709,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <Name>Retirement-age couple (at least one >=66)</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=6]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=6 && DATA_VAR[@nrrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
               <SDCDefinition>
@@ -19787,7 +19722,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <Name>Other</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=7]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=7 && DATA_VAR[@nrrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
               <SDCDefinition>
@@ -19882,7 +19817,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <Name>Single working-age without children</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=1]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=1 && DATA_VAR[@ptrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
               <SDCDefinition>
@@ -19895,7 +19830,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <Name>Lone parent</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=2]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=2 && DATA_VAR[@ptrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
               <SDCDefinition>
@@ -19908,7 +19843,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <Name>Working-age couple without children</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=3]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=3 && DATA_VAR[@ptrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
               <SDCDefinition>
@@ -19921,7 +19856,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <Name>Working-age couple with children</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=4]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=4 && DATA_VAR[@ptrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
               <SDCDefinition>
@@ -19934,7 +19869,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <Name>Single retirement-age (>= 66)</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=5]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=5 && DATA_VAR[@ptrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
               <SDCDefinition>
@@ -19947,7 +19882,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <Name>Retirement-age couple (at least one >=66)</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=6]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=6 && DATA_VAR[@ptrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
               <SDCDefinition>
@@ -19960,7 +19895,7 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <Name>Other</Name>
               <CellAction>
                 <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@FamType]=7]]></FormulaString>
+                  <FormulaString><![CDATA[DATA_VAR[@FamType]=7 && DATA_VAR[@ptrpc]>-998.0]]></FormulaString>
                 </Filter>
               </CellAction>
               <SDCDefinition>
@@ -19995,11 +19930,6 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
               <CellAction>
                 <FormulaString><![CDATA[SAVED_VAR[@BaseVar]]]></FormulaString>
               </CellAction>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </Column>
           </Columns>
           <ReformColumns>
@@ -20010,11 +19940,6 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <FormulaString><![CDATA[SAVED_VAR[@RefVar]]]></FormulaString>
               </CellAction>
               <TiesWith>baseSys</TiesWith>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </ReformColumn>
             <ReformColumn>
               <Name>diff</Name>
@@ -20023,11 +19948,6 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
                 <FormulaString><![CDATA[REF_COL[refSys] - BASE_COL[baseSys]]]></FormulaString>
               </CellAction>
               <TiesWith>baseSys</TiesWith>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </ReformColumn>
           </ReformColumns>
           <Rows>
@@ -20047,12 +19967,10 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsMTRNA]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </Row>
             <Row>
               <Name>less than 0</Name>
@@ -20070,12 +19988,10 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsMTRNeg]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
-              <SDCDefinition>
-                <SecondaryGroups>
-                  <AutoGroup/>
-                </SecondaryGroups>
-              </SDCDefinition>
             </Row>
             <Row>
               <Name>0</Name>
@@ -20093,6 +20009,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsMTR0]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -20116,6 +20035,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsMTR0110]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -20139,6 +20061,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsMTR1120]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -20162,6 +20087,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsMTR2130]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -20185,6 +20113,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsMTR3140]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -20208,6 +20139,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsMTR4150]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -20231,6 +20165,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsMTR5160]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -20254,6 +20191,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsMTR6170]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -20277,6 +20217,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsMTR7180]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -20300,6 +20243,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsMTR8190]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -20323,6 +20269,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsMTR91100]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -20346,6 +20295,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsMTR101]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -20540,8 +20492,8 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
           </ReformCells>
         </Table>
         <Table>
-          <Title>2.2 Histogram of NRRs</Title>
-          <Subtitle><![CDATA[Population count by NRR percentage point range<br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
+          <Title>2.2 Histogram of RRs</Title>
+          <Subtitle><![CDATA[Population count by RR percentage point range<br>Primary and secondary statistical disclosure controls are applied.]]></Subtitle>
           <CellAction>
             <CalculationType>CalculateArithmetic</CalculationType>
           </CellAction>
@@ -20590,6 +20542,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsNRRNA]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
             </Row>
             <Row>
@@ -20608,6 +20563,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsNRRNeg]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
             </Row>
             <Row>
@@ -20626,6 +20584,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsNRR0]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
             </Row>
             <Row>
@@ -20644,6 +20605,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsNRR0110]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
             </Row>
             <Row>
@@ -20662,6 +20626,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsNRR1120]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
             </Row>
             <Row>
@@ -20680,6 +20647,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsNRR2130]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
             </Row>
             <Row>
@@ -20698,6 +20668,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsNRR3140]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
             </Row>
             <Row>
@@ -20716,6 +20689,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsNRR4150]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
             </Row>
             <Row>
@@ -20734,6 +20710,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsNRR5160]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
             </Row>
             <Row>
@@ -20752,6 +20731,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsNRR6170]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
             </Row>
             <Row>
@@ -20770,6 +20752,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsNRR7180]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
             </Row>
             <Row>
@@ -20788,6 +20773,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsNRR8190]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
             </Row>
             <Row>
@@ -20806,6 +20794,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsNRR91100]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
             </Row>
             <Row>
@@ -20824,6 +20815,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsNRR101]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
             </Row>
           </Rows>
@@ -21008,6 +21002,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsPTRNA]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -21031,6 +21028,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsPTRNeg]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -21054,6 +21054,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsPTR0]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -21077,6 +21080,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsPTR0110]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
             </Row>
             <Row>
@@ -21095,6 +21101,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsPTR1120]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -21118,6 +21127,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsPTR2130]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -21141,6 +21153,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsPTR3140]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -21164,6 +21179,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsPTR4150]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -21187,6 +21205,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsPTR5160]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -21210,6 +21231,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsPTR6170]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -21233,6 +21257,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsPTR7180]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -21256,6 +21283,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsPTR8190]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -21279,6 +21309,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsPTR91100]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>
@@ -21302,6 +21335,9 @@ The median income of people at-risk-of poverty is based on equivalised disposabl
 					          <BoolValue>true</BoolValue>
                   </Parameter>
                 </Parameters>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsPTR101]==1]]></FormulaString>
+                </Filter>
 			        </CellAction>
               <SDCDefinition>
                 <SecondaryGroups>

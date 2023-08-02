@@ -106,8 +106,8 @@
         <p style='margin-bottom:8.0pt;line-height:105%;'>Scottish Child Payment: bchmt_s</p>
         <p style='margin-bottom:8.0pt;line-height:105%;'>Scottish Child Payment Bridging Payment: bchmt01_s</p>
         <p style='margin-bottom:8.0pt;line-height:105%;'>Best Start foods (Scotland): bmascmt01_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Free School meals (Scotland): bched01_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>School clothing grant (Scotland): bched02_s</p>
+        <p style='margin-bottom:8.0pt;line-height:105%;'>Free school meals: bched01_s</p>
+        <p style='margin-bottom:8.0pt;line-height:105%;'>School clothing grant: bched02_s</p>
         <p style='margin-bottom:8.0pt;line-height:105%;'>Discretionary Housing Payments (Scotland): bhosc01_s</p>
         <p style='margin-bottom:8.0pt;line-height:105%;'>Cost of Living Payment: bsaec_s</p>
         <p style='margin-bottom:8.0pt;line-height:105%;'>Winter Fuel Allowance: boaht_s</p>
@@ -2287,7 +2287,7 @@ in EUROMOD.</span></p>]]>
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Free School meals (Scotland)</Name>
+              <Name>Free school meals</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2304,7 +2304,7 @@ in EUROMOD.</span></p>]]>
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>School clothing grant (Scotland)</Name>
+              <Name>School clothing grant</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>

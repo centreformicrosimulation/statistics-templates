@@ -6,18 +6,19 @@
     {
       "label": "Deploy xml files",
       "type": "shell",
-      "command": "Copy-Item -Path ./*.xml -Destination C:/ProgramData/EUROMOD/plugins/StatisticsPresenter/UserSelectableTemplates/ -force",
+      "command": "Copy-Item -Path ./*.xml -Destination C:/ProgramData/EUROMOD/UserSelectableTemplates/ -force",
       "windows": {
-        "command": "Copy-Item -Path .\\*.xml -Destination C:\\ProgramData\\EUROMOD\\plugins\\StatisticsPresenter\\UserSelectableTemplates -force"
+        "command": "Copy-Item -Path .\\*.xml -Destination C:\\ProgramData\\EUROMOD\\UserSelectableTemplates -force"
       },
-      // group "build" is run with Cntrl + Shift + B
-      "group": "build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
       "presentation": {
-        // Reveal the output only if unrecognized errors occur.
-        //"reveal": "silent"
         "reveal": "always",
         "panel": "new"
-      }
+      },
+      "problemMatcher": []
     }
   ]
 }

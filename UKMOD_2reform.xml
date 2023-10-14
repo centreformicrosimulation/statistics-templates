@@ -8,7 +8,7 @@
       <![CDATA[
         {\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang2057{\fonttbl{\f0\fswiss\fprq2\fcharset0 Calibri;}{\f1\fnil\fcharset0 Calibri;}}
         {\colortbl ;\red0\green112\blue192;\red0\green0\blue0;}
-        {\*\generator Riched20 10.0.17134}\viewkind4\uc1\pard\widctlpar\sa200\sl276\slmult1\cf1\b\f0\fs22 UKMOD Statistics - Baseline vs Reform(s):\b0  \cf0 this template \ul compares baseline results to one or more reform scenarios\ulnone  and provides the difference between the baseline and the reform(s). \cf2 Please note: results use a \ul fixed poverty line\ulnone  calculated using the baseline.\par\pard\sa200\sl276\slmult1\cf0 The follow-up screen will ask you to \ul select the UKMOD standard output file(s)\ulnone  that you want to include in the analytics. By default, it will show you the files saved in the UKMOD output folder of your current project, but you can change the folder by clicking on the \ldblquote\'85\rdblquote  button.  Multiple files can be selected using Ctrl + Shift. Please note that only one output file can be selected as the Baseline Scenario.\f1\lang9\par
+        {\*\generator Riched20 10.0.17134}\viewkind4\uc1\pard\widctlpar\sa200\sl276\slmult1\cf1\b\f0\fs22 UKMOD Statistics - Baseline vs Reform(s):\b0  \cf0 this template \ul compares baseline results to one or more reform scenarios\ulnone  and provides the difference between the baseline and the reform(s). \par\pard\sa200\sl276\slmult1\cf0 The follow-up screen will ask you to \ul select the UKMOD standard output file(s)\ulnone  that you want to include in the analytics. By default, it will show you the files saved in the UKMOD output folder of your current project, but you can change the folder by clicking on the \ldblquote\'85\rdblquote  button.  Multiple files can be selected using Ctrl + Shift. Please note that only one output file can be selected as the Baseline Scenario.\f1\lang9\par
       }]]>
     </Description>
     <GeneralDescription>
@@ -85,7 +85,7 @@
         <p style='margin-bottom:8.0pt;line-height:105%;'>&nbsp;</p>
         <p style='margin-bottom:8.0pt;line-height:105%;'><b>Government expenditure on benefits and tax credits</b> in more detail:</p>
         <p style='margin-bottom:8.0pt;line-height:105%;'>Means-tested non-pension benefits: ils_benmt = bsauc_s - brduc_s + bsa_s + bunmt_s + bsadi_s + boamt_s + bmu_s + bho_s - brd_s + bwkmt_s + bfamt_s + bmamt_s + bmamt01_s + bmascmt_s + bchmt_s + bchmt01_s + bmascmt01_s + bched01_s + bched02_s + bhosc01_s + bsaec_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Non-means-tested non-pension benefits: ils_bennt = bedes + bedsl + bdioa + bdisc + bdimb + bdiscwa + bdimbwa + bdict01 + bdict02 + bdiwi + bcrdi + bcrdicm_s + bdisv + bhlwk + buntr + bot + bmaer + bmana + boaht_s + bch_s + bunct_s + bchht_s + bwkmcee_s (in 2020) + bwkmcse_s (in 2020)</p>
+        <p style='margin-bottom:8.0pt;line-height:105%;'>Non-means-tested non-pension benefits: ils_bennt = bedes + bedsl + bdioa + bdisc + bdimb + bdiscwa + bdimbwa + bdict01 + bdict02 + bdiwi + bcrdi + bcrdicm_s + bdisv + bhlwk + buntr + bot + bmact_s + bmanc_s + boaht_s + bch_s + bunct_s + bchht_s + bwkmcee_s (in 2020) + bwkmcse_s (in 2020)</p>
         <p style='margin-bottom:8.0pt;line-height:105%;'>Pensions: ils_pen = boact00 + boactcm + boawr + bsuwd </p>
         <p style='margin-bottom:8.0pt;line-height:105%;'>Simulated benefits: ils_bensim = bwkmt_s + bfamt_s + bsa_s + bsadi_s + boamt_s + bho_s + bmu_s + bunmt_s + bmamt_s + bmamt01_s + bmascmt_s + bsauc_s + boaht_s + bch_s + bunct_s + bchmt_s + bcrdicm_s + bchht_s + bwkmcee_s (in 2020) + bwkmcse_s (in 2020) - brd_s - brduc_s</p>
         <p style='margin-bottom:8.0pt;line-height:105%;'>&nbsp;</p>
@@ -131,8 +131,8 @@
         <p style='margin-bottom:8.0pt;line-height:105%;'>Severe Disablement Allowance: bdisv</p>
         <p style='margin-bottom:8.0pt;line-height:105%;'>Statutory Sick Pay: bhlwk</p>
         <p style='margin-bottom:8.0pt;line-height:105%;'>Training Allowance: buntr</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Statutory Maternity Pay: bmaer</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Maternity Allowance: bmana</p>
+        <p style='margin-bottom:8.0pt;line-height:105%;'>Statutory Maternity Pay: bmact_s</p>
+        <p style='margin-bottom:8.0pt;line-height:105%;'>Maternity Allowance: bmanc_s</p>
         <p style='margin-bottom:8.0pt;line-height:105%;'>other non-means-tested benefits: bot</p>
         <p style='margin-bottom:8.0pt;line-height:105%;'>Base State pension: boact00</p>
         <p style='margin-bottom:8.0pt;line-height:105%;'>Second State Pension: boactcm</p>
@@ -425,12 +425,12 @@
         <ReadVar>buntr</ReadVar>
       </OptionalVariable>
       <OptionalVariable>
-        <Name>bmaer</Name>
-        <ReadVar>bmaer</ReadVar>
+        <Name>bmact_s</Name>
+        <ReadVar>bmact_s</ReadVar>
       </OptionalVariable>
       <OptionalVariable>
-        <Name>bmana</Name>
-        <ReadVar>bmana</ReadVar>
+        <Name>bmanc_s</Name>
+        <ReadVar>bmanc_s</ReadVar>
       </OptionalVariable>
       <OptionalVariable>
         <Name>bot</Name>
@@ -2747,12 +2747,12 @@ in EUROMOD.</span></p>]]>
                 <Parameters>
                   <Parameter>
                     <Name>BasePar</Name>
-                    <VarName>bmaer</VarName>
+                    <VarName>bmact_s</VarName>
                     <Reform>false</Reform>
                   </Parameter>
                   <Parameter>
                     <Name>RefPar</Name>
-                    <VarName>bmaer</VarName>
+                    <VarName>bmact_s</VarName>
                   </Parameter>
                 </Parameters>
               </CellAction>
@@ -2764,12 +2764,12 @@ in EUROMOD.</span></p>]]>
                 <Parameters>
                   <Parameter>
                     <Name>BasePar</Name>
-                    <VarName>bmana</VarName>
+                    <VarName>bmanc_s</VarName>
                     <Reform>false</Reform>
                   </Parameter>
                   <Parameter>
                     <Name>RefPar</Name>
-                    <VarName>bmana</VarName>
+                    <VarName>bmanc_s</VarName>
                   </Parameter>
                 </Parameters>
               </CellAction>

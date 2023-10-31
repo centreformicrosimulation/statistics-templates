@@ -20,7 +20,7 @@
         <p style='line-height:1.5'>The projected behavioural response is taken to be the greater of the first and second measures described above. The projected change in taxable income associated the behavioural response is defined as a change in employment income where a person is employed with greater earnings (yem + yse) than pension income (ypp), and has sufficient earnings to ensure that the behavioural change will not result in a negative value. If these conditions are not met, then the change in taxable income is assumed to fall in order of priority on pension (ypp), investment (yiy), private transfers (ypt), and property income (ypr), whichever source is sufficient to remain positive following the behavioural adjusment. If no income source satisfying the positive condition imposed on the adjustment can be identified then the behavioural response is ignored.</p>
         <p style='line-height:1.5'>Reference is made throughout this template to <u>Reform - static</u> projections that omit behavioural responses and <u>Reform - dynamic</u> projections that include behavioural responses. Reference is also made to <u>first-order effects</u> that report the difference between the base and static reform projections, <u>second-order effects</u> that report the difference between the static and dynamic reform projections, and <u>total effects</u> that report the difference between the base and dynamic reform projections. Hence, total effect = static effect + dynamic effect.</p>
         <b><span style='color:#0070C0'>Income concepts: </span></b></p>
-        <p style='line-height:1.5'><u>Market/Original incomes</u> are the sum of income from employment and self-employment plus income from other sources. Other sources include income from investment, property, private pensions, private transfers, and income of children younger than 16, minus private transfers paid to other households.</p>
+        <p style='line-height:1.5'><u>Market/Original incomes</u> are the sum of income from employment and self-employment plus income from other sources. Other sources of market income include income from investment, property, private pensions, private transfers, and income of children younger than 16, minus private transfers paid to other households.</p>
         <p style='line-height:1.5'>All analyses of disposable income are presented on two bases: Before Housing Costs (BHC) and After Housing Costs (AHC).</p>
         <p style='line-height:1.5'><u>Disposable income BHC</u> is the sum of market incomes and benefits (incl. pensions) minus taxes and national insurance contributions.</p>
         <p style='line-height:1.5'><u>Disposable income AHC</u> equals disposable income BHC minus housing costs, where housing costs are from the Households Below Average Income (HBAI) micro-data. Housing costs include: rent (gross of housing benefit); water rates; community water charges and council water charges; mortgage interest payments; structural insurance premiums.</p>
@@ -42,109 +42,94 @@
         <p style='line-height:1.5;margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;'><span style='font-family:Symbol'>·    </span><u>Adults</u> are defined as anyone who is not a child and not an elderly (i.e. being aged 16 or above, or 19 or above if full-time non-advanced education and not married, and up to the age of 64)</p>
         <p style='line-height:1.5;margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;'><span style='font-family:Symbol'>·    </span>Someone is <u>in work</u> if he/she has income from employment or self-employment </p>
         <p style='margin-bottom:8.0pt;line-height:105%;'>&nbsp;</p>
-        <p style='line-height:1.5'><b><span style='color:#0070C0'>The income concepts used throughout and the corresponding UKMOD variables are as follows:</span></b></p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Total market income: ils_origy (UKMOD variable)</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Employment and self-employment income: ils_earns</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Means-tested non-pension benefits: ils_benmt</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Non-means-tested non-pension benefits: ils_bennt</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Pensions: ils_pen</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>All benefits: ils_ben = ils_pen + ils_benmt + ils_bennt</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Direct taxes: ils_tax</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Employee National Insurance contributions: ils_sicee</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Self-employed National Insurance contributions: ils_sicse</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Other National Insurance contributions: ils_sicot</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>All employee/self-employed/other National Insurance Contributions: ils_sicdy = ils_sicee + ils_sicse + ils_sicot</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Disposable income BHC: ils_dispy = ils_origy + ils_ben – ils_tax – ils_sicdy</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Disposable income AHC: il_dispy_ahc = ils_dispy – xhc_hbai</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Employer National Insurance contributions: ils_sicer</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Credited National Insurance contributions: ils_sicct</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>&nbsp;</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'><b>Total market incomes</b> in more detail:</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Employment and self-employment income: ils_earns = yem + yse + yemmc_s (in 2020)</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Other sources: yiy + yot01 + ypr + ypp + yptot + yptmp – xmp</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Employment income: yem</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Self-employment income: yse</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Coronavirus Job Retention Scheme contribution paid by employer (in 2020 only with simulation of Covid-19 shocks): yemmc_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Investment income: yiy</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Income from odd jobs: yot01</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Property income: ypr</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Personal pension: ypp</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Private transfers (non-taxable): yptot</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Received maintenance payment: yptmp</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Maintenance paid: xmp</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'><b>Government revenue through taxes and National Insurance contributions</b> in more detail:</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Direct taxes: ils_tax = tin_s + i_bmu_tmu</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Simulated taxes: ils_taxsim = tin_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Personal Income Tax: tin_s = tin00_s + tin12_s + tin11_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Devolved taxes in Scotland: tin12_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Devolved taxes in Wales: tin11_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Non-devolved taxes: tin00_s = i_tin_rUK_NSND + i_tin_sav + i_tin_div</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Non-devolved non-saving non-dividend taxes: i_tin_rUK_NSND</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Non-devolved saving income taxes: i_tin_sav</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Non-devolved dividend income taxes: i_tin_div</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Council tax: i_bmu_tmu</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Simulated Employee National Insurance contributions: ils_sicee = tscee_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Simulated Self-employed National Insurance contributions: ils_sicse = tscse_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Other National Insurance contributions (non-existent in the UK): ils_sicot</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Simulated Employer National Insurance contributions (not part of disposable income): ils_sicer = tscer_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>&nbsp;</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'><b>Credited National Insurance contributions</b> (not part of disposable income) (in 2020 only with simulation of Covid-19 shocks): ils_sicct = tscct_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>&nbsp;</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'><b>Government expenditure on benefits and tax credits</b> in more detail:</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Means-tested non-pension benefits: ils_benmt = bsauc_s - brduc_s + bsa_s + bunmt_s + bsadi_s + boamt_s + bmu_s + bho_s - brd_s + bwkmt_s + bfamt_s + bmamt_s + bmamt01_s + bmascmt_s + bchmt_s + bchmt01_s + bmascmt01_s + bched01_s + bched02_s + bhosc01_s + bsaec_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Non-means-tested non-pension benefits: ils_bennt = bedes + bedsl + bdioa + bdisc + bdimb + bdiscwa + bdimbwa + bdict01 + bdict02 + bdiwi + bcrdi + bcrdicm_s + bdisv + bhlwk + buntr + bot + bmact_s + bmanc_s + boaht_s + bch_s + bunct_s + bchht_s + bwkmcee_s (in 2020) + bwkmcse_s (in 2020)</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Pensions: ils_pen = boact00 + boactcm + boawr + bsuwd </p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Simulated benefits: ils_bensim = bwkmt_s + bfamt_s + bsa_s + bsadi_s + boamt_s + bho_s + bmu_s + bunmt_s + bmamt_s + bmamt01_s + bmascmt_s + bsauc_s + boaht_s + bch_s + bunct_s + bchmt_s + bcrdicm_s + bchht_s + bwkmcee_s (in 2020) + bwkmcse_s (in 2020) - brd_s - brduc_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>&nbsp;</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Universal Credit: bsauc_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Benefit cap (reducing Universal Credit): brduc_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Income Support &amp; income-based Jobseekers Allowance (unless simulated separately): bsa_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Income-based Jobseeker's Allowance: bunmt_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Income-related Employment and Support Allowance: bsadi_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Pension Credit: boamt_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Council Tax Benefit/Reduction: bmu_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Housing Benefit: bho_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Benefit cap (reducing Housing Benefit): brd_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Working Tax Credit: bwkmt_s </p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Child Tax Credit: bfamt_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Sure Start Maternity Grant: bmamt_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Healthy Start (food) voucher: bmamt01_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Best Start Grant (Scotland): bmascmt_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Scottish Child Payment: bchmt_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Scottish Child Payment Bridging Payment: bchmt01_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Best Start foods (Scotland): bmascmt01_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Free school meals: bched01_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>School clothing grant: bched02_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Discretionary Housing Payments (Scotland): bhosc01_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Cost of Living Payment: bsaec_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Winter Fuel Allowance: boaht_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Child Benefit: bch_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Contribution-based Jobseeker's Allowance: bunct_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Scottish Carer’s Allowance Supplement: bcrdicm_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Scottish Child Winter Heating Assistance: bchht_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Coronavirus Job Retention Scheme (in 2020 only with simulation of Covid-19 shocks): bwkmcee_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Self-Employment Income Support Scheme (in 2020 only with simulation of Covid-19 shocks): bwkmcse_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Student payments: bedes</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Student Loan: bedsl</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Attendance allowance: bdioa</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Disability Living Allowance: bdisc</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Disability Living (mobility) Allowance: bdimb</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Personal Independence Payment living allowance: bdiscwa</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Personal Independence Payment mobility: bdimbwa</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Incapacity Benefit: bdict01</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Contributory Employment and Support Allowance: bdict02</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Industrial injuries pension: bdiwi</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Invalid Carer's Allowance: bcrdi</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Severe Disablement Allowance: bdisv</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Statutory Sick Pay: bhlwk</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Training Allowance: buntr</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Statutory Maternity Pay: bmact_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Maternity Allowance: bmanc_s</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>other non-means-tested benefits: bot</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Base State pension: boact00</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Second State Pension: boactcm</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>War pension: boawr</p>
-        <p style='margin-bottom:8.0pt;line-height:105%;'>Widow's pension: bsuwd</p>
+        <p style='line-height:1.5'><b><span style='color:#0070C0'>The income concepts used throughout and the corresponding UKMOD variables are as follows</span></b></p>
+        <p style='line-height:1.5;'><b>Total market income</b>: ils_origy = ils_earns + other sources of market income</p>
+        <p style='line-height:1.5;margin-left:12.0pt;'>   Employment and self-employment income: ils_earns = yem + yse</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Employment income: yem</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Self-employment income: yse</p>
+        <p style='line-height:1.5;margin-left:12.0pt;'>   Other sources of market income: yiy + yot01 + ypr + ypp + yptot + yptmp - xmp - tpcee_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Investment income: yiy</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Income from odd jobs: yot01</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Property income: ypr</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Personal pension: ypp</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Private transfers (non-taxable): yptot</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Received maintenance payment: yptmp</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Maintenance paid: xmp</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Employee private compulsory pension contributions: tpcee_s</p>
+        <p style='line-height:1.5;margin-left:0.0pt;'><b>Government revenue through taxes and national insurance contributions</b>: ils_tax + ils_sicdy + ils_sicer</p>
+        <p style='line-height:1.5;margin-left:12.0pt;'>   Direct taxes: ils_tax = ils_taxsim + i_bmu_tmu</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Personal income tax: ils_taxsim = tin_s = tin12_s + tin11_s + tin00_s</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Devolved taxes in Scotland: tin12_s</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Devolved taxes in Wales: tin11_s</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Non-devolved taxes: tin00_s = i_tin_rUK_NSND + i_tin_sav + i_tin_div</p>
+        <p style='line-height:1.5;margin-left:48.0pt;'>            Non-devolved non-saving non-dividend taxes: i_tin_rUK_NSND</p>
+        <p style='line-height:1.5;margin-left:48.0pt;'>            Non-devolved saving income taxes: i_tin_sav</p>
+        <p style='line-height:1.5;margin-left:48.0pt;'>            Non-devolved dividend income taxes: i_tin_div</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Council tax: i_bmu_tmu</p>
+        <p style='line-height:1.5;margin-left:12.0pt;'>   All national insurance contributions: ils_sicdy + ils_sicer</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      National insurance contributions (personal): ils_sicdy = ils_sicee + ils_sicse + ils_sicot</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Employee national insurance contributions: ils_sicee = tscee_s</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Self-employed national insurance contributions: ils_sicse = tscse_s</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Other national insurance contributions (non-existent in the UK): ils_sicot</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      National insurance contributions (employer): ils_sicer = tscer_s</p>
+        <p style='line-height:1.5;'><b>Credited national insurance contributions</b>: ils_sicct = tscct_s</p>
+        <p style='line-height:1.5;'><b>Government expenditure on benefits and tax credits</b>: ils_ben = ils_benmt + ils_bennt + ils_pen</p>
+        <p style='line-height:1.5;margin-left:12.0pt;'>   Means-tested non-pension benefits: ils_benmt = bsauc_s - brduc_s + bunmt_s + bsa_s + bsadi_s + boamt_s + bmu_s + bho_s - brd_s + bwkmt_s + bfamt_s + bmamt_s + bmamt01_s + bmascmt_s + bch_s + bchmt_s + bchmt01_s + bmascmt01_s + bched01_s + bched02_s + bhosc01_s + bsaec_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Universal Credit: bsauc_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Benefit cap (reducing Universal Credit): brduc_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Income-based Jobseeker's Allowance: bunmt_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Income Support not simulated elsewhere: bsa_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Income-related Employment and Support Allowance: bsadi_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Pension Credit: boamt_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Council Tax Benefit/Reduction: bmu_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Housing Benefit: bho_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Benefit cap (reducing Housing Benefit): brd_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Working Tax Credit: bwkmt_s </p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Child Tax Credit: bfamt_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Sure Start Maternity Grant: bmamt_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Healthy Start (food) voucher: bmamt01_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Best Start Grant (Scotland, from 2019): bmascmt_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Child benefit: bch_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Scottish Child Payment (including bridging, from 2020): bchmt_s + bchmt01_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Best Start foods (Scotland, from 2020): bmascmt01_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Free School meals (from 2017): bched01_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      School clothing grant (from 2017): bched02_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Discretionary Housing Payments (Scotland, from 2017): bhosc01_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Cost of Living Payment (selected years): bsaec_s</p>
+        <p style='line-height:1.5;margin-left:12.0pt;'>   Non-means-tested non-pension benefits: ils_bennt = simulated non-means-tested non-pension benefits + non-simulated non-means-tested non-pension benefits</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      simulated non-means-tested non-pension benefits: bmact_s + bmanc_s + bpact_s + boaht_s + bunct_s + bchht_s + bcrdicm_s + bwkmcee_s + bwkmcse_s</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Statutory Maternity Pay: bmact_s</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Maternity Allowance: bmanc_s</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Statutory Paternity Pay: bpact_s</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Winter Fuel Allowance: boaht_s</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Contribution-based Jobseeker's Allowance: bunct_s</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Scottish Child Winter Heating Assistance (from 2020): bchht_s</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Scottish Carer's Allowance Supplement (from 2018): bcrdicm_s</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Coronavirus Job Retention Scheme (2020 and 2021 with Covid-19 shocks): bwkmcee_s</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Self-Employment Income Support Scheme (2020 and 2021 with Covid-19 shocks): bwkmcse_s</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      non-simulated non-means-tested non-pension benefits: bedes + bedsl + bdioa + bdisc + bdimb + bdiscwa + bdimbwa + bdict01 + bdict02 + bdiwi + bcrdi + bdisv + bhlwk + buntr + bot</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Student payments: bedes</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Student Loan: bedsl</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Attendance allowance: bdioa</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Disability Living Allowance: bdisc</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Disability Living (mobility) Allowance: bdimb</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Personal Independence Payment living allowance: bdiscwa</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Personal Independence Payment mobility: bdimbwa</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Incapacity Benefit: bdict01</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Contributory Employment and Support Allowance: bdict02</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Industrial injuries pension: bdiwi</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Carer's Allowance: bcrdi</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Severe Disablement Allowance: bdisv</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Statutory Sick Pay: bhlwk</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Training Allowance: buntr</p>
+        <p style='line-height:1.5;margin-left:36.0pt;'>         Other non-means-tested benefits: bot</p>
+        <p style='line-height:1.5;margin-left:12.0pt;'>   Pensions: ils_pen = boact00 + boactcm + boawr + bsuwd</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Base State pension: boact00</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Second State Pension: boactcm</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      War pension: boawr</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>      Widow's pension: bsuwd</p>
+        <p style='line-height:1.5;margin-left:0.0pt;'><b>Disposable income BHC</b>: ils_dispy = ils_origy + ils_ben – ils_tax – ils_sicdy (ils_sicer not reported as income)</p>
+        <p style='line-height:1.5;margin-left:0.0pt;'><b>Disposable income AHC</b>: il_dispy_ahc = ils_dispy – xhc_hbai</p>
         <p style='line-height:1.5'><span lang=EN>&nbsp;</span></p>
       ]]>
     </GeneralDescription>
@@ -491,6 +476,10 @@
         <ReadVar>bmact_s_prim1</ReadVar>
       </OptionalVariable>
       <OptionalVariable>
+        <Name>bpact_sPrim</Name>
+        <ReadVar>bpact_s_prim1</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
         <Name>bmanc_sPrim</Name>
         <ReadVar>bmanc_s_prim1</ReadVar>
       </OptionalVariable>
@@ -713,6 +702,10 @@
       <OptionalVariable>
         <Name>bmact_s</Name>
         <ReadVar>bmact_s</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>bpact_s</Name>
+        <ReadVar>bpact_s</ReadVar>
       </OptionalVariable>
       <OptionalVariable>
         <Name>bmanc_s</Name>
@@ -1313,7 +1306,17 @@
       <Action>
         <CalculationType>CreateArithmetic</CalculationType>
         <OutputVar>bchmttot_s</OutputVar>
-        <FormulaString><![CDATA[DATA_VAR[@bchmt_s] - DATA_VAR[@bchmt01_s]]]></FormulaString>
+        <FormulaString><![CDATA[DATA_VAR[@bchmt_s] + DATA_VAR[@bchmt01_s]]]></FormulaString>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>nmtben_s</OutputVar>
+        <FormulaString><![CDATA[DATA_VAR[@bmact_s] + DATA_VAR[@bmanc_s] + DATA_VAR[@bpact_s] + DATA_VAR[@boaht_s] + DATA_VAR[@bunct_s] + DATA_VAR[@bchht_s] + DATA_VAR[@bcrdicm_s] + DATA_VAR[@bwkmcee_s] + DATA_VAR[@bwkmcse_s]]]></FormulaString>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>nmtben</OutputVar>
+        <FormulaString><![CDATA[DATA_VAR[@bedes] + DATA_VAR[@bedsl] + DATA_VAR[@bdioa] + DATA_VAR[@bdisc] + DATA_VAR[@bdimb] + DATA_VAR[@bdiscwa] + DATA_VAR[@bdimbwa] + DATA_VAR[@bdict01] + DATA_VAR[@bdict02] + DATA_VAR[@bdiwi] + DATA_VAR[@bcrdi] + DATA_VAR[@bdisv] + DATA_VAR[@bhlwk] + DATA_VAR[@buntr] + DATA_VAR[@bot]]]></FormulaString>
       </Action>
       <Action>
         <CalculationType>CreateArithmetic</CalculationType>
@@ -1332,8 +1335,13 @@
       </Action>
       <Action>
         <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>SicAll</OutputVar>
+        <FormulaString><![CDATA[DATA_VAR[@Sic] + DATA_VAR[@ilsSicEr]]]></FormulaString>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
         <OutputVar>GovRevenue</OutputVar>
-        <FormulaString><![CDATA[DATA_VAR[@ilsTax] + DATA_VAR[@Sic] + DATA_VAR[@ilsSicEr]]]></FormulaString>
+        <FormulaString><![CDATA[DATA_VAR[@ilsTax] + DATA_VAR[@SicAll]]]></FormulaString>
       </Action>
       <Action>
         <CalculationType>CreateArithmetic</CalculationType>
@@ -1353,12 +1361,27 @@
       <Action>
         <CalculationType>CreateArithmetic</CalculationType>
         <OutputVar>SicPrim</OutputVar>
-        <FormulaString><![CDATA[DATA_VAR[@ilsSicEePrim] + DATA_VAR[@ilsSicSe] + DATA_VAR[@ilsSicOtPrim]]]></FormulaString>
+        <FormulaString><![CDATA[DATA_VAR[@ilsSicEePrim] + DATA_VAR[@ilsSicSePrim] + DATA_VAR[@ilsSicOtPrim]]]></FormulaString>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>SicAllPrim</OutputVar>
+        <FormulaString><![CDATA[DATA_VAR[@SicPrim] + DATA_VAR[@ilsSicErPrim]]]></FormulaString>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>nmtben_sPrim</OutputVar>
+        <FormulaString><![CDATA[DATA_VAR[@bmact_sPrim] + DATA_VAR[@bmanc_sPrim] + DATA_VAR[@bpact_sPrim] + DATA_VAR[@boaht_sPrim] + DATA_VAR[@bunct_sPrim] + DATA_VAR[@bchht_sPrim] + DATA_VAR[@bcrdicm_sPrim] + DATA_VAR[@bwkmcee_sPrim] + DATA_VAR[@bwkmcse_sPrim]]]></FormulaString>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>nmtbenPrim</OutputVar>
+        <FormulaString><![CDATA[DATA_VAR[@bedesPrim] + DATA_VAR[@bedslPrim] + DATA_VAR[@bdioaPrim] + DATA_VAR[@bdiscPrim] + DATA_VAR[@bdimbPrim] + DATA_VAR[@bdiscwaPrim] + DATA_VAR[@bdimbwaPrim] + DATA_VAR[@bdict01Prim] + DATA_VAR[@bdict02Prim] + DATA_VAR[@bdiwiPrim] + DATA_VAR[@bcrdiPrim] + DATA_VAR[@bdisvPrim] + DATA_VAR[@bhlwkPrim] + DATA_VAR[@buntrPrim] + DATA_VAR[@botPrim]]]></FormulaString>
       </Action>
       <Action>
         <CalculationType>CreateArithmetic</CalculationType>
         <OutputVar>GovRevenuePrim</OutputVar>
-        <FormulaString><![CDATA[DATA_VAR[@ilsTaxPrim] + DATA_VAR[@SicPrim] + DATA_VAR[@ilsSicErPrim]]]></FormulaString>
+        <FormulaString><![CDATA[DATA_VAR[@ilsTaxPrim] + DATA_VAR[@SicAllPrim]]]></FormulaString>
       </Action>
       <Action>
         <CalculationType>CreateDeciles</CalculationType>
@@ -1797,10 +1820,12 @@
     <Page>
       <Name>FiscalOverview</Name>
       <Title><![CDATA[Market incomes and fiscal overview]]></Title>
-      <Subtitle>Yearly, mill., currency as defined in EM output</Subtitle>
+      <Subtitle>Yearly, million, currency as defined in model output</Subtitle>
       <Button>Fiscal Overview</Button>
       <Description>
-        <![CDATA[<p style='line-height:1.5'><span lang=EN>The table shows <b><span style='color:#0070C0'>total annual amounts</span></b>, distinguished by programme for the base and reform systems. The reform system also distinguishes between <b><span style='color:#0070C0'>static</span></b> projections which hold all behaviour fixed and <b><span style='color:#0070C0'>dynamic</span></b> projections that include projected behavioural responses. <b><span style='color:#0070C0'>First-order</span></b> effects report the difference between the static reform projections and the simulation base. <b><span style='color:#0070C0'>Second-order</span></b> effects report the difference between the dynamic and static reform projections. <b><span style='color:#0070C0'>Total effects</span></b> report the difference between the dynamic reform and base projections.</span></p>]]>
+        <![CDATA[
+          <p style='line-height:1.5'><span lang=EN>The table shows <b><span style='color:#0070C0'>total annual amounts and number of income recipients/tax payers </span></b>of the specified tax-benefit system(s). It provides an overview of market incomes as well as the fiscal policies covered in UKMOD.</span></p>
+        ]]>
       </Description>
       <Tables>
         <Table>
@@ -1900,7 +1925,7 @@
               </CellAction>
             </Row>
             <Row>
-              <Name>... other sources</Name>
+              <Name>... other sources of market income</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -1920,7 +1945,7 @@
               </CellAction>
             </Row>
             <Row>
-              <Name>Government revenue through taxes and National Insurance contributions</Name>
+              <Name>Government revenue through taxes and national insurance contributions</Name>
               <Strong>true</Strong>
               <HasSeparatorBefore>true</HasSeparatorBefore>
               <HasSeparatorAfter>true</HasSeparatorAfter>
@@ -1963,15 +1988,8 @@
               </CellAction>
             </Row>
             <Row>
-              <Title>(simulated taxes)</Title>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <CellAction>
-                <CalculationType>Empty</CalculationType>
-              </CellAction>
-            </Row>
-            <Row>
-              <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>...... Personal Income Tax</Name>
+              <Name>...... personal income tax (simulated)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -1992,7 +2010,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>......... Devolved taxes in Scotland</Name>
+              <Name>......... devolved taxes in Scotland</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2013,7 +2031,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>......... Devolved taxes in Wales</Name>
+              <Name>......... devolved taxes in Wales</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2034,7 +2052,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>......... Non-devolved taxes</Name>
+              <Name>......... non-devolved taxes</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2076,35 +2094,49 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>............ saving and dividend taxes</Name>
+              <Name>............ saving income taxes</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
                     <Name>BasePar</Name>
-                    <VarName>i_tin_sd</VarName>
+                    <VarName>i_tin_sav</VarName>
                     <Reform>false</Reform>
                   </Parameter>
                   <Parameter>
                     <Name>RefParS</Name>
-                    <VarName>i_tin_sdPrim</VarName>
+                    <VarName>i_tin_savPrim</VarName>
                   </Parameter>
                   <Parameter>
                     <Name>RefParD</Name>
-                    <VarName>i_tin_sd</VarName>
+                    <VarName>i_tin_sav</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <BackgroundColour>#D9D9D9</BackgroundColour>
+              <Name>............ dividend income taxes</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>i_tin_div</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParS</Name>
+                    <VarName>i_tin_divPrim</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParD</Name>
+                    <VarName>i_tin_div</VarName>
                   </Parameter>
                 </Parameters>
               </CellAction>
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>(non-simulated taxes)</Name>
-              <CellAction>
-                <CalculationType>Empty</CalculationType>
-              </CellAction>
-            </Row>
-            <Row>
-              <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>...... Council Tax</Name>
+              <Name>...... council tax (non-simulated)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2124,15 +2156,50 @@
               </CellAction>
             </Row>
             <Row>
-              <Name>(simulated National Insurance contributions)</Name>
+              <Name>... all national insurance contributions (simulated)</Name>
               <BackgroundColour>#D9D9D9</BackgroundColour>
               <CellAction>
-                <CalculationType>Empty</CalculationType>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>SicAll</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParS</Name>
+                    <VarName>SicAllPrim</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParD</Name>
+                    <VarName>SicAll</VarName>
+                  </Parameter>
+                </Parameters>
               </CellAction>
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>... employee National Insurance contributions</Name>
+              <Name>...... national insurance contributions (personal)</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>Sic</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParS</Name>
+                    <VarName>SicPrim</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParD</Name>
+                    <VarName>Sic</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <BackgroundColour>#D9D9D9</BackgroundColour>
+              <Name>......... employee national insurance contributions</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2153,7 +2220,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>... self-employed National Insurance contributions</Name>
+              <Name>......... self-employed national insurance contributions</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2174,14 +2241,28 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>... other National Insurance contributions</Name>
+              <Name>......... other national insurance contributions</Name>
               <CellAction>
-                <CalculationType>Empty</CalculationType>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>ilsSicOt</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParS</Name>
+                    <VarName>ilsSicOtPrim</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParD</Name>
+                    <VarName>ilsSicOt</VarName>
+                  </Parameter>
+                </Parameters>
               </CellAction>
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>... employer National Insurance contributions (not part of disposable income)</Name>
+              <Name>...... national insurance contributions (employer)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2201,7 +2282,7 @@
               </CellAction>
             </Row>
             <Row>
-              <Name>Credited National Insurance contributions (not part of disposable income)</Name>
+              <Name>Credited national insurance contributions</Name>
               <HasSeparatorBefore>true</HasSeparatorBefore>
               <Strong>true</Strong>
               <CellAction>
@@ -2246,7 +2327,7 @@
               </CellAction>
             </Row>
             <Row>
-              <Name>... means-tested non-pension benefits</Name>
+              <Name>... means-tested non-pension benefits (simulated)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2267,14 +2348,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Title>(simulated benefits)</Title>
-              <CellAction>
-                <CalculationType>Empty</CalculationType>
-              </CellAction>
-            </Row>
-            <Row>
-              <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Universal Credit</Name>
+              <Name>...... universal credit</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2295,7 +2369,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>(-) Benefit cap (reducing Universal Credit)</Name>
+              <Name>...... (-) benefit cap (reducing universal credit)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2316,28 +2390,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Income Support &amp; income-based Jobseekers Allowance (unless simulated separately)</Name>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>BasePar</Name>
-                    <VarName>bsa_s</VarName>
-                    <Reform>false</Reform>
-                  </Parameter>
-                  <Parameter>
-                    <Name>RefParS</Name>
-                    <VarName>bsa_sPrim</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>RefParD</Name>
-                    <VarName>bsa_s</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-            </Row>
-            <Row>
-              <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Income-based Jobseeker's Allowance</Name>
+              <Name>...... income-based jobseeker's allowance</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2358,7 +2411,28 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Income-related Employment and Support Allowance</Name>
+              <Name>...... income support not simulated elsewhere</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>bsa_s</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParS</Name>
+                    <VarName>bsa_sPrim</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParD</Name>
+                    <VarName>bsa_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <BackgroundColour>#D9D9D9</BackgroundColour>
+              <Name>...... income-related employment and support allowance</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2379,7 +2453,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Pension Credit</Name>
+              <Name>...... pension credit</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2400,7 +2474,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Council Tax Benefit/Reduction</Name>
+              <Name>...... council tax benefit/reduction</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2421,7 +2495,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Housing Benefit</Name>
+              <Name>...... housing benefit</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2442,7 +2516,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>(-) Benefit cap (reducing Housing Benefit)</Name>
+              <Name>...... (-) Benefit cap (reducing housing benefit)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2463,7 +2537,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Working Tax Credit</Name>
+              <Name>...... working tax credit</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2484,7 +2558,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Child Tax Credit</Name>
+              <Name>...... child tax credit</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2505,7 +2579,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Sure Start Maternity Grant</Name>
+              <Name>...... sure start maternity grant</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2526,7 +2600,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Healthy Start (food) voucher</Name>
+              <Name>...... healthy start (food) voucher</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2547,7 +2621,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Best Start Grant (Scotland)</Name>
+              <Name>...... best start grant (Scotland)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2568,7 +2642,28 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Scottish Child Payment (including bridging)</Name>
+              <Name>...... child benefit</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>bch_s</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParS</Name>
+                    <VarName>bch_sPrim</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParD</Name>
+                    <VarName>bch_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <BackgroundColour>#D9D9D9</BackgroundColour>
+              <Name>...... Scottish child payment (including bridging)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2589,7 +2684,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Best Start foods (Scotland)</Name>
+              <Name>...... best start foods (Scotland)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2610,7 +2705,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Free school meals</Name>
+              <Name>...... free school meals</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2631,7 +2726,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>School clothing grant</Name>
+              <Name>...... school clothing grant</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2652,7 +2747,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Discretionary Housing Payments (Scotland)</Name>
+              <Name>...... discretionary housing payments (Scotland)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2673,7 +2768,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Cost of Living Payments</Name>
+              <Name>...... cost of living payments</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2714,14 +2809,91 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Title>(simulated benefits)</Title>
+              <Title>...... non-means-tested non-pension benefits (simulated)</Title>
               <CellAction>
-                <CalculationType>Empty</CalculationType>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>nmtben_s</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParS</Name>
+                    <VarName>nmtben_sPrim</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParD</Name>
+                    <VarName>nmtben_s</VarName>
+                  </Parameter>
+                </Parameters>
               </CellAction>
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Winter Fuel Allowance</Name>
+              <Name>......... statutory maternity pay</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>bmact_s</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParS</Name>
+                    <VarName>bmact_sPrim</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParD</Name>
+                    <VarName>bmact_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <BackgroundColour>#D9D9D9</BackgroundColour>
+              <Name>......... maternity allowance</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>bmanc_s</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParS</Name>
+                    <VarName>bmanc_sPrim</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParD</Name>
+                    <VarName>bmanc_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <BackgroundColour>#D9D9D9</BackgroundColour>
+              <Name>......... statutory paternity pay</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>bpact_s</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParS</Name>
+                    <VarName>bpact_sPrim</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParD</Name>
+                    <VarName>bpact_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <BackgroundColour>#D9D9D9</BackgroundColour>
+              <Name>......... winter fuel allowance</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2742,28 +2914,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Child Benefit</Name>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>BasePar</Name>
-                    <VarName>bch_s</VarName>
-                    <Reform>false</Reform>
-                  </Parameter>
-                  <Parameter>
-                    <Name>RefParS</Name>
-                    <VarName>bch_sPrim</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>RefParD</Name>
-                    <VarName>bch_s</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-            </Row>
-            <Row>
-              <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Contribution-based Jobseeker's Allowance</Name>
+              <Name>......... contribution-based jobseeker's allowance</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2784,28 +2935,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Scottish Carer’s Allowance Supplement</Name>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>BasePar</Name>
-                    <VarName>bcrdicm_s</VarName>
-                    <Reform>false</Reform>
-                  </Parameter>
-                  <Parameter>
-                    <Name>RefParS</Name>
-                    <VarName>bcrdicm_sPrim</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>RefParD</Name>
-                    <VarName>bcrdicm_s</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-            </Row>
-            <Row>
-              <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Scottish Child Winter Heating Assistance</Name>
+              <Name>......... Scottish child winter heating assistance</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2826,7 +2956,28 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Coronavirus Job Retention Scheme (in 2020)</Name>
+              <Name>......... Scottish Carer's allowance supplement</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>bcrdicm_s</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParS</Name>
+                    <VarName>bcrdicm_sPrim</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParD</Name>
+                    <VarName>bcrdicm_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <BackgroundColour>#D9D9D9</BackgroundColour>
+              <Name>......... Coronavirus Job Retention Scheme (in 2020)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2847,7 +2998,7 @@
             </Row>
             <Row>
               <BackgroundColour>#D9D9D9</BackgroundColour>
-              <Name>Self-Employment Income Support Scheme (in 2020)</Name>
+              <Name>......... self-employment income support scheme (in 2020)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2868,14 +3019,28 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>(non-simulated benefits)</Name>
+              <Name>...... non-means-tested non-pension benefits (non-simulated)</Name>
               <CellAction>
-                <CalculationType>Empty</CalculationType>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>nmtben</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParS</Name>
+                    <VarName>nmtbenPrim</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>RefParD</Name>
+                    <VarName>nmtben</VarName>
+                  </Parameter>
+                </Parameters>
               </CellAction>
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Student payments</Name>
+              <Name>......... student payments</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2896,7 +3061,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Student Loan</Name>
+              <Name>......... student loans</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2917,7 +3082,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Attendance allowance</Name>
+              <Name>......... attendance allowance</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2938,7 +3103,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Disability Living Allowance</Name>
+              <Name>......... disability living allowance</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2959,7 +3124,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Disability Living (mobility) Allowance</Name>
+              <Name>......... disability living allowance (mobility)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2980,7 +3145,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Personal Independence Payment living allowance</Name>
+              <Name>......... personal independence payment (living)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3001,7 +3166,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Personal Independence Payment mobility</Name>
+              <Name>......... personal independence payment (mobility)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3022,7 +3187,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Incapacity Benefit</Name>
+              <Name>......... incapacity benefit</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3043,7 +3208,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Contributory Employment and Support Allowance</Name>
+              <Name>......... contributory employment and support allowance</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3064,7 +3229,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Industrial injuries pension</Name>
+              <Name>......... industrial injuries pension</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3085,7 +3250,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Invalid Carer's Allowance</Name>
+              <Name>......... invalid carer's allowance</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3106,7 +3271,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Severe Disablement Allowance</Name>
+              <Name>......... severe disablement allowance</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3127,7 +3292,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Statutory Sick Pay</Name>
+              <Name>......... statutory sick pay</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3148,7 +3313,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Training Allowance</Name>
+              <Name>......... training allowance</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3169,49 +3334,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Statutory Maternity Pay</Name>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>BasePar</Name>
-                    <VarName>bmact_s</VarName>
-                    <Reform>false</Reform>
-                  </Parameter>
-                  <Parameter>
-                    <Name>RefParS</Name>
-                    <VarName>bmact_sPrim</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>RefParD</Name>
-                    <VarName>bmact_s</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-            </Row>
-            <Row>
-              <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Maternity Allowance</Name>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>BasePar</Name>
-                    <VarName>bmanc_s</VarName>
-                    <Reform>false</Reform>
-                  </Parameter>
-                  <Parameter>
-                    <Name>RefParS</Name>
-                    <VarName>bmanc_sPrim</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>RefParD</Name>
-                    <VarName>bmanc_s</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-            </Row>
-            <Row>
-              <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Other benefits</Name>
+              <Name>......... other</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3231,7 +3354,8 @@
               </CellAction>
             </Row>
             <Row>
-              <Name>... pensions</Name>
+              <BackgroundColour>#BFBFBF</BackgroundColour>
+              <Name>... pensions (non-simulated)</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3252,14 +3376,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>(non-simulated pensions)</Name>
-              <CellAction>
-                <CalculationType>Empty</CalculationType>
-              </CellAction>
-            </Row>
-            <Row>
-              <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Basic State pension</Name>
+              <Name>...... basic state pension</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3280,7 +3397,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Second State Pension</Name>
+              <Name>...... second state pension</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3301,7 +3418,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>War pension</Name>
+              <Name>...... war pension</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3322,7 +3439,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>Widow's pension</Name>
+              <Name>...... widow's pension</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3350,30 +3467,9 @@
       <Title>Basic inequality indices</Title>
       <Button>Inequality</Button>
       <Description>
-        <![CDATA[<p style='line-height:1.5'><span lang=EN>The table shows
-the <b><span style='color:#0070C0'>Gini index and S80/20 indicator </span></b><u>for
-selected income concepts:</u> </span></p>
-<p style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
-margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;
-line-height:1.5'><span lang=EN style='font-family:"Courier New"'>·<span
-style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span lang=EN>The
-comparison of the original income with the original income after taxes shows to
-what extent taxes contribute to redistribution. </span></p>
-<p style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
-margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;
-line-height:1.5'><span lang=EN style='font-family:"Courier New"'>·<span
-style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span lang=EN>The
-comparison of the original income plus public pensions after taxes with the
-original income after taxes shows the role of public pensions for redistribution.</span></p>
-<p style='margin-left:35.7pt;text-indent:-17.85pt;line-height:
-normal;line-height:1.5'><span lang=EN style='font-family:"Courier New"'>·<span
-style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span lang=EN>The
-comparison of the original income with the disposable income shows the extent
-of income redistribution performed by the tax-benefit systems as a whole (incl.
-National Insurance contributions and benefits beyond public pensions).</span></p>
-<p style='line-height:1.5'><span lang=EN>The calculated indexes are income concept and 
-system-specific and are all equivalised at the household level. The definition of the
-top and bottom 20% is always based on equivalised household disposable income.</span></p>]]>
+        <![CDATA[
+          <p style='line-height:1.5'><span lang=EN>The table shows the <b><span style='color:#0070C0'>Gini index and S80/20 indicator </span></b><u>for selected income concepts:</u> </span></p> <p style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm; margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt; line-height:1.5'><span lang=EN style='font-family:"Courier New"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span lang=EN>The comparison of the original income with the original income after taxes shows to what extent taxes contribute to redistribution. </span></p><p style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm; margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt; line-height:1.5'><span lang=EN style='font-family:"Courier New"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span lang=EN>The comparison of the original income plus public pensions after taxes with the original income after taxes shows the role of public pensions for redistribution.</span></p> <p style='margin-left:35.7pt;text-indent:-17.85pt;line-height: normal;line-height:1.5'><span lang=EN  style='font-family:"Courier New"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span lang=EN>The comparison of the original income with the disposable income shows the extent of income redistribution performed by the tax-benefit systems as a whole (incl. National Insurance contributions and benefits beyond public pensions).</span></p> <p style='line-height:1.5'><span lang=EN>The calculated indexes are income concept and system-specific and are all equivalised at the household level. The definition of the top and bottom 20% is always based on equivalised household disposable income.</span></p>
+        ]]>
       </Description>
       <Tables>
         <Table>
@@ -4581,7 +4677,7 @@ top and bottom 20% is always based on equivalised household disposable income.</
       <Button>Mean BU income (equ)</Button>
       <Description>
         <![CDATA[
-        <p style='line-height:1.5'><span lang=EN>The table shows the <b><span style='color:#0070C0'>mean equivalised benefit unit income (disposable & original)</span></b> of the total population and selected sub-population groups. All measures of income are reported as weekly figures. The last row of each table shows the mean income of the total population. </span></p> 
+          <p style='line-height:1.5'><span lang=EN>The table shows the <b><span style='color:#0070C0'>mean equivalised benefit unit income (disposable & original)</span></b> of the total population and selected sub-population groups. The <u>last two rows</u> of each table show the mean income of the total population (<u>All</u>) and the population at-risk-of-poverty (<u>Poor</u>). </span></p> 
         ]]>
       </Description>
       <Tables>
@@ -6651,7 +6747,9 @@ top and bottom 20% is always based on equivalised household disposable income.</
       <Title>Decile and poverty cut-offs</Title>
       <Button>Cut Offs</Button>
       <Description>
-        <![CDATA[<p style='line-height:1.5'><span lang=EN>The table shows the <b><span style='color:#0070C0'>cut-off points of equivalised household disposable income </span></b>for each decile group as well as the poverty line.</span></p>]]>
+        <![CDATA[
+          <p style='line-height:1.5'><span lang=EN>The table shows the <b><span style='color:#0070C0'>cut-off points of equivalised household disposable income </span></b>for each decile group as well as the poverty line.</span></p>
+        ]]>
       </Description>
       <Tables>
         <Table>
@@ -6985,19 +7083,21 @@ top and bottom 20% is always based on equivalised household disposable income.</
       <Title>Metadata</Title>
       <Button>
         <Title>Metadata</Title>
-		<BackgroundColour>#f0e68c</BackgroundColour>
-	  </Button>
+        <BackgroundColour>#f0e68c</BackgroundColour>
+      </Button>
       <Description>
-        <![CDATA[<p style='line-height:1.5'>The table shows information on the execution: run system, dataset, output file name, add-ons and extensions selected, execution start time, execution end time and execution duration.</p>]]>
+        <![CDATA[
+          <p style='line-height:1.5'>The table shows information on the execution: run system, dataset, output file name, add-ons and extensions selected, execution start time, execution end time and execution duration.</p>
+        ]]>
       </Description>
- <Tables>
+      <Tables>
         <Table>
           <Columns>
             <Column>
               <Name>baseSys</Name>
               <Title>[baseSys] (base)</Title>
               <CellAction>
-		<CalculationType>Info</CalculationType>
+                <CalculationType>Info</CalculationType>
               </CellAction>
             </Column>
           </Columns>
@@ -7006,7 +7106,7 @@ top and bottom 20% is always based on equivalised household disposable income.</
               <Name>refSys</Name>
               <Title>[refSys]</Title>
               <CellAction>
-		<CalculationType>Info</CalculationType>
+                <CalculationType>Info</CalculationType>
               </CellAction>
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
@@ -7014,58 +7114,58 @@ top and bottom 20% is always based on equivalised household disposable income.</
           <Rows>
             <Row>
               <Name>System name</Name>
-  	      <CellAction>
+              <CellAction>
                 <CalculationType>Info</CalculationType>
-		<FormulaString>[baseSysPretty]</FormulaString>
+                <FormulaString>[baseSysPretty]</FormulaString>
               </CellAction>
             </Row>
             <Row>
               <Name>Dataset</Name>
               <CellAction>
                 <CalculationType>Info</CalculationType>
-		<FormulaString>[baseDataset]</FormulaString>
+                <FormulaString>[baseDataset]</FormulaString>
               </CellAction>
             </Row>
             <Row>
               <Name>Output file name</Name>
               <CellAction>
                 <CalculationType>Info</CalculationType>
-		<FormulaString>[baseFileName]</FormulaString>
+                <FormulaString>[baseFileName]</FormulaString>
               </CellAction>
             </Row>
             <Row>
               <Name>Extensions</Name>
               <CellAction>
                 <CalculationType>Info</CalculationType>
-		<FormulaString>[baseRunExtensionSwitches]</FormulaString>
+                <FormulaString>[baseRunExtensionSwitches]</FormulaString>
               </CellAction>
             </Row>
             <Row>
               <Name>Add-ons</Name>
               <CellAction>
                 <CalculationType>Info</CalculationType>
-		<FormulaString>[baseRunAddons]</FormulaString>
+                <FormulaString>[baseRunAddons]</FormulaString>
               </CellAction>
             </Row>
             <Row>
               <Name>Start time</Name>
               <CellAction>
                 <CalculationType>Info</CalculationType>
-		<FormulaString>[baseRunStartTime]</FormulaString>
+                <FormulaString>[baseRunStartTime]</FormulaString>
               </CellAction>
             </Row>
-	    <Row>
+            <Row>
               <Name>End time</Name>
               <CellAction>
                 <CalculationType>Info</CalculationType>
-		<FormulaString>[baseRunEndTime]</FormulaString>
+                <FormulaString>[baseRunEndTime]</FormulaString>
               </CellAction>
             </Row>
             <Row>
               <Name>Duration</Name>
               <CellAction>
                 <CalculationType>Info</CalculationType>
-		<FormulaString>[baseRunDuration]</FormulaString>
+                <FormulaString>[baseRunDuration]</FormulaString>
               </CellAction>
             </Row>
           </Rows>
@@ -7073,23 +7173,23 @@ top and bottom 20% is always based on equivalised household disposable income.</
             <ReformCell>
               <CellAction>
                 <CalculationType>Info</CalculationType>
-		<FormulaString>[refSysPretty]</FormulaString>
+                <FormulaString>[refSysPretty]</FormulaString>
               </CellAction>
               <RowName>System name</RowName>
               <ColName>refSys</ColName>
             </ReformCell>
-	    <ReformCell>
+            <ReformCell>
               <CellAction>
                 <CalculationType>Info</CalculationType>
-		<FormulaString>[refDataset]</FormulaString>
+                <FormulaString>[refDataset]</FormulaString>
               </CellAction>
               <RowName>Dataset</RowName>
               <ColName>refSys</ColName>
             </ReformCell>
-	    <ReformCell>
+            <ReformCell>
               <CellAction>
                 <CalculationType>Info</CalculationType>
-		<FormulaString>[refFileName]</FormulaString>
+                <FormulaString>[refFileName]</FormulaString>
               </CellAction>
               <RowName>Output file name</RowName>
               <ColName>refSys</ColName>
@@ -7097,7 +7197,7 @@ top and bottom 20% is always based on equivalised household disposable income.</
             <ReformCell>
               <CellAction>
                 <CalculationType>Info</CalculationType>
-		<FormulaString>[refRunExtensionSwitches]</FormulaString>
+                <FormulaString>[refRunExtensionSwitches]</FormulaString>
               </CellAction>
               <RowName>Extensions</RowName>
               <ColName>refSys</ColName>
@@ -7105,7 +7205,7 @@ top and bottom 20% is always based on equivalised household disposable income.</
             <ReformCell>
               <CellAction>
                 <CalculationType>Info</CalculationType>
-		<FormulaString>[refRunAddons]</FormulaString>
+                <FormulaString>[refRunAddons]</FormulaString>
               </CellAction>
               <RowName>Add-ons</RowName>
               <ColName>refSys</ColName>
@@ -7113,7 +7213,7 @@ top and bottom 20% is always based on equivalised household disposable income.</
             <ReformCell>
               <CellAction>
                 <CalculationType>Info</CalculationType>
-		<FormulaString>[refRunStartTime]</FormulaString>
+                <FormulaString>[refRunStartTime]</FormulaString>
               </CellAction>
               <RowName>Start time</RowName>
               <ColName>refSys</ColName>
@@ -7121,7 +7221,7 @@ top and bottom 20% is always based on equivalised household disposable income.</
             <ReformCell>
               <CellAction>
                 <CalculationType>Info</CalculationType>
-		<FormulaString>[refRunEndTime]</FormulaString>
+                <FormulaString>[refRunEndTime]</FormulaString>
               </CellAction>
               <RowName>End time</RowName>
               <ColName>refSys</ColName>
@@ -7129,7 +7229,7 @@ top and bottom 20% is always based on equivalised household disposable income.</
             <ReformCell>
               <CellAction>
                 <CalculationType>Info</CalculationType>
-		<FormulaString>[refRunDuration]</FormulaString>
+                <FormulaString>[refRunDuration]</FormulaString>
               </CellAction>
               <RowName>Duration</RowName>
               <ColName>refSys</ColName>

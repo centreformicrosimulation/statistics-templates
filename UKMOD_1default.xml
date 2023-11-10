@@ -22,7 +22,7 @@
         <p style='line-height:1.5'>All monetary amounts - except for the fiscal overview - are presented in average weekly amounts and in GBP (i.e. in the currency defined for the UKMOD output file).</p>
         <p style='line-height:1.5'>The unit of analysis is the individual, so the populations and percentages in the tables are numbers and percentages of individuals.</p>
         <p style='line-height:1.5'><b><span style='color:#0070C0'>Poverty indicators:</span></b></p>
-        <p style='line-height:1.5'>Households are defined as <u>being at risk of poverty (poor)</u> if their equivalised household disposable income is below the poverty line. <u>The poverty line</u> is defined as 60% of the country specific median equivalised household disposable income. The <u>poverty gap</u> is the difference between the poverty line and the median income of people at-risk-of poverty divided by the poverty line. The median income of people at-risk-of poverty is based on equivalised household disposable income.</p>
+        <p style='line-height:1.5'>Households are defined as <u>being at risk of poverty (poor)</u> if their equivalised household disposable income is below the poverty line. <u>The poverty line</u> is defined as 60% of the country specific median equivalised household disposable income in currency per week. The <u>poverty gap</u> is the difference between the poverty line and the median income of people at-risk-of poverty divided by the poverty line. The median income of people at-risk-of poverty is based on equivalised household disposable income per week.</p>
         <p style='line-height:1.5'>NOTE: negative equivalised household disposable incomes are recoded to 0 for all poverty related results.</p>
         <p style='line-height:1.5'><b><span style='color:#0070C0'>Inequality indicators:</span></b></p>
         <p style='line-height:1.5'><u>Gini index</u> measures the distribution of income within a country where 0 means perfect income equality and 1 means perfect income inequality. </p>
@@ -2684,7 +2684,7 @@
       <Button>Poverty</Button>
       <Description>
         <![CDATA[
-          <p style='line-height:1.5'><span lang=EN>These tables show <b><span style='color:#0070C0'>the poverty headcount </span></b><u>of the total population and selected sub-population groups</u> as well as the <u>poverty gap</u> and the <u>poverty line</u>.</span></p>
+          <p style='line-height:1.5'><span lang=EN>These tables show <b><span style='color:#0070C0'>the poverty headcount </span></b><u>of the total population and selected sub-population groups</u> as well as the <u>poverty gap</u> and the <u>poverty line</u> (in currency per week).</span></p>
         ]]>
       </Description>
       <Tables>
@@ -2786,7 +2786,7 @@
           </Columns>
           <Rows>
             <Row>
-              <Name>Poverty Headcount</Name>
+              <Name>Poverty Headcount rate</Name>
               <CellAction>
                 <CalculationType>CalculatePopulationCount</CalculationType>
                 <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>

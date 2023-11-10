@@ -1,7 +1,7 @@
 <Template>
   <TemplateInfo>
     <Name>UKMOD Statistics - Baseline/Reform</Name>
-    <Title>UKMOD Statistics - Baseline vs Reforms</Title>
+    <Title>UKMOD Statistics - Baseline vs Reform</Title>
     <Subtitle>Results for [baseSysPretty]</Subtitle>
     <Button>[baseSys]</Button>
     <Description>

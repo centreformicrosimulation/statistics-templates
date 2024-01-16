@@ -1276,12 +1276,12 @@
       </Action>
       <Action>
         <CalculationType>CalculateArithmetic</CalculationType>
-	    <FormulaString><![CDATA[iif(DATA_VAR[@spl_bhc]>0,DATA_VAR[@spl_bhc],SAVED_VAR[@deciles_eqDispy~dec~5] * 0.6)]]></FormulaString>
+        <FormulaString><![CDATA[iif(DATA_VAR[@spl_bhc]>0,DATA_VAR[@spl_bhc],SAVED_VAR[@deciles_eqDispy~dec~5] * 0.6)]]></FormulaString>
         <OutputVar>povLine</OutputVar>
       </Action>
       <Action>
         <CalculationType>CalculateArithmetic</CalculationType>
-	    <FormulaString><![CDATA[iif(DATA_VAR[@spl_ahc]>0,DATA_VAR[@spl_ahc],SAVED_VAR[@deciles_eqDispyAHC~dec~5] * 0.6)]]></FormulaString>
+        <FormulaString><![CDATA[iif(DATA_VAR[@spl_ahc]>0,DATA_VAR[@spl_ahc],SAVED_VAR[@deciles_eqDispyAHC~dec~5] * 0.6)]]></FormulaString>
         <OutputVar>povLineAHC</OutputVar>
       </Action>
       <Action>

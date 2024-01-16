@@ -14,11 +14,9 @@
     <GeneralDescription>
       <![CDATA[<p style='line-height:1.5'>
         <b><span style='color:#0070C0'>Behavioural responses: </span></b></p>
-        <p style='line-height:1.5'>Behavioural responses are projected for the reform scenario, relative to the base scenario. These responses are projected using the BVR add-on supplied with UKMOD. The BVR add-on projects behavioural responses based on two measures, following methodology described by the Scottish Fiscal Commission (SFC).</p> 
-        <p style='line-height:1.5'>The <u>first measure</u> describes behavioural responses to changes in Marginal Effective Tax Rates (METRs) implied by the reform scenario. This measure is obtained by evaluating each individual's METR under the reform scenario, dividing (1 - METR) under the reform by (1 - METR) under the base scenario and subtracting 1. This value is multiplied by Taxable Income Elasticities (TIEs) that are included as model parameters with UKMOD to obtain the percentage effect of projected behavioural responses on taxable income.</p> 
-        <p style='line-height:1.5'>The <u>second measure</u> describes behavioural responses to changes in Average Effective Tax Rates (AETRs) implied by the reform scenario. This measure is obtained by evaluating the increase in net tax burden (equal to ils_origy minus ils_dispy) implied by the reform scenario, relative to the base scenario. The increase (which may be negative) is multiplied by assumed AETR factors that are also included as parameters with UKMOD to obtain the absolute change in net tax burden due to projected behavioural responses. The change in net tax burden is converted into a measure of taxable income by dividing the total by the METR under the reform scenario.</p>
-        <p style='line-height:1.5'>The projected behavioural response is taken to be the greater of the first and second measures described above. The projected change in taxable income associated the behavioural response is defined as a change in employment income where a person is employed with greater earnings (yem + yse) than pension income (ypp), and has sufficient earnings to ensure that the behavioural change will not result in a negative value. If these conditions are not met, then the change in taxable income is assumed to fall in order of priority on pension (ypp), investment (yiy), private transfers (ypt), and property income (ypr), whichever source is sufficient to remain positive following the behavioural adjusment. If no income source satisfying the positive condition imposed on the adjustment can be identified then the behavioural response is ignored.</p>
-        <p style='line-height:1.5'>Reference is made throughout this template to <u>Reform - static</u> projections that omit behavioural responses and <u>Reform - dynamic</u> projections that include behavioural responses. Reference is also made to <u>first-order effects</u> that report the difference between the base and static reform projections, <u>second-order effects</u> that report the difference between the static and dynamic reform projections, and <u>total effects</u> that report the difference between the base and dynamic reform projections. Hence, total effect = static effect + dynamic effect.</p>
+        <p style='line-height:1.5'>Responses are projected for the reform scenario, relative to the base scenario. These responses are projected using the BVR add-on supplied with UKMOD.</p>
+        <p style='line-height:1.5'>Reference is made throughout this template to <u>Reform (static)</u> projections under the reform policy scenario that omit behavioural responses and <u>Reform (behavioural)</u> projections that include behavioural responses to the reform policy scenario. Reference is also made to <u>static effects</u> that report the difference between the base and static reform projections, <u>behavioural effects</u> that report the difference between the static and behavioural reform projections, and <u>total effects</u> that report the difference between the base and behavioural reform projections. Hence, total effect = static effect + behavioural effect.</p>
+        <p style='line-height:1.5'>For technical details regarding the methods used to evaluate the statistics reported here, see documentation of the BVR add-on provided with UKMOD.</p>
         <b><span style='color:#0070C0'>Income concepts: </span></b></p>
         <p style='line-height:1.5'><u>Market/Original incomes</u> are the sum of income from employment and self-employment plus income from other sources. Other sources of market income include income from investment, property, private pensions, private transfers, and income of children younger than 16, minus private transfers paid to other households.</p>
         <p style='line-height:1.5'>All analyses of disposable income are presented on two bases: Before Housing Costs (BHC) and After Housing Costs (AHC).</p>
@@ -516,18 +514,84 @@
         <ReadVar>bmu_s_prim1</ReadVar>
       </OptionalVariable>
       <OptionalVariable>
-        <Name>i_bmu_tmuPrim</Name>
-        <ReadVar>i_bmu_tmu_prim1</ReadVar>
+        <Name>mntr_earns</Name>
+        <ReadVar>mntr_earns</ReadVar>
       </OptionalVariable>
       <OptionalVariable>
-        <Name>mtrpc</Name>
-        <ReadVar>mtrpc</ReadVar>
-        <DefaultValue>-999</DefaultValue>
+        <Name>mntr_earns_s</Name>
+        <ReadVar>mntr_earns_s</ReadVar>
       </OptionalVariable>
       <OptionalVariable>
-        <Name>mtrpc_s</Name>
-        <ReadVar>mtrpc_s</ReadVar>
-        <DefaultValue>-999</DefaultValue>
+        <Name>mntr_ypp</Name>
+        <ReadVar>mntr_ypp</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>mntr_ypp_s</Name>
+        <ReadVar>mntr_ypp_s</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>mntr_yprtx</Name>
+        <ReadVar>mntr_yprtx</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>mntr_yprtx_s</Name>
+        <ReadVar>mntr_yprtx_s</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>mntr_yiytx</Name>
+        <ReadVar>mntr_yiytx</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>mntr_yiytx_s</Name>
+        <ReadVar>mntr_yiytx_s</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>mntr_other</Name>
+        <ReadVar>mntr_other</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>mntr_other_s</Name>
+        <ReadVar>mntr_other_s</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>intadj_earns_s</Name>
+        <ReadVar>intadj_earns_s</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>extadj_earns_s</Name>
+        <ReadVar>extadj_earns_s</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>intadj_ypp_s</Name>
+        <ReadVar>intadj_ypp_s</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>extadj_ypp_s</Name>
+        <ReadVar>extadj_ypp_s</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>intadj_yprtx_s</Name>
+        <ReadVar>intadj_yprtx_s</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>extadj_yprtx_s</Name>
+        <ReadVar>extadj_yprtx_s</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>intadj_yiytx_s</Name>
+        <ReadVar>intadj_yiytx_s</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>extadj_yiytx_s</Name>
+        <ReadVar>extadj_yiytx_s</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>intadj_other_s</Name>
+        <ReadVar>intadj_other_s</ReadVar>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>extadj_other_s</Name>
+        <ReadVar>extadj_other_s</ReadVar>
       </OptionalVariable>
       <OptionalVariable>
         <Name>spl_bhc</Name>
@@ -991,114 +1055,117 @@
     </Filters>
     <Actions>
       <Action>
-        <CalculationType>CreateFlag</CalculationType>
-        <OutputVar>IsMTRNA</OutputVar>
-        <Filter>
-          <FormulaString><![CDATA[DATA_VAR[@mtrpc] = -999]]></FormulaString>
-        </Filter>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>adj_earns_s</OutputVar>
+        <FormulaString><![CDATA[iif(DATA_VAR[@intadj_earns_s]!=0, DATA_VAR[@intadj_earns_s], DATA_VAR[@extadj_earns_s])]]></FormulaString>
       </Action>
       <Action>
-        <CalculationType>CreateFlag</CalculationType>
-        <OutputVar>IsMTRNeg</OutputVar>
-        <Filter>
-          <FormulaString><![CDATA[DATA_VAR[@mtrpc]!=-999 & DATA_VAR[@mtrpc]<0]]></FormulaString>
-        </Filter>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>adj_ypp_s</OutputVar>
+        <FormulaString><![CDATA[iif(DATA_VAR[@intadj_ypp_s]!=0, DATA_VAR[@intadj_ypp_s], DATA_VAR[@extadj_ypp_s])]]></FormulaString>
       </Action>
       <Action>
-        <CalculationType>CreateFlag</CalculationType>
-        <OutputVar>IsMTR0</OutputVar>
-        <Filter>
-          <FormulaString><![CDATA[DATA_VAR[@mtrpc]=0]]></FormulaString>
-        </Filter>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>adj_yprtx_s</OutputVar>
+        <FormulaString><![CDATA[iif(DATA_VAR[@intadj_yprtx_s]!=0, DATA_VAR[@intadj_yprtx_s], DATA_VAR[@extadj_yprtx_s])]]></FormulaString>
       </Action>
       <Action>
-        <CalculationType>CreateFlag</CalculationType>
-        <OutputVar>IsMTR0110</OutputVar>
-        <Filter>
-          <FormulaString><![CDATA[DATA_VAR[@mtrpc]>0 & DATA_VAR[@mtrpc]<=10]]></FormulaString>
-        </Filter>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>adj_yiytx_s</OutputVar>
+        <FormulaString><![CDATA[iif(DATA_VAR[@intadj_yiytx_s]!=0, DATA_VAR[@intadj_yiytx_s], DATA_VAR[@extadj_yiytx_s])]]></FormulaString>
       </Action>
       <Action>
-        <CalculationType>CreateFlag</CalculationType>
-        <OutputVar>IsMTR1120</OutputVar>
-        <Filter>
-          <FormulaString><![CDATA[DATA_VAR[@mtrpc]>10 & DATA_VAR[@mtrpc]<=20]]></FormulaString>
-        </Filter>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>adj_other_s</OutputVar>
+        <FormulaString><![CDATA[iif(DATA_VAR[@intadj_other_s]!=0, DATA_VAR[@intadj_other_s], DATA_VAR[@extadj_other_s])]]></FormulaString>
       </Action>
       <Action>
-        <CalculationType>CreateFlag</CalculationType>
-        <OutputVar>IsMTR2130</OutputVar>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>mtr_earns</OutputVar>
+        <FormulaString><![CDATA[100 - DATA_VAR[@mntr_earns]]]></FormulaString>
         <Filter>
-          <FormulaString><![CDATA[DATA_VAR[@mtrpc]>20 & DATA_VAR[@mtrpc]<=30]]></FormulaString>
-        </Filter>
-      </Action>
-      <Action>
-        <CalculationType>CreateFlag</CalculationType>
-        <OutputVar>IsMTR3140</OutputVar>
-        <Filter>
-          <FormulaString><![CDATA[DATA_VAR[@mtrpc]>30 & DATA_VAR[@mtrpc]<=40]]></FormulaString>
-        </Filter>
-      </Action>
-      <Action>
-        <CalculationType>CreateFlag</CalculationType>
-        <OutputVar>IsMTR4150</OutputVar>
-        <Filter>
-          <FormulaString><![CDATA[DATA_VAR[@mtrpc]>40 & DATA_VAR[@mtrpc]<=50]]></FormulaString>
-        </Filter>
-      </Action>
-      <Action>
-        <CalculationType>CreateFlag</CalculationType>
-        <OutputVar>IsMTR5160</OutputVar>
-        <Filter>
-          <FormulaString><![CDATA[DATA_VAR[@mtrpc]>50 & DATA_VAR[@mtrpc]<=60]]></FormulaString>
-        </Filter>
-      </Action>
-      <Action>
-        <CalculationType>CreateFlag</CalculationType>
-        <OutputVar>IsMTR6170</OutputVar>
-        <Filter>
-          <FormulaString><![CDATA[DATA_VAR[@mtrpc]>60 & DATA_VAR[@mtrpc]<=70]]></FormulaString>
-        </Filter>
-      </Action>
-      <Action>
-        <CalculationType>CreateFlag</CalculationType>
-        <OutputVar>IsMTR7180</OutputVar>
-        <Filter>
-          <FormulaString><![CDATA[DATA_VAR[@mtrpc]>70 & DATA_VAR[@mtrpc]<=80]]></FormulaString>
-        </Filter>
-      </Action>
-      <Action>
-        <CalculationType>CreateFlag</CalculationType>
-        <OutputVar>IsMTR8190</OutputVar>
-        <Filter>
-          <FormulaString><![CDATA[DATA_VAR[@mtrpc]>80 & DATA_VAR[@mtrpc]<=90]]></FormulaString>
-        </Filter>
-      </Action>
-      <Action>
-        <CalculationType>CreateFlag</CalculationType>
-        <OutputVar>IsMTR91100</OutputVar>
-        <Filter>
-          <FormulaString><![CDATA[DATA_VAR[@mtrpc]>90 & DATA_VAR[@mtrpc]<=100]]></FormulaString>
-        </Filter>
-      </Action>
-      <Action>
-        <CalculationType>CreateFlag</CalculationType>
-        <OutputVar>IsMTR101</OutputVar>
-        <Filter>
-          <FormulaString><![CDATA[DATA_VAR[@mtrpc]>100]]></FormulaString>
-        </Filter>
-      </Action>
-      <Action>
-        <CalculationType>CreateFlag</CalculationType>
-        <OutputVar>mtrFlag</OutputVar>
-        <Filter>
-          <FormulaString><![CDATA[DATA_VAR[@mtrpc]!=-999]]></FormulaString>
+          <FormulaString><![CDATA[DATA_VAR[@mntr_earns]!=0]]></FormulaString>
         </Filter>
       </Action>
       <Action>
         <CalculationType>CreateArithmetic</CalculationType>
-        <OutputVar>mtrWeight</OutputVar>
-        <FormulaString><![CDATA[DATA_VAR[@weight] * DATA_VAR[@mtrFlag]]]></FormulaString>
+        <OutputVar>mtr_earns</OutputVar>
+        <FormulaString><![CDATA[100 - DATA_VAR[@mntr_earns]]]></FormulaString>
+        <Filter>
+          <FormulaString><![CDATA[DATA_VAR[@mntr_earns]!=0]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>mtr_earns_s</OutputVar>
+        <FormulaString><![CDATA[100 - DATA_VAR[@mntr_earns_s]]]></FormulaString>
+        <Filter>
+          <FormulaString><![CDATA[DATA_VAR[@mntr_earns_s]!=0]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>mtr_ypp</OutputVar>
+        <FormulaString><![CDATA[100 - DATA_VAR[@mntr_ypp]]]></FormulaString>
+        <Filter>
+          <FormulaString><![CDATA[DATA_VAR[@mntr_ypp]!=0]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>mtr_ypp_s</OutputVar>
+        <FormulaString><![CDATA[100 - DATA_VAR[@mntr_ypp_s]]]></FormulaString>
+        <Filter>
+          <FormulaString><![CDATA[DATA_VAR[@mntr_ypp_s]!=0]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>mtr_yprtx</OutputVar>
+        <FormulaString><![CDATA[100 - DATA_VAR[@mntr_yprtx]]]></FormulaString>
+        <Filter>
+          <FormulaString><![CDATA[DATA_VAR[@mntr_yprtx]!=0]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>mtr_yprtx_s</OutputVar>
+        <FormulaString><![CDATA[100 - DATA_VAR[@mntr_yprtx_s]]]></FormulaString>
+        <Filter>
+          <FormulaString><![CDATA[DATA_VAR[@mntr_yprtx_s]!=0]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>mtr_yiytx</OutputVar>
+        <FormulaString><![CDATA[100 - DATA_VAR[@mntr_yiytx]]]></FormulaString>
+        <Filter>
+          <FormulaString><![CDATA[DATA_VAR[@mntr_yiytx]!=0]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>mtr_yiytx_s</OutputVar>
+        <FormulaString><![CDATA[100 - DATA_VAR[@mntr_yiytx_s]]]></FormulaString>
+        <Filter>
+          <FormulaString><![CDATA[DATA_VAR[@mntr_yiytx_s]!=0]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>mtr_other</OutputVar>
+        <FormulaString><![CDATA[100 - DATA_VAR[@mntr_other]]]></FormulaString>
+        <Filter>
+          <FormulaString><![CDATA[DATA_VAR[@mntr_other]!=0]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateArithmetic</CalculationType>
+        <OutputVar>mtr_other_s</OutputVar>
+        <FormulaString><![CDATA[100 - DATA_VAR[@mntr_other_s]]]></FormulaString>
+        <Filter>
+          <FormulaString><![CDATA[DATA_VAR[@mntr_other_s]!=0]]></FormulaString>
+        </Filter>
       </Action>
       <Action>
         <Reform>false</Reform>
@@ -1825,7 +1892,9 @@
       <Description>
         <![CDATA[
           <p style='line-height:1.5'><span lang=EN>The table shows <b><span style='color:#0070C0'>total annual amounts and number of income recipients/tax payers </span></b>of the specified tax-benefit system(s). It provides an overview of market incomes as well as the fiscal policies covered in UKMOD.</span></p>
-        ]]>
+          <p style='line-height:1.5'><u>Reform (static)</u> projections evaluated under the reform policy scenario omitting behavioural responses and <u>Reform (behavioural)</u> projections include behavioural responses to the reform policy scenario. <u>Static effects</u> report the difference between the base and static reform projections, <u>Behavioural effects</u> report the difference between the static and behavioural reform projections, and <u>Total effects</u> report the difference between the base and behavioural reform projections. Hence, total effect = static effect + behavioural effect.</p>
+          <p style='line-height:1.5'>For technical details regarding the methods used to evaluate the statistics reported here, see documentation of the BVR add-on provided with UKMOD.</p>
+          ]]>
       </Description>
       <Tables>
         <Table>
@@ -1852,14 +1921,14 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD Amounts</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <CalculationType>CalculateSumWeighted</CalculationType>
                 <FormulaString><![CDATA[DATA_VAR[@RefParD] * 12 / 1000000]]></FormulaString>
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS Amounts] - BASE_COL[baseSys Amounts]]]></FormulaString>
@@ -1867,7 +1936,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD Amounts] - REF_COL[refSysS Amounts]]]></FormulaString>
@@ -3469,6 +3538,8 @@
       <Description>
         <![CDATA[
           <p style='line-height:1.5'><span lang=EN>The table shows the <b><span style='color:#0070C0'>Gini index and S80/20 indicator </span></b><u>for selected income concepts:</u> </span></p> <p style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm; margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt; line-height:1.5'><span lang=EN style='font-family:"Courier New"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span lang=EN>The comparison of the original income with the original income after taxes shows to what extent taxes contribute to redistribution. </span></p><p style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm; margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt; line-height:1.5'><span lang=EN style='font-family:"Courier New"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span lang=EN>The comparison of the original income plus public pensions after taxes with the original income after taxes shows the role of public pensions for redistribution.</span></p> <p style='margin-left:35.7pt;text-indent:-17.85pt;line-height: normal;line-height:1.5'><span lang=EN  style='font-family:"Courier New"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span lang=EN>The comparison of the original income with the disposable income shows the extent of income redistribution performed by the tax-benefit systems as a whole (incl. National Insurance contributions and benefits beyond public pensions).</span></p> <p style='line-height:1.5'><span lang=EN>The calculated indexes are income concept and system-specific and are all equivalised at the household level. The definition of the top and bottom 20% is always based on equivalised household disposable income.</span></p>
+          <p style='line-height:1.5'><u>Reform (static)</u> projections evaluated under the reform policy scenario omitting behavioural responses and <u>Reform (behavioural)</u> projections include behavioural responses to the reform policy scenario. <u>Static effects</u> report the difference between the base and static reform projections, <u>Behavioural effects</u> report the difference between the static and behavioural reform projections, and <u>Total effects</u> report the difference between the base and behavioural reform projections. Hence, total effect = static effect + behavioural effect.</p>
+          <p style='line-height:1.5'>For technical details regarding the methods used to evaluate the statistics reported here, see documentation of the BVR add-on provided with UKMOD.</p>
         ]]>
       </Description>
       <Tables>
@@ -3507,7 +3578,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <CalculationType>CalculateGini</CalculationType>
                 <Parameters>
@@ -3519,7 +3590,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -3527,7 +3598,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -3684,6 +3755,8 @@
       <Description>
         <![CDATA[
           <p style='line-height:1.5'><span lang=EN>The table shows the <b><span style='color:#0070C0'>mean equivalised household income (disposable & original)</span></b> of the total population and selected sub-population groups. All measures of income are reported as weekly figures. The last row of each table shows the mean income of the total population. </span></p> 
+          <p style='line-height:1.5'><u>Reform (static)</u> projections evaluated under the reform policy scenario omitting behavioural responses and <u>Reform (behavioural)</u> projections include behavioural responses to the reform policy scenario. <u>Static effects</u> report the difference between the base and static reform projections, <u>Behavioural effects</u> report the difference between the static and behavioural reform projections, and <u>Total effects</u> report the difference between the base and behavioural reform projections. Hence, total effect = static effect + behavioural effect.</p>
+          <p style='line-height:1.5'>For technical details regarding the methods used to evaluate the statistics reported here, see documentation of the BVR add-on provided with UKMOD.</p>
         ]]>
       </Description>
       <Tables>
@@ -3724,7 +3797,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3735,7 +3808,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -3743,7 +3816,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -3806,7 +3879,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3817,7 +3890,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -3825,7 +3898,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -3888,7 +3961,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3899,7 +3972,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -3907,7 +3980,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -3982,7 +4055,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -3993,7 +4066,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -4001,7 +4074,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -4076,7 +4149,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -4087,7 +4160,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -4095,7 +4168,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -4281,7 +4354,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -4292,7 +4365,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -4300,7 +4373,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -4486,7 +4559,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -4497,7 +4570,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -4505,7 +4578,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -4596,7 +4669,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -4607,7 +4680,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -4615,7 +4688,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -4718,7 +4791,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -4729,7 +4802,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -4737,7 +4810,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -4800,7 +4873,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -4811,7 +4884,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -4819,7 +4892,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -4882,7 +4955,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -4893,7 +4966,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -4901,7 +4974,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -4976,7 +5049,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -4987,7 +5060,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -4995,7 +5068,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -5070,7 +5143,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5081,7 +5154,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -5089,7 +5162,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -5275,7 +5348,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5286,7 +5359,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -5294,7 +5367,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -5480,7 +5553,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5491,7 +5564,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -5499,7 +5572,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -5590,7 +5663,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5601,7 +5674,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -5609,7 +5682,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -5721,7 +5794,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5736,7 +5809,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -5744,7 +5817,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -5815,7 +5888,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5830,7 +5903,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -5838,7 +5911,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -5909,7 +5982,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5924,7 +5997,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -5932,7 +6005,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -6010,7 +6083,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6025,7 +6098,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -6033,7 +6106,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -6111,7 +6184,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6126,7 +6199,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -6134,7 +6207,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -6328,7 +6401,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6343,7 +6416,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -6351,7 +6424,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -6545,7 +6618,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6560,7 +6633,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -6568,7 +6641,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -6665,7 +6738,7 @@
             </ReformColumn>
             <ReformColumn>
               <Name>refSysD</Name>
-              <Title>Reform (dynamic)</Title>
+              <Title>Reform (behavioural)</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6680,7 +6753,7 @@
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[First-order]]></Title>
+              <Title><![CDATA[Static effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysS] - BASE_COL[baseSys]]]></FormulaString>
@@ -6688,7 +6761,7 @@
               <HasSeparatorBefore>true</HasSeparatorBefore>
             </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Second-order]]></Title>
+              <Title><![CDATA[Behavioural effects]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
                 <FormulaString><![CDATA[REF_COL[refSysD] - REF_COL[refSysS]]]></FormulaString>
@@ -6874,13 +6947,12 @@
       <Button>Tax Incentives</Button>
       <Description>
         <![CDATA[
-          {\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang2057{\fonttbl{\f0\fswiss\fprq2\fcharset0 Calibri;}{\f1\fnil\fcharset0 Calibri;}}{\colortbl ;\red0\green112\blue192;red0\green0\blue0;}
-          {\*\generator Riched20 10.0.17134}\viewkind4\uc1\pard\widctlpar\sa200\sl276\slmult1\cf1\b\f0\fs22 UKMOD Tax Incentives\cf2\b0 : this template provides \ul summary statistics for marginal tax rates (MTRs). MTRs report the effective tax rate applied to the last unit of currency earned. The reported statistics average only over those individuals for whom the MTR was calculated. For example, a population comprised of 100 individuals, might be divided into 10 deciles, each comprised of 10 individuals, ranked in order of ascending household disposable income. If an MTR was calculated for only 3 individuals in the lowest decile, then the respective decile average would be obtained by averaging only over those three individuals.</span></p>
-        }]]>
+          <p style='line-height:1.5'><span lang=EN>This sheet reports <b><span style='color:#0070C0'>summary statistics underlying projected behavioural responses</span></b>. These statistics include averages for the effects on <u>marginal tax rates</u> (MTRs) and the effects of behavioural responses on income at the <u>intensive and extensive margins</u>, distinguished by income source. MTRs report the effective tax rate applied to the last unit of currency earned. All statistics evaluated on all simulated observations, including those for whom no MTR was evaluated. Responses at the <u>intensive margin</u> relate to the influence of policy reforms on MTRs, and at the <u>extensive margin</u> relate to the influence on net tax burden. <u>Projected effects</u> reflect intensive margin effects where these are non-zero, and extensive margin effects otherwise.</span></p>
+        ]]>
       </Description>
       <Tables>
         <Table>
-          <Title>6.1 Marginal tax rates by income decile</Title>
+          <Title>6.1 Marginal tax rates on earnings income by income decile</Title>
           <Subtitle><![CDATA[Decile averages in percentage points]]></Subtitle>
           <CellAction>
             <CalculationType>CalculateWeightedAverage</CalculationType>
@@ -6889,33 +6961,25 @@
           <StringFormat>0.0</StringFormat>
           <ReformColumns>
             <ReformColumn>
-              <Name>baseSys</Name>
-              <Title>Base ([baseSys])</Title>
+              <Name>base</Name>
+              <Title>Base</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
                     <Name>AverageVar</Name>
-                    <VarName>mtrpc</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>WeightVar</Name>
-                    <VarName>mtrWeight</VarName>
+                    <VarName>mtr_earns</VarName>
                   </Parameter>
                 </Parameters>
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Name>refSys</Name>
-              <Title>Reform ([refSys])</Title>
+              <Name>ref</Name>
+              <Title>Reform</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
                     <Name>AverageVar</Name>
-                    <VarName>mtrpc_s</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>WeightVar</Name>
-                    <VarName>mtrWeight</VarName>
+                    <VarName>mtr_earns_s</VarName>
                   </Parameter>
                 </Parameters>
               </CellAction>
@@ -6924,7 +6988,7 @@
               <Title><![CDATA[change]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
-                <FormulaString><![CDATA[REF_COL[refSys] - REF_COL[baseSys]]]></FormulaString>
+                <FormulaString><![CDATA[REF_COL[ref] - REF_COL[base]]]></FormulaString>
               </CellAction>
             </ReformColumn>
           </ReformColumns>
@@ -6941,7 +7005,7 @@
           </Rows>
         </Table>
         <Table>
-          <Title>6.2 Marginal tax rates by family type</Title>
+          <Title>6.2 Marginal tax rates on private pension income by income decile</Title>
           <Subtitle><![CDATA[Decile averages in percentage points]]></Subtitle>
           <CellAction>
             <CalculationType>CalculateWeightedAverage</CalculationType>
@@ -6950,33 +7014,25 @@
           <StringFormat>0.0</StringFormat>
           <ReformColumns>
             <ReformColumn>
-              <Name>baseSys</Name>
-              <Title>Base ([baseSys])</Title>
+              <Name>base</Name>
+              <Title>Base</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
                     <Name>AverageVar</Name>
-                    <VarName>mtrpc</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>WeightVar</Name>
-                    <VarName>mtrWeight</VarName>
+                    <VarName>mtr_ypp</VarName>
                   </Parameter>
                 </Parameters>
               </CellAction>
             </ReformColumn>
             <ReformColumn>
-              <Name>refSys</Name>
-              <Title>Reform ([refSys])</Title>
+              <Name>ref</Name>
+              <Title>Reform</Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
                     <Name>AverageVar</Name>
-                    <VarName>mtrpc_s</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>WeightVar</Name>
-                    <VarName>mtrWeight</VarName>
+                    <VarName>mtr_ypp_s</VarName>
                   </Parameter>
                 </Parameters>
               </CellAction>
@@ -6985,89 +7041,463 @@
               <Title><![CDATA[change]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
-                <FormulaString><![CDATA[REF_COL[refSys] - REF_COL[baseSys]]]></FormulaString>
+                <FormulaString><![CDATA[REF_COL[ref] - REF_COL[base]]]></FormulaString>
               </CellAction>
             </ReformColumn>
           </ReformColumns>
           <Rows>
             <Row>
-              <Name>Single no children</Name>
-              <Tooltip>Households comprised of a single adult under state pension age.</Tooltip>
-              <CellAction>
-                <Filter>
-                  <Name>FilterSingleNoKids</Name>
-                </Filter>
-              </CellAction>
+              <Name>Decile</Name>
+              <ForEachValueOf>deciles_eqDispy</ForEachValueOf>
             </Row>
             <Row>
-              <Name>Single parents</Name>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+            </Row>
+          </Rows>
+        </Table>
+        <Table>
+          <Title>6.3 Marginal tax rates on taxable property income by income decile</Title>
+          <Subtitle><![CDATA[Decile averages in percentage points]]></Subtitle>
+          <CellAction>
+            <CalculationType>CalculateWeightedAverage</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@AverageVar]]]></FormulaString>
+          </CellAction>
+          <StringFormat>0.0</StringFormat>
+          <ReformColumns>
+            <ReformColumn>
+              <Name>base</Name>
+              <Title>Base</Title>
               <CellAction>
-                <Filter>
-                  <Name>FilterSingleParents</Name>
-                </Filter>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>mtr_yprtx</VarName>
+                  </Parameter>
+                </Parameters>
               </CellAction>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>ref</Name>
+              <Title>Reform</Title>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>mtr_yprtx_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </ReformColumn>
+            <ReformColumn>
+              <Title><![CDATA[change]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[REF_COL[ref] - REF_COL[base]]]></FormulaString>
+              </CellAction>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Decile</Name>
+              <ForEachValueOf>deciles_eqDispy</ForEachValueOf>
             </Row>
             <Row>
-              <Name>Couple one income no children</Name>
-              <Tooltip>Households comprised of two adults and no children, where one adult works and both are under state pension age.</Tooltip>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+            </Row>
+          </Rows>
+        </Table>
+        <Table>
+          <Title>6.4 Marginal tax rates on taxable investment income by income decile</Title>
+          <Subtitle><![CDATA[Decile averages in percentage points]]></Subtitle>
+          <CellAction>
+            <CalculationType>CalculateWeightedAverage</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@AverageVar]]]></FormulaString>
+          </CellAction>
+          <StringFormat>0.0</StringFormat>
+          <ReformColumns>
+            <ReformColumn>
+              <Name>base</Name>
+              <Title>Base</Title>
               <CellAction>
-                <Filter>
-                  <Name>FilterCoupleSingleIncomeNoKids</Name>
-                </Filter>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>mtr_yiytx</VarName>
+                  </Parameter>
+                </Parameters>
               </CellAction>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>ref</Name>
+              <Title>Reform</Title>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>mtr_yiytx_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </ReformColumn>
+            <ReformColumn>
+              <Title><![CDATA[change]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[REF_COL[ref] - REF_COL[base]]]></FormulaString>
+              </CellAction>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Decile</Name>
+              <ForEachValueOf>deciles_eqDispy</ForEachValueOf>
             </Row>
             <Row>
-              <Name>Couple dual income no children</Name>
-              <Tooltip>Households comprised of two adults and no children, where both adults work and are under state pension age.</Tooltip>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+            </Row>
+          </Rows>
+        </Table>
+        <Table>
+          <Title>6.5 Marginal tax rates on other private income by income decile</Title>
+          <Subtitle><![CDATA[Decile averages in percentage points]]></Subtitle>
+          <CellAction>
+            <CalculationType>CalculateWeightedAverage</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@AverageVar]]]></FormulaString>
+          </CellAction>
+          <StringFormat>0.0</StringFormat>
+          <ReformColumns>
+            <ReformColumn>
+              <Name>base</Name>
+              <Title>Base</Title>
               <CellAction>
-                <Filter>
-                  <Name>FilterCoupleDualIncomeNoKids</Name>
-                </Filter>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>mtr_other</VarName>
+                  </Parameter>
+                </Parameters>
               </CellAction>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>ref</Name>
+              <Title>Reform</Title>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>mtr_other_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </ReformColumn>
+            <ReformColumn>
+              <Title><![CDATA[change]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[REF_COL[ref] - REF_COL[base]]]></FormulaString>
+              </CellAction>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Decile</Name>
+              <ForEachValueOf>deciles_eqDispy</ForEachValueOf>
             </Row>
             <Row>
-              <Name>Couple one income with children</Name>
-              <Tooltip>Households comprised of two adults and at least one child, where one adult works and both adults are under state pension age.</Tooltip>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+            </Row>
+          </Rows>
+        </Table>
+        <Table>
+          <Title>6.6 Behavioural effects on earnings income by income decile</Title>
+          <Subtitle><![CDATA[Decile averages in percentage points]]></Subtitle>
+          <CellAction>
+            <CalculationType>CalculateWeightedAverage</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@AverageVar]]]></FormulaString>
+          </CellAction>
+          <StringFormat>0.000</StringFormat>
+          <ReformColumns>
+            <ReformColumn>
+              <Title>Intensive</Title>
+              <Tooltip>intensive margin reflects the influence of policy reforms on marginal tax rates</Tooltip>
               <CellAction>
-                <Filter>
-                  <Name>FilterCoupleSingleIncomeParents</Name>
-                </Filter>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>intadj_earns_s</VarName>
+                  </Parameter>
+                </Parameters>
               </CellAction>
+            </ReformColumn>
+            <ReformColumn>
+              <Title>Extensive</Title>
+              <Tooltip>extensive margin reflects the influence of policy reforms on net tax burden</Tooltip>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>extadj_earns_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </ReformColumn>
+            <ReformColumn>
+              <Title>Projected</Title>
+              <Tooltip>equal to the intensive margin effect when this is non-zero and the extensive margin otherwise</Tooltip>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>adj_earns_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Decile</Name>
+              <ForEachValueOf>deciles_eqDispy</ForEachValueOf>
             </Row>
             <Row>
-              <Name>Couple dual income with children</Name>
-              <Tooltip>Households comprised of two adults and at least one child, where both adults work and are under state pension age.</Tooltip>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+            </Row>
+          </Rows>
+        </Table>
+        <Table>
+          <Title>6.7 Behavioural effects on private pension income by income decile</Title>
+          <Subtitle><![CDATA[Decile averages in percentage points]]></Subtitle>
+          <CellAction>
+            <CalculationType>CalculateWeightedAverage</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@AverageVar]]]></FormulaString>
+          </CellAction>
+          <StringFormat>0.000</StringFormat>
+          <ReformColumns>
+            <ReformColumn>
+              <Title>Intensive</Title>
+              <Tooltip>intensive margin reflects the influence of policy reforms on marginal tax rates</Tooltip>
               <CellAction>
-                <Filter>
-                  <Name>FilterCoupleDualIncomeParents</Name>
-                </Filter>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>intadj_ypp_s</VarName>
+                  </Parameter>
+                </Parameters>
               </CellAction>
+            </ReformColumn>
+            <ReformColumn>
+              <Title>Extensive</Title>
+              <Tooltip>extensive margin reflects the influence of policy reforms on net tax burden</Tooltip>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>extadj_ypp_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </ReformColumn>
+            <ReformColumn>
+              <Title>Projected</Title>
+              <Tooltip>equal to the intensive margin effect when this is non-zero and the extensive margin otherwise</Tooltip>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>adj_ypp_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Decile</Name>
+              <ForEachValueOf>deciles_eqDispy</ForEachValueOf>
             </Row>
             <Row>
-              <Name>Single pensioners</Name>
-              <Tooltip>Households comprised of single adult over state pension age.</Tooltip>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+            </Row>
+          </Rows>
+        </Table>
+        <Table>
+          <Title>6.8 Behavioural effects on taxable property income by income decile</Title>
+          <Subtitle><![CDATA[Decile averages in percentage points]]></Subtitle>
+          <CellAction>
+            <CalculationType>CalculateWeightedAverage</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@AverageVar]]]></FormulaString>
+          </CellAction>
+          <StringFormat>0.000</StringFormat>
+          <ReformColumns>
+            <ReformColumn>
+              <Title>Intensive</Title>
+              <Tooltip>intensive margin reflects the influence of policy reforms on marginal tax rates</Tooltip>
               <CellAction>
-                <Filter>
-                  <Name>FilterSinglePensioners</Name>
-                </Filter>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>intadj_yprtx_s</VarName>
+                  </Parameter>
+                </Parameters>
               </CellAction>
+            </ReformColumn>
+            <ReformColumn>
+              <Title>Extensive</Title>
+              <Tooltip>extensive margin reflects the influence of policy reforms on net tax burden</Tooltip>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>extadj_yprtx_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </ReformColumn>
+            <ReformColumn>
+              <Title>Projected</Title>
+              <Tooltip>equal to the intensive margin effect when this is non-zero and the extensive margin otherwise</Tooltip>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>adj_yprtx_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Decile</Name>
+              <ForEachValueOf>deciles_eqDispy</ForEachValueOf>
             </Row>
             <Row>
-              <Name>Couple pensioners</Name>
-              <Tooltip>Households comprised of two adults over state pension age.</Tooltip>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+            </Row>
+          </Rows>
+        </Table>
+        <Table>
+          <Title>6.9 Behavioural effects on taxable investment income by income decile</Title>
+          <Subtitle><![CDATA[Decile averages in percentage points]]></Subtitle>
+          <CellAction>
+            <CalculationType>CalculateWeightedAverage</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@AverageVar]]]></FormulaString>
+          </CellAction>
+          <StringFormat>0.000</StringFormat>
+          <ReformColumns>
+            <ReformColumn>
+              <Title>Intensive</Title>
+              <Tooltip>intensive margin reflects the influence of policy reforms on marginal tax rates</Tooltip>
               <CellAction>
-                <Filter>
-                  <Name>FilterCouplePensioners</Name>
-                </Filter>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>intadj_yiytx_s</VarName>
+                  </Parameter>
+                </Parameters>
               </CellAction>
+            </ReformColumn>
+            <ReformColumn>
+              <Title>Extensive</Title>
+              <Tooltip>extensive margin reflects the influence of policy reforms on net tax burden</Tooltip>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>extadj_yiytx_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </ReformColumn>
+            <ReformColumn>
+              <Title>Projected</Title>
+              <Tooltip>equal to the intensive margin effect when this is non-zero and the extensive margin otherwise</Tooltip>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>adj_yiytx_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Decile</Name>
+              <ForEachValueOf>deciles_eqDispy</ForEachValueOf>
             </Row>
             <Row>
-              <Name>Households with disabled</Name>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+            </Row>
+          </Rows>
+        </Table>
+        <Table>
+          <Title>6.10 Behavioural effects on other private income by income decile</Title>
+          <Subtitle><![CDATA[Decile averages in percentage points]]></Subtitle>
+          <CellAction>
+            <CalculationType>CalculateWeightedAverage</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@AverageVar]]]></FormulaString>
+          </CellAction>
+          <StringFormat>0.000</StringFormat>
+          <ReformColumns>
+            <ReformColumn>
+              <Title>Intensive</Title>
+              <Tooltip>intensive margin reflects the influence of policy reforms on marginal tax rates</Tooltip>
               <CellAction>
-                <Filter>
-                  <Name>FilterHH_Disabled</Name>
-                </Filter>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>intadj_other_s</VarName>
+                  </Parameter>
+                </Parameters>
               </CellAction>
+            </ReformColumn>
+            <ReformColumn>
+              <Title>Extensive</Title>
+              <Tooltip>extensive margin reflects the influence of policy reforms on net tax burden</Tooltip>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>extadj_other_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </ReformColumn>
+            <ReformColumn>
+              <Title>Projected</Title>
+              <Tooltip>equal to the intensive margin effect when this is non-zero and the extensive margin otherwise</Tooltip>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>adj_other_s</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </ReformColumn>
+          </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Decile</Name>
+              <ForEachValueOf>deciles_eqDispy</ForEachValueOf>
             </Row>
             <Row>
               <Name>All</Name>

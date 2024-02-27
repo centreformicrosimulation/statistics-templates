@@ -225,6 +225,11 @@
     </RequiredVariables>
     <OptionalVariables>
       <OptionalVariable>
+        <Name>povLineUKvar</Name>
+        <ReadVar>i_ukpovertyline</ReadVar>
+        <DefaultValue>-999</DefaultValue>
+      </OptionalVariable>
+      <OptionalVariable>
         <Name>mtrpc</Name>
         <ReadVar>mtrpc</ReadVar>
         <DefaultValue>-999</DefaultValue>
@@ -1278,6 +1283,16 @@
         </Parameters>
       </Action>
       <Action>
+        <CalculationType>CalculateMedian</CalculationType>
+        <OutputVar>povLineUK</OutputVar>
+        <Parameters>
+          <Parameter>
+            <Name>IncomeVar</Name>
+            <VarName>povLineUKvar</VarName>
+          </Parameter>
+        </Parameters>
+      </Action>
+      <Action>
         <CalculationType>CalculateArithmetic</CalculationType>
         <FormulaString><![CDATA[SAVED_VAR[@deciles_eqDispy~dec~5] * 0.6]]></FormulaString>
         <OutputVar>povLine</OutputVar>
@@ -1291,6 +1306,11 @@
         <CalculationType>CalculateArithmetic</CalculationType>
         <FormulaString><![CDATA[SAVED_VAR[@povLine]*7*12/365]]></FormulaString>
         <OutputVar>povLineWeekly</OutputVar>
+      </Action>
+      <Action>
+        <CalculationType>CalculateArithmetic</CalculationType>
+        <FormulaString><![CDATA[SAVED_VAR[@povLineUK]*7*12/365]]></FormulaString>
+        <OutputVar>povLineWeeklyUK</OutputVar>
       </Action>
       <Action>
         <CalculationType>CalculateArithmetic</CalculationType>
@@ -1345,6 +1365,14 @@
         <Filter>
           <Name>FilterPoor</Name>
           <FormulaString><![CDATA[DATA_VAR[@eqDispy] <= SAVED_VAR[@povLine]]]></FormulaString>
+        </Filter>
+      </Action>
+      <Action>
+        <CalculationType>CreateFlag</CalculationType>
+        <OutputVar>IsPoorUK</OutputVar>
+        <Filter>
+          <Name>FilterPoorUK</Name>
+          <FormulaString><![CDATA[DATA_VAR[@eqDispy] <= SAVED_VAR[@povLineUK]]]></FormulaString>
         </Filter>
       </Action>
       <Action>
@@ -2680,11 +2708,11 @@
     </Page>
     <Page>
       <Name>Poverty</Name>
-      <Title>Basic poverty indices</Title>
       <Button>Poverty</Button>
+      <Title>Basic poverty indices</Title>
       <Description>
         <![CDATA[
-          <p style='line-height:1.5'><span lang=EN>These tables show <b><span style='color:#0070C0'>the poverty headcount </span></b><u>of the total population and selected sub-population groups</u> as well as the <u>poverty gap</u> and the <u>poverty line</u> (in currency per week).</span></p>
+          <p style='line-height:1.5'><span lang=EN>These tables show <b><span style='color:#0070C0'>the poverty headcount </span></b><u>of the total population and selected sub-population groups</u> as well as the <u>poverty gap</u> and the <u>poverty line</u> (in currency per week). Tables toward the lower half of this sheet report BHC poverty indices based on a poverty line evaluated for the entire UK population. These tables are designed to facilitate regional analysis, in conjunction with policy "ukpovertyline" of the policy spine.  The policy "ukpovertyline" is turned off by default. This policy should be turned on, along with the respective regional limitation, if the associated tables are of interest.</span></p>
         ]]>
       </Description>
       <Tables>
@@ -2833,7 +2861,7 @@
             </Row>
             <Row>
               <Name>Poverty Line AHC</Name>
-              <Title>Fixed Poverty Line</Title>
+              <Title>Poverty Line</Title>
               <Tooltip>60% of the country specific median equivalised disposable household income.</Tooltip>
               <CellAction>
                 <Parameters>
@@ -3600,6 +3628,446 @@
               <Strong>true</Strong>
             </Row>
           </Rows>
+        </Table>
+        <Table>
+          <Title>2.11 Poverty indicators - UK poverty line (BHC income)</Title>
+          <CellAction>
+            <CalculationType>CalculateArithmetic</CalculationType>
+          </CellAction>
+          <Columns>
+            <Column>
+              <Name>BHC</Name>
+              <CellAction>
+                <FormulaString><![CDATA[SAVED_VAR[@BaseVar]]]></FormulaString>
+              </CellAction>
+              <StringFormat>P2</StringFormat>
+            </Column>
+          </Columns>
+          <Rows>
+            <Row>
+			        <Name>Poverty Headcount rate</Name>
+              <CellAction>
+                <CalculationType>CalculatePopulationCount</CalculationType>
+                <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
+			          <Parameters>
+                  <Parameter>
+                    <Reform>true</Reform>
+                    <Name>BaseVar</Name>
+                    <VarName>IsPoorUK</VarName>
+                  </Parameter>
+                </Parameters>
+			        </CellAction>
+            </Row>
+            <Row>
+			        <Name>Poverty Headcount number</Name>
+              <CellAction>
+                <CalculationType>CalculatePopulationCount</CalculationType>
+                <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
+			          <Parameters>
+                  <Parameter>
+                    <Reform>true</Reform>
+                    <Name>BaseVar</Name>
+                    <VarName>IsPoorUK</VarName>
+                  </Parameter>
+                  <Parameter>
+				            <Name>GiveTotals</Name>
+					          <BoolValue>true</BoolValue>
+                  </Parameter>
+                </Parameters>
+			        </CellAction>
+              <StringFormat>#,0</StringFormat>
+            </Row>
+            <Row>
+              <Name>Poverty Line</Name>
+              <Tooltip>60% of UK median equivalised disposable household income.</Tooltip>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BaseVar</Name>
+                    <VarName>povLineWeeklyUK</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+              <StringFormat>#,0.00</StringFormat>
+            </Row>
+          </Rows>
+		    </Table>
+        <Table>
+          <Title>2.12 Poverty rates and headcount by decile - UK poverty line (BHC income)</Title>
+          <CellAction>
+            <CalculationType>CalculatePopulationCount</CalculationType>
+            <Parameters>
+              <Parameter>
+                <Reform>false</Reform>
+                <Name>BaseVar</Name>
+                <VarName>IsPoorUK</VarName>
+              </Parameter>
+            </Parameters>
+          </CellAction>
+          <Columns>
+            <Column>
+              <Name>Poverty Rates</Name>
+              <Title>Poverty Rates</Title>
+              <CellAction>
+                <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
+              </CellAction>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+              <StringFormat>P2</StringFormat>
+            </Column>
+            <Column>
+              <Name>Poverty Count</Name>
+              <Title>Poverty Count</Title>
+              <CellAction>
+                <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
+                <Parameters>
+                  <Parameter>
+		                <Name>GiveTotals</Name>
+					          <BoolValue>true</BoolValue>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+              <StringFormat>#,0</StringFormat>
+            </Column>
+          </Columns>
+          <Rows>
+            <Row>
+              <Name>Decile</Name>
+              <ForEachValueOf>deciles_eqDispy</ForEachValueOf>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+			        <HasSeparatorBefore>True</HasSeparatorBefore>
+              <Strong>true</Strong>
+            </Row>
+		      </Rows>
+        </Table>
+        <Table>
+          <Title>2.13 Poverty rates and headcount by gender - UK poverty line (BHC income)</Title>
+          <CellAction>
+            <CalculationType>CalculatePopulationCount</CalculationType>
+            <Parameters>
+              <Parameter>
+                <Reform>false</Reform>
+                <Name>BaseVar</Name>
+                <VarName>IsPoorUK</VarName>
+              </Parameter>
+            </Parameters>
+          </CellAction>
+          <Columns>
+            <Column>
+              <Name>Poverty Rates</Name>
+              <Title>Poverty Rates</Title>
+              <CellAction>
+                <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
+              </CellAction>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+              <StringFormat>P2</StringFormat>
+            </Column>
+            <Column>
+              <Name>Poverty Count</Name>
+              <Title>Poverty Count</Title>
+              <CellAction>
+                <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
+                <Parameters>
+                  <Parameter>
+                    <Name>GiveTotals</Name>
+                    <BoolValue>true</BoolValue>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+              <StringFormat>#,0</StringFormat>
+            </Column>
+          </Columns>
+          <Rows>
+            <Row>
+              <Name><![CDATA[	  Male]]></Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterMale</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Female]]></Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterFemale</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+			        <HasSeparatorBefore>True</HasSeparatorBefore>
+              <Strong>true</Strong>
+            </Row>
+          </Rows>
+        </Table>
+        <Table>
+          <Title>2.14 Poverty rates and headcount by household type - UK poverty line (BHC income)</Title>
+          <CellAction>
+            <CalculationType>CalculatePopulationCount</CalculationType>
+            <Parameters>
+              <Parameter>
+                <Reform>false</Reform>
+                <Name>BaseVar</Name>
+                <VarName>IsPoorUK</VarName>
+              </Parameter>
+            </Parameters>
+          </CellAction>
+          <Columns>
+            <Column>
+              <Name>Poverty Rates</Name>
+              <Title>Poverty Rates</Title>
+              <CellAction>
+                <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
+              </CellAction>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+              <StringFormat>P2</StringFormat>
+            </Column>
+            <Column>
+              <Name>Poverty Count</Name>
+              <Title>Poverty Count</Title>
+              <CellAction>
+                <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
+                <Parameters>
+                  <Parameter>
+                    <Name>GiveTotals</Name>
+                    <BoolValue>true</BoolValue>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+              <StringFormat>#,0</StringFormat>
+            </Column>
+          </Columns>
+          <Rows>
+            <Row>
+              <Name><![CDATA[	  No Earners]]></Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterHH_NoEarners</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  One Earner]]></Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterHH_OneEarner</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Two+ Earners]]></Name>
+              <CellAction>
+                <Filter>
+                  <Name>FilterHH_TwoPlusEarners</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  With Children]]></Name>
+              <CellAction>
+                <Filter>
+                  <Name>FilterHH_HasChildren</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Three+ Children]]></Name>
+              <CellAction>
+                <Filter>
+                  <Name>FilterHH_ThreePlusChildren</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Single no children]]></Name>
+              <Tooltip>Households comprised of a single adult under state pension age.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterSingleNoKids</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Lone Parent]]></Name>
+              <CellAction>
+                <Filter>
+                  <Name>FilterHH_LoneParent</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Young mother]]></Name>
+              <Tooltip>Women under age 25 with a dependent child.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterHH_YoungMother</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Couple one income no children]]></Name>
+              <Tooltip>Households comprised of two adults and no children, where one adult works and both are under state pension age.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterCoupleSingleIncomeNoKids</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Couple dual income no children]]></Name>
+              <Tooltip>Households comprised of two adults and no children, where both adults work and are under state pension age.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterCoupleDualIncomeNoKids</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Couple one income with children]]></Name>
+              <Tooltip>Households comprised of two adults and at least one child, where one adult works and both adults are under state pension age.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterCoupleSingleIncomeParents</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Couple dual income with children]]></Name>
+              <Tooltip>Households comprised of two adults and at least one child, where both adults work and are under state pension age.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterCoupleDualIncomeParents</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Single pensioners]]></Name>
+              <Tooltip>Households comprised of single adult over state pension age.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterSinglePensioners</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Couple pensioners]]></Name>
+              <Tooltip>Households comprised of two adults over state pension age.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterCouplePensioners</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Disabled]]></Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterHH_Disabled</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+			        <HasSeparatorBefore>True</HasSeparatorBefore>
+              <Strong>true</Strong>
+            </Row>
+          </Rows>
+        </Table>
+        <Table>
+          <Title>2.15 Poverty rates and headcount by population group - UK poverty line (BHC income)</Title>
+          <CellAction>
+            <CalculationType>CalculatePopulationCount</CalculationType>
+            <Parameters>
+              <Parameter>
+                <Reform>false</Reform>
+                <Name>BaseVar</Name>
+                <VarName>IsPoorUK</VarName>
+              </Parameter>
+            </Parameters>
+          </CellAction>
+          <Columns>
+            <Column>
+              <Name>Poverty Rates</Name>
+              <Title>Poverty Rates</Title>
+              <CellAction>
+                <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
+              </CellAction>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+              <StringFormat>P2</StringFormat>
+            </Column>
+            <Column>
+              <Name>Poverty Count</Name>
+              <Title>Poverty Count</Title>
+              <CellAction>
+                <FormulaString><![CDATA[DATA_VAR[@BaseVar]]]></FormulaString>
+                <Parameters>
+                  <Parameter>
+                    <Name>GiveTotals</Name>
+                    <BoolValue>true</BoolValue>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+              <StringFormat>#,0</StringFormat>
+            </Column>
+          </Columns>
+          <Rows>
+            <Row>
+              <Name>Children</Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterChildren</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name>Adults</Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterAdults</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name>Adults in work</Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterAdultsActive</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name>Elderly</Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterElderly</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of UK median income.</Tooltip>
+      			  <HasSeparatorBefore>True</HasSeparatorBefore>
+              <Strong>true</Strong>
+            </Row>
+		      </Rows>
         </Table>
       </Tables>
     </Page>

@@ -245,14 +245,17 @@
       <OptionalVariable>
         <Name>tin00_s</Name>
         <ReadVar>tin00_s</ReadVar>
+        <DefaultValue>0.0</DefaultValue>
       </OptionalVariable>
       <OptionalVariable>
         <Name>tin11_s</Name>
         <ReadVar>tin11_s</ReadVar>
+        <DefaultValue>0.0</DefaultValue>
       </OptionalVariable>
       <OptionalVariable>
         <Name>tin12_s</Name>
         <ReadVar>tin12_s</ReadVar>
+        <DefaultValue>0.0</DefaultValue>
       </OptionalVariable>
       <OptionalVariable>
         <Name>spl_ahc</Name>

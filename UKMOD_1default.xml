@@ -49,7 +49,7 @@
         <p style='line-height:1.5;margin-left:24.0pt;'>      Received maintenance payment: yptmp</p>
         <p style='line-height:1.5;margin-left:24.0pt;'>      Maintenance paid: xmp</p>
         <p style='line-height:1.5;margin-left:24.0pt;'>      Employee private compulsory pension contributions: tpcee_s</p>
-        <p style='line-height:1.5;margin-left:0.0pt;'><b>Government revenue through taxes and national insurance contributions</b>: ils_tax + ils_sicdy + ils_sicer</p>
+        <p style='line-height:1.5;margin-left:0.0pt;'><b>Government revenue through direct taxes and national insurance contributions</b>: ils_tax + ils_sicdy + ils_sicer</p>
         <p style='line-height:1.5;margin-left:12.0pt;'>   Direct taxes: ils_tax = ils_taxsim + i_bmu_tmu</p>
         <p style='line-height:1.5;margin-left:24.0pt;'>      Personal income tax: ils_taxsim = tin_s = tin12_s + tin11_s + tin00_s</p>
         <p style='line-height:1.5;margin-left:36.0pt;'>         Devolved taxes in Scotland: tin12_s</p>
@@ -65,6 +65,10 @@
         <p style='line-height:1.5;margin-left:36.0pt;'>         Self-employed national insurance contributions: ils_sicse = tscse_s</p>
         <p style='line-height:1.5;margin-left:36.0pt;'>         Other national insurance contributions (non-existent in the UK): ils_sicot</p>
         <p style='line-height:1.5;margin-left:24.0pt;'>      National insurance contributions (employer): ils_sicer = tscer_s</p>
+        <p style='line-height:1.5;'><b>Indirect taxes</b>: il_tco_tall = il_tco_tv + il_tco_ta + il_tco_tt</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>   Ad valorem excise: il_tco_tv</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>   Specific excise: il_tco_ta</p>
+        <p style='line-height:1.5;margin-left:24.0pt;'>   Value Added Tax: il_tco_tt</p>
         <p style='line-height:1.5;'><b>Credited national insurance contributions</b>: ils_sicct = tscct_s</p>
         <p style='line-height:1.5;'><b>Government expenditure on benefits and tax credits</b>: ils_ben = ils_benmt + ils_bennt + ils_pen</p>
         <p style='line-height:1.5;margin-left:12.0pt;'>   Means-tested non-pension benefits: ils_benmt = bsauc_s - brduc_s + bunmt_s + bsa_s + bsadi_s + boamt_s + bmu_s + bho_s - brd_s + bwkmt_s + bfamt_s + bmamt_s + bmamt01_s + bmascmt_s + bch_s + bchmt_s + bchmt01_s + bmascmt01_s + bched01_s + bched02_s + bhosc01_s + bsaec_s</p>
@@ -224,6 +228,26 @@
       </RequiredVariable>
     </RequiredVariables>
     <OptionalVariables>
+      <OptionalVariable>
+        <Name>indirectTaxes</Name>
+        <ReadVar>il_tco_tall</ReadVar>
+        <DefaultValue>0</DefaultValue>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>adValoremExcise</Name>
+        <ReadVar>il_tco_tv</ReadVar>
+        <DefaultValue>0</DefaultValue>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>specificExcise</Name>
+        <ReadVar>il_tco_ta</ReadVar>
+        <DefaultValue>0</DefaultValue>
+      </OptionalVariable>
+      <OptionalVariable>
+        <Name>valueAddedTax</Name>
+        <ReadVar>il_tco_tt</ReadVar>
+        <DefaultValue>0</DefaultValue>
+      </OptionalVariable>
       <OptionalVariable>
         <Name>povLineUKvar</Name>
         <ReadVar>i_ukpovertyline</ReadVar>
@@ -1764,7 +1788,7 @@
               </CellAction>
             </Row>
             <Row>
-              <Name>Government revenue through taxes and national insurance contributions</Name>
+              <Name>Government revenue through direct taxes and national insurance contributions</Name>
               <Strong>true</Strong>
               <HasSeparatorBefore>true</HasSeparatorBefore>
               <HasSeparatorAfter>true</HasSeparatorAfter>
@@ -1896,7 +1920,6 @@
             </Row>
             <Row>
               <Name>... all national insurance contributions (simulated)</Name>
-              <BackgroundColour>#D9D9D9</BackgroundColour>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -1973,6 +1996,57 @@
               </CellAction>
             </Row>
             <Row>
+              <Name>Government revenue through indirect taxes</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>indirectTaxes</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name>... all ad valorem excise</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>adValoremExcise</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name>... all specific excise</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>specificExcise</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name>... all value added tax</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>BasePar</Name>
+                    <VarName>valueAddedTax</VarName>
+                    <Reform>false</Reform>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Row>
+            <Row>
               <Name>Credited national insurance contributions</Name>
               <HasSeparatorBefore>true</HasSeparatorBefore>
               <Strong>true</Strong>
@@ -2003,7 +2077,6 @@
             </Row>
             <Row>
               <Name>... means-tested non-pension benefits (simulated)</Name>
-              <BackgroundColour>#D9D9D9</BackgroundColour>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -2638,7 +2711,6 @@
               </CellAction>
             </Row>
             <Row>
-              <BackgroundColour>#BFBFBF</BackgroundColour>
               <Name>... pensions (non-simulated)</Name>
               <CellAction>
                 <Parameters>
@@ -4316,7 +4388,7 @@
     <Page>
       <Name>MeanEqIncomeHH</Name>
       <Title>Mean equivalised household income disaggregation</Title>
-      <Button>Mean HH income (equ)</Button>
+      <Button>Mean HH Income (equ)</Button>
       <Description>
         <![CDATA[
           <p style='line-height:1.5'><span lang=EN>The table shows the <b><span style='color:#0070C0'>mean equivalised household income (disposable & original)</span></b> of the total population and selected sub-population groups. The <u>last two rows</u> of each table show the mean income of the total population (<u>All</u>) and the population at-risk-of-poverty (<u>Poor</u>). </span></p> 
@@ -5286,7 +5358,7 @@
     <Page>
       <Name>MeanEqIncomeBU</Name>
       <Title>Mean equivalised benefit unit income disaggregation</Title>
-      <Button>Mean BU income (equ)</Button>
+      <Button>Mean BU Income (equ)</Button>
       <Description>
         <![CDATA[
           <p style='line-height:1.5'><span lang=EN>The table shows the <b><span style='color:#0070C0'>mean equivalised benefit unit income (disposable & original)</span></b> of the total population and selected sub-population groups. The <u>last two rows</u> of each table show the mean income of the total population (<u>All</u>) and the population at-risk-of-poverty (<u>Poor</u>). </span></p> 
@@ -7568,7 +7640,7 @@
     <Page>
       <Name>HHComposition</Name>
       <Title>Distribution of the population by income decile</Title>
-      <Button>Population distribution</Button>
+      <Button>Population Distribution</Button>
       <Description>
         <![CDATA[
           <p style='line-height:1.5'><span lang=EN>The table gives background information on the household composition by presenting the <b><span style='color:#0070C0'>average household size of different decile groups (based on the equivalised household disposable income)</span></b> and the average number of children, working-age adults and elderlies. The <u>last row</u> gives the same information for the population at-risk-of-poverty.</span></p>
@@ -8298,18 +8370,303 @@
       </Tables>
     </Page>
     <Page>
+      <Name>IndirectTaxes</Name>
+      <Button>Indirect Taxes</Button>
+      <Title>Indirect taxes</Title>
+      <Description>
+        <![CDATA[
+          <p style='line-height:1.5'><span lang=EN><b><span style='color:#0070C0'>UKMOD indirect taxes</span></b>: this template reports summary statistics for three indirect taxes generated by the TCO add-on: ad valorem excise, specific excise, and value added taxes. Ad valorem excise is expressed as a percentage of producer prices, and is traditionally applied to cigarettes in the UK. Specific excise is expressed as a value per physical unit of consumption, and is traditionally applied to alcohol, tobacco, and liquid fuel products in the UK. Value added taxes are expressed as a percentage of consumer prices inclusive of excise, and is applied to a broad range of commodities in the UK. All tables report population household averages defined as <u>£ per annum per household member</u>.</span></p>
+        ]]>
+      </Description>
+      <Tables>
+        <Table>
+          <Title>9.1 Average indirect taxes by population decile (£ per annum per household member)</Title>
+          <CellAction>
+            <CalculationType>CalculateWeightedAverage</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@AverageVar]*12]]></FormulaString>
+          </CellAction>
+          <StringFormat>#,0.00</StringFormat>
+          <Columns>
+            <Column>
+              <Name>ad valorem excise</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>adValoremExcise</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Column>
+            <Column>
+              <Name>specific excise</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>specificExcise</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Column>
+            <Column>
+              <Name>value added tax</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>valueAddedTax</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Column>
+            <Column>
+              <Name>total indirect taxes</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>indirectTaxes</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Column>
+          </Columns>
+          <Rows>
+            <Row>
+              <Name>Decile</Name>
+              <Tooltip>Equivalised disposable household income before housing costs.</Tooltip>
+              <ForEachValueOf>deciles_eqDispy</ForEachValueOf>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <Strong>true</Strong>
+            </Row>
+            <Row>
+              <Name>Poor</Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <FormulaString><![CDATA[DATA_VAR[@IsPoor] > 0]]></FormulaString>
+                </Filter>
+              </CellAction>
+            </Row>
+          </Rows>
+        </Table>
+        <Table>
+          <Title>9.2 Average indirect taxes by household type (£ per annum per household member)</Title>
+          <CellAction>
+            <CalculationType>CalculateWeightedAverage</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@AverageVar]*12]]></FormulaString>
+          </CellAction>
+          <StringFormat>#,0.00</StringFormat>
+          <Columns>
+            <Column>
+              <Name>ad valorem excise</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>adValoremExcise</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Column>
+            <Column>
+              <Name>specific excise</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>specificExcise</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Column>
+            <Column>
+              <Name>value added tax</Name>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>valueAddedTax</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Column>
+            <Column>
+              <Name>total indirect taxes</Name>
+              <HasSeparatorBefore>true</HasSeparatorBefore>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>AverageVar</Name>
+                    <VarName>indirectTaxes</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Column>
+          </Columns>
+          <Rows>
+            <Row>
+              <Name><![CDATA[	  No Earners]]></Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterHH_NoEarners</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  One Earner]]></Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterHH_OneEarner</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Two+ Earners]]></Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterHH_TwoPlusEarners</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  With Children]]></Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterHH_HasChildren</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Three+ Children]]></Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterHH_ThreePlusChildren</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Single no children]]></Name>
+              <Tooltip>Households comprised of a single adult under state pension age.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterSingleNoKids</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Lone Parent]]></Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterHH_LoneParent</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Young mother]]></Name>
+              <Tooltip>Women under age 25 with a dependent child.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterHH_YoungMother</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Couple one income no children]]></Name>
+              <Tooltip>Households comprised of two adults and no children, where one adult works and both are under state pension age.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterCoupleSingleIncomeNoKids</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Couple dual income no children]]></Name>
+              <CellAction>
+                <Filter>
+                  <Name>FilterCoupleDualIncomeNoKids</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Couple one income with children]]></Name>
+              <Tooltip>Households comprised of two adults and at least one child, where one adult works and both adults are under state pension age.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterCoupleSingleIncomeParents</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Couple dual income with children]]></Name>
+              <Tooltip>Households comprised of two adults and at least one child, where both adults work and are under state pension age.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterCoupleDualIncomeParents</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Single pensioners]]></Name>
+              <Tooltip>Households comprised of single adult over state pension age.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterSinglePensioners</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Couple pensioners]]></Name>
+              <Tooltip>Households comprised of two adults over state pension age.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterCouplePensioners</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name><![CDATA[	  Disabled]]></Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
+              <CellAction>
+                <Filter>
+                  <Name>FilterHH_Disabled</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name>All</Name>
+              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
+			        <HasSeparatorBefore>True</HasSeparatorBefore>
+              <Strong>true</Strong>
+            </Row>
+          </Rows>
+        </Table>
+      </Tables>
+    </Page>
+    <Page>
       <Name>TaxIncentiveStats</Name>
       <Title>Tax Incentives for Employment</Title>
       <Button>Tax Incentives</Button>
       <Description>
         <![CDATA[
-          {\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang2057{\fonttbl{\f0\fswiss\fprq2\fcharset0 Calibri;}{\f1\fnil\fcharset0 Calibri;}}{\colortbl ;\red0\green112\blue192;red0\green0\blue0;}{\*\generator Riched20 10.0.17134}\viewkind4\uc1\pard\widctlpar\sa200\sl276\slmult1\cf1\b\f0\fs22 UKMOD Tax Incentives\cf2\b0 : this template provides \ul summary statistics for three measures of the tax incentives for employment: marginal tax rates (MTRs), net replacement rates (NRRs) and participation tax rates (PTRs). MTRs report the effective tax rate applied to the last unit of currency earned from employment. NRRs report the proportional impact on disposable income of moving from employment to unemployment. PTRs report the average effective tax rate applied to employment income. All measures are calculated on data projected for each individual with some employment income described by the input data (ils_earns > 0).</span></p>
-          <p>The reported statistics average only over those individuals for whom the respective statistic (MTR, NRR, or PTR) was calculated. For example, a population comprised of 100 individuals, might be divided into 10 deciles, each comprised of 10 individuals, ranked in order of ascending household disposable income. If an MTR was calculated for only 3 individuals in the lowest decile, then the respective decile average would be obtained by averaging only over those three individuals.</span></p>
-        }]]>
+          <p style='line-height:1.5'><span lang=EN><b><span style='color:#0070C0'>UKMOD Tax Incentives</span></b>: this template provides summary statistics for three measures of the tax incentives for employment that are generated by the BVR add-on: marginal tax rates (MTRs), net replacement rates (NRRs) and participation tax rates (PTRs). MTRs report the effective tax rate applied to the last unit of currency earned from employment. NRRs report the proportional impact on disposable income of moving from employment to unemployment. PTRs report the average effective tax rate applied to employment income. All measures are calculated on data projected for each individual with some employment income described by the input data (ils_earns > 0).</span></p>
+          <p style='line-height:1.5'><span lang=EN>The reported statistics average only over those individuals for whom the respective statistic (MTR, NRR, or PTR) was calculated. For example, a population comprised of 100 individuals, might be divided into 10 deciles, each comprised of 10 individuals, ranked in order of ascending household disposable income. If an MTR was calculated for only 3 individuals in the lowest decile, then the respective decile average would be obtained by averaging only over those three individuals.</span></p>
+        ]]>
       </Description>
       <Tables>
         <Table>
-          <Title>9.1 Statistics by income decile</Title>
+          <Title>10.1 Statistics by income decile</Title>
           <Subtitle><![CDATA[Decile averages in percentage points]]></Subtitle>
           <CellAction>
             <CalculationType>CalculateWeightedAverage</CalculationType>
@@ -8382,7 +8739,7 @@
           </Rows>
         </Table>
         <Table>
-          <Title>9.2 Statistics by family type</Title>
+          <Title>10.2 Statistics by family type</Title>
           <Subtitle><![CDATA[Decile averages in percentage points]]></Subtitle>
           <CellAction>
             <CalculationType>CalculateWeightedAverage</CalculationType>
@@ -8530,7 +8887,7 @@
           </Rows>
         </Table>
         <Table>
-          <Title>9.3 Histograms</Title>
+          <Title>10.3 Histograms</Title>
           <Subtitle><![CDATA[Population count by MTR percentage point range]]></Subtitle>
           <CellAction>
             <CalculationType>CalculateArithmetic</CalculationType>
@@ -8801,7 +9158,7 @@
           </Rows>
         </Table>
         <Table>
-          <Title>9.4 Histogram of NRRs</Title>
+          <Title>10.4 Histogram of NRRs</Title>
           <Subtitle><![CDATA[Population count by NRR percentage point range]]></Subtitle>
           <CellAction>
             <CalculationType>CalculateArithmetic</CalculationType>
@@ -9072,7 +9429,7 @@
           </Rows>
         </Table>
         <Table>
-          <Title>9.5 Histogram of PTRs</Title>
+          <Title>10.5 Histogram of PTRs</Title>
           <Subtitle><![CDATA[Population count by PTR percentage point range]]></Subtitle>
           <CellAction>
             <CalculationType>CalculateArithmetic</CalculationType>

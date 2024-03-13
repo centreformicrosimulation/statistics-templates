@@ -21,7 +21,7 @@
         <p style='line-height:1.5'>All monetary amounts - except for the fiscal overview - are presented in average weekly amounts and in GBP (i.e. in the currency defined for the UKMOD output file).</p>
         <p style='line-height:1.5'>The unit of analysis is the individual, so the populations and percentages in the tables are numbers and percentages of individuals.</p>
         <p style='line-height:1.5'><b><span style='color:#0070C0'>Poverty indicators:</span></b></p>
-        <p style='line-height:1.5'>Households are defined as <u>being at risk of poverty (poor)</u> if their equivalised household disposable income is below the poverty line. <u>The poverty line</u> is defined as 60% of the country specific median equivalised household disposable income in currency per week. The <u>poverty gap</u> is the difference between the poverty line and the median income of people at-risk-of poverty divided by the poverty line. The median income of people at-risk-of poverty is based on equivalised household disposable income.</p>
+        <p style='line-height:1.5'>Households are defined as <u>being at risk of poverty (poor)</u> if their equivalised household disposable income is below the poverty line. <u>The poverty line</u> is defined as 60% of the country specific median equivalised household disposable income in currency per week. The <u>poverty gap</u> is the difference between the poverty line and the median income of people at-risk-of poverty divided by the poverty line. The median income of people at-risk-of poverty is based on equivalised household disposable income per week.</p>
         <p style='line-height:1.5'>NOTE: negative equivalised household disposable incomes are recoded to 0 for all poverty related results.</p>
         <p style='line-height:1.5'><b><span style='color:#0070C0'>Inequality indicators:</span></b></p>
         <p style='line-height:1.5'><u>Gini index</u> measures the distribution of income within a country where 0 means perfect income equality and 1 means perfect income inequality. </p>
@@ -35,6 +35,8 @@
         <p style='line-height:1.5;margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;'><span style='font-family:Symbol'>·    </span>Someone is <u>in work</u> if he/she has income from employment or self-employment </p>
         <p style='margin-bottom:8.0pt;line-height:105%;'>&nbsp;</p>
         <p style='line-height:1.5'><b><span style='color:#0070C0'>The income concepts used throughout and the corresponding UKMOD variables are as follows</span></b></p>
+        <p style='line-height:1.5;'><b>Disposable income BHC</b>: ils_dispy = ils_origy + ils_ben – ils_tax – ils_sicdy (ils_sicer not reported as income)</p>
+        <p style='line-height:1.5;'><b>Disposable income AHC</b>: il_dispy_ahc = ils_dispy – xhc_hbai</p>
         <p style='line-height:1.5;'><b>Total market income</b>: ils_origy = ils_earns + other sources of market income</p>
         <p style='line-height:1.5;margin-left:12.0pt;'>   Employment and self-employment income: ils_earns = yem + yse</p>
         <p style='line-height:1.5;margin-left:24.0pt;'>      Employment income: yem</p>
@@ -124,8 +126,6 @@
         <p style='line-height:1.5;margin-left:24.0pt;'>      Second State Pension: boactcm</p>
         <p style='line-height:1.5;margin-left:24.0pt;'>      War pension: boawr</p>
         <p style='line-height:1.5;margin-left:24.0pt;'>      Widow's pension: bsuwd</p>
-        <p style='line-height:1.5;margin-left:0.0pt;'><b>Disposable income BHC</b>: ils_dispy = ils_origy + ils_ben – ils_tax – ils_sicdy (ils_sicer not reported as income)</p>
-        <p style='line-height:1.5;margin-left:0.0pt;'><b>Disposable income AHC</b>: il_dispy_ahc = ils_dispy – xhc_hbai</p>
         <p style='line-height:1.5'><span lang=EN>&nbsp;</span></p>
       ]]>
     </GeneralDescription>
@@ -2979,7 +2979,7 @@
             </Row>
             <Row>
               <BackgroundColour>#BFBFBF</BackgroundColour>
-              <Name>...... basic state pension</Name>
+              <Name>...... new/basic state pension</Name>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -5986,7 +5986,11 @@
       <Button>Inequality</Button>
       <Description>
         <![CDATA[
-          <p style='line-height:1.5'><span lang=EN>The table shows the <b><span style='color:#0070C0'>Gini index and S80/20 indicator </span></b><u>for selected income concepts:</u> </span></p> <p style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm; margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt; line-height:1.5'><span lang=EN style='font-family:"Courier New"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span lang=EN>The comparison of the original income with the original income after taxes shows to what extent taxes contribute to redistribution. </span></p><p style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm; margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt; line-height:1.5'><span lang=EN style='font-family:"Courier New"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span lang=EN>The comparison of the original income plus public pensions after taxes with the original income after taxes shows the role of public pensions for redistribution.</span></p> <p style='margin-left:35.7pt;text-indent:-17.85pt;line-height: normal;line-height:1.5'><span lang=EN  style='font-family:"Courier New"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span lang=EN>The comparison of the original income with the disposable income shows the extent of income redistribution performed by the tax-benefit systems as a whole (incl. National Insurance contributions and benefits beyond public pensions).</span></p> <p style='line-height:1.5'><span lang=EN>The calculated indexes are income concept and system-specific and are all equivalised at the household level. The definition of the top and bottom 20% is always based on equivalised household disposable income.</span></p>
+          <p style='line-height:1.5'><span lang=EN>The tables here report the <b><span style='color:#0070C0'>Gini index and S80/20 indicator </span></b><u>for selected income concepts:</u></span></p> 
+          <p style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm; margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt; line-height:1.5'><span lang=EN style='font-family:"Courier New"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span lang=EN>The comparison of the original income with the original income after taxes shows to what extent taxes contribute to redistribution.</span></p>
+          <p style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm; margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt; line-height:1.5'><span lang=EN style='font-family:"Courier New"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span lang=EN>The comparison of the original income plus public pensions after taxes with the original income after taxes shows the role of public pensions for redistribution.</span></p> 
+          <p style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm; margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt; line-height:1.5'><span lang=EN style='font-family:"Courier New"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span lang=EN>The comparison of disposable income with original income shows the extent of income redistribution performed by the tax-benefit system as a whole (incl. National Insurance contributions and benefits beyond public pensions).</span></p> 
+          <p style='line-height:1.5'><span lang=EN>The calculated indexes are income concept and system-specific and are all equivalised at the household level. The definition of the top and bottom 20% is always based on equivalised household disposable income.</span></p>
         ]]>
       </Description>
       <Tables>
@@ -6075,6 +6079,7 @@
           <Rows>
             <Row>
               <Name>Original Income</Name>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6091,10 +6096,10 @@
                   </Parameter>
                 </Parameters>
               </CellAction>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
             </Row>
             <Row>
               <Name>Original Income after Taxes/SIC</Name>
+              <Tooltip>Original income – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6111,10 +6116,10 @@
                   </Parameter>
                 </Parameters>
               </CellAction>
-              <Tooltip>Original income – Taxes – National Insurance Contributions.</Tooltip>
             </Row>
             <Row>
-              <Name>Original Income incl. Public Pensions after Taxes/SIC</Name>
+              <Name>Original Income plus Public Pensions after Taxes/SIC</Name>
+              <Tooltip>Original income + Public Pensions – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6131,10 +6136,10 @@
                   </Parameter>
                 </Parameters>
               </CellAction>
-              <Tooltip>Original income + Public Pensions – Taxes – National Insurance Contributions.</Tooltip>
             </Row>
             <Row>
               <Name>Disposable Income</Name>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6151,7 +6156,6 @@
                   </Parameter>
                 </Parameters>
               </CellAction>
-              <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions.</Tooltip>
             </Row>
           </Rows>
         </Table>
@@ -6240,6 +6244,7 @@
           <Rows>
             <Row>
               <Name>Original Income</Name>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6256,10 +6261,10 @@
                   </Parameter>
                 </Parameters>
               </CellAction>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
             </Row>
             <Row>
               <Name>Original Income after Taxes/SIC</Name>
+              <Tooltip>Original income – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6276,10 +6281,10 @@
                   </Parameter>
                 </Parameters>
               </CellAction>
-              <Tooltip>Original income – Taxes – National Insurance Contributions.</Tooltip>
             </Row>
             <Row>
-              <Name>Original Income incl. Public Pensions after Taxes/SIC</Name>
+              <Name>Original Income plus Public Pensions after Taxes/SIC</Name>
+              <Tooltip>Original income + Public Pensions – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6296,10 +6301,10 @@
                   </Parameter>
                 </Parameters>
               </CellAction>
-              <Tooltip>Original income + Public Pensions – Taxes – National Insurance Contributions.</Tooltip>
             </Row>
             <Row>
               <Name>Disposable Income</Name>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6316,7 +6321,6 @@
                   </Parameter>
                 </Parameters>
               </CellAction>
-              <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions - Housing Costs.</Tooltip>
             </Row>
           </Rows>
         </Table>
@@ -6343,6 +6347,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6355,6 +6360,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6449,6 +6455,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions - Housing Costs.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6461,6 +6468,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6555,6 +6563,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6567,6 +6576,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6675,6 +6685,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions - Housing Costs.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6687,6 +6698,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6795,6 +6807,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -6807,6 +6820,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7016,6 +7030,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions - Housing Costs.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7028,6 +7043,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7230,6 +7246,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7242,6 +7259,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7368,6 +7386,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions - Housing Costs.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7380,6 +7399,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7518,6 +7538,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7530,6 +7551,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7624,6 +7646,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions - Housing Costs.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7636,6 +7659,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7730,6 +7754,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7742,6 +7767,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7850,6 +7876,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions - Housing Costs.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7862,6 +7889,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7970,6 +7998,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -7982,6 +8011,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -8191,6 +8221,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions - Housing Costs.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -8203,6 +8234,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -8405,6 +8437,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -8417,6 +8450,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -8543,6 +8577,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions - Housing Costs.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -8555,6 +8590,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -8676,10 +8712,10 @@
       <Name>SharesIncome</Name>
       <Title>Income Shares</Title>
       <Button>Income Shares</Button>
-      <Subtitle>received/paid by each population Group</Subtitle>
+      <Subtitle>received/paid by each population group</Subtitle>
       <Description>
         <![CDATA[
-          <p style='line-height:1.5'><span lang=EN>The table shows the <b><span style='color:#0070C0'>shares of unequivalised household income (disposable and original)</span></b> received by different sub-population groups. The deciles are based on the equivalised household disposable income. It answers the question of how much income is concentrated in each sub-population group. The <u>last row</u> shows how much income is concentrated at the population at-risk-of-poverty.</span></p>
+          <p style='line-height:1.5'><span lang=EN>The tables here report the <b><span style='color:#0070C0'>share of unequivalised household income and income components </span></b>received or paid by each population subgroup. Where population subgroups are mutually exclusive and account for the entire population, then shares should sum to 100%. The tables answer the question of how much income or income component is concentrated in each population subgroup, revealing who receives the highest share of income support and who pays the highest share of taxes and national insurance contributions.</span></p>
         ]]>
       </Description>
       <Tables>
@@ -8694,7 +8730,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
-              <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions.</Tooltip>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -8711,7 +8747,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -8756,7 +8792,6 @@
 		        <ReformColumn>
               <Name>refSysOrig</Name>
               <Title><![CDATA[Original Income</br>[refSys]]]></Title>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -8783,11 +8818,12 @@
           <Rows>
             <Row>
               <Name>Decile</Name>
+              <Tooltip>Deciles evaluated with respect to equivalised disposable household income before housing costs.</Tooltip>
               <ForEachValueOf>deciles_eqDispy</ForEachValueOf>
             </Row>
             <Row>
               <Name>Poor</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
+              <Tooltip>Equivalised disposable household income before housing costs lower than 60% of the country specific median income.</Tooltip>
               <HasSeparatorBefore>true</HasSeparatorBefore>
               <CellAction>
                 <Filter>
@@ -8808,7 +8844,7 @@
             <Column>
               <Name>baseSysDisp</Name>
               <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
-              <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions.</Tooltip>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions - Housing Costs.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -8825,7 +8861,7 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -8870,7 +8906,6 @@
             <ReformColumn>
               <Name>refSysOrig</Name>
               <Title><![CDATA[Original Income</br>[refSys]]]></Title>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -8897,11 +8932,12 @@
           <Rows>
             <Row>
               <Name>Decile</Name>
+              <Tooltip>Deciles evaluated with respect to equivalised disposable household income after housing costs.</Tooltip>
               <ForEachValueOf>deciles_eqDispyAHC</ForEachValueOf>
             </Row>
             <Row>
               <Name>Poor</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
+              <Tooltip>Equivalised disposable household income after housing costs lower than 60% of the country specific median income.</Tooltip>
               <HasSeparatorBefore>true</HasSeparatorBefore>
               <CellAction>
                 <Filter>
@@ -8912,7 +8948,7 @@
           </Rows>
         </Table>
         <Table>
-          <Title>7.3 Income shares by gender (BHC income)</Title>
+          <Title>7.3 Income shares by gender</Title>
           <CellAction>
             <CalculationType>CalculateSumWeighted</CalculationType>
             <FormulaString><![CDATA[DATA_VAR[@VarDecSum] / SAVED_VAR[@VarTotSum] ]]></FormulaString>
@@ -8921,8 +8957,8 @@
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
-              <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions.</Tooltip>
+              <Title><![CDATA[Disposable Income (BHC)</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -8937,120 +8973,10 @@
               </CellAction>
             </Column>
             <Column>
-              <Name>baseSysOrig</Name>
-              <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>VarDecSum</Name>
-                    <VarName>ilsOrigy</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>VarTotSum</Name>
-                    <VarName>totalOrigy</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
+              <Name>baseSysDispAHC</Name>
+              <Title><![CDATA[Disposable Income (AHC)</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions - Housing Costs.</Tooltip>
               <HasSeparatorBefore>True</HasSeparatorBefore>
-            </Column>
-          </Columns>
-		  <ReformColumns>
-		    <ReformColumn>
-              <Name>refSysDisp</Name>
-              <Title><![CDATA[Disposable Income</br>[refSys]]]></Title>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>VarDecSum</Name>
-                    <VarName>ilsDispy</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>VarTotSum</Name>
-                    <VarName>totalDispy</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-              <TiesWith>baseSysDisp</TiesWith>
-		    </ReformColumn>
-            <ReformColumn>
-              <Title><![CDATA[Difference <br />to base]]></Title>
-              <CellAction>
-                <CalculationType>CalculateArithmetic</CalculationType>
-                <FormulaString><![CDATA[REF_COL[refSysDisp] - BASE_COL[baseSysDisp]]]></FormulaString>
-              </CellAction>
-              <TiesWith>baseSysDisp</TiesWith>
-            </ReformColumn>
-		    <ReformColumn>
-              <Name>refSysOrig</Name>
-              <Title><![CDATA[Original Income</br>[refSys]]]></Title>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>VarDecSum</Name>
-                    <VarName>ilsOrigy</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>VarTotSum</Name>
-                    <VarName>totalOrigy</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-              <TiesWith>baseSysOrig</TiesWith>
-		    </ReformColumn>
-            <ReformColumn>
-              <Title><![CDATA[Difference <br />to base]]></Title>
-              <CellAction>
-                <CalculationType>CalculateArithmetic</CalculationType>
-                <FormulaString><![CDATA[REF_COL[refSysOrig] - BASE_COL[baseSysOrig]]]></FormulaString>
-              </CellAction>
-              <TiesWith>baseSysOrig</TiesWith>
-            </ReformColumn>
-		  </ReformColumns>
-          <Rows>
-            <Row>
-              <Name>Male</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
-              <CellAction>
-                <Filter>
-                  <Name>FilterMale</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name>Female</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
-              <CellAction>
-                <Filter>
-                  <Name>FilterFemale</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name>Poor</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
-              <HasSeparatorBefore>true</HasSeparatorBefore>
-              <CellAction>
-                <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@IsPoor] > 0]]></FormulaString>
-                </Filter>
-              </CellAction>
-            </Row>
-          </Rows>
-        </Table>
-        <Table>
-          <Title>7.4 Income shares by gender (AHC income)</Title>
-          <CellAction>
-            <CalculationType>CalculateSumWeighted</CalculationType>
-            <FormulaString><![CDATA[DATA_VAR[@VarDecSum] / SAVED_VAR[@VarTotSum] ]]></FormulaString>
-          </CellAction>
-          <StringFormat>P2</StringFormat>
-          <Columns>
-            <Column>
-              <Name>baseSysDisp</Name>
-              <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
-              <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -9067,52 +8993,8 @@
             <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>VarDecSum</Name>
-                    <VarName>ilsOrigy</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>VarTotSum</Name>
-                    <VarName>totalOrigy</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
               <HasSeparatorBefore>True</HasSeparatorBefore>
-            </Column>
-          </Columns>
-		  <ReformColumns>
-		    <ReformColumn>
-              <Name>refSysDisp</Name>
-              <Title><![CDATA[Disposable Income</br>[refSys]]]></Title>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>VarDecSum</Name>
-                    <VarName>ilsDispyAHC</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>VarTotSum</Name>
-                    <VarName>totalDispyAHC</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-              <TiesWith>baseSysDisp</TiesWith>
-		    </ReformColumn>
-            <ReformColumn>
-              <Title><![CDATA[Difference <br />to base]]></Title>
-              <CellAction>
-                <CalculationType>CalculateArithmetic</CalculationType>
-                <FormulaString><![CDATA[REF_COL[refSysDisp] - BASE_COL[baseSysDisp]]]></FormulaString>
-              </CellAction>
-              <TiesWith>baseSysDisp</TiesWith>
-            </ReformColumn>
-		    <ReformColumn>
-              <Name>refSysOrig</Name>
-              <Title><![CDATA[Original Income</br>[refSys]]]></Title>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -9125,96 +9007,12 @@
                   </Parameter>
                 </Parameters>
               </CellAction>
-              <TiesWith>baseSysOrig</TiesWith>
-		    </ReformColumn>
-            <ReformColumn>
-              <Title><![CDATA[Difference <br />to base]]></Title>
-              <CellAction>
-                <CalculationType>CalculateArithmetic</CalculationType>
-                <FormulaString><![CDATA[REF_COL[refSysOrig] - BASE_COL[baseSysOrig]]]></FormulaString>
-              </CellAction>
-              <TiesWith>baseSysOrig</TiesWith>
-            </ReformColumn>
-		  </ReformColumns>
-          <Rows>
-            <Row>
-              <Name>Male</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
-              <CellAction>
-                <Filter>
-                  <Name>FilterMale</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name>Female</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
-              <CellAction>
-                <Filter>
-                  <Name>FilterFemale</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name>Poor</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
-              <HasSeparatorBefore>true</HasSeparatorBefore>
-              <CellAction>
-                <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@IsPoorAHC] > 0]]></FormulaString>
-                </Filter>
-              </CellAction>
-            </Row>
-          </Rows>
-        </Table>
-        <Table>
-          <Title>7.5 Income shares by household type (BHC income)</Title>
-          <CellAction>
-            <CalculationType>CalculateSumWeighted</CalculationType>
-            <FormulaString><![CDATA[DATA_VAR[@VarDecSum] / SAVED_VAR[@VarTotSum] ]]></FormulaString>
-          </CellAction>
-          <StringFormat>P2</StringFormat>
-          <Columns>
-            <Column>
-              <Name>baseSysDisp</Name>
-              <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
-              <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions.</Tooltip>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>VarDecSum</Name>
-                    <VarName>ilsDispy</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>VarTotSum</Name>
-                    <VarName>totalDispy</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-            </Column>
-            <Column>
-              <Name>baseSysOrig</Name>
-              <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>VarDecSum</Name>
-                    <VarName>ilsOrigy</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>VarTotSum</Name>
-                    <VarName>totalOrigy</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-              <HasSeparatorBefore>True</HasSeparatorBefore>
             </Column>
           </Columns>
           <ReformColumns>
             <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title><![CDATA[Disposable Income</br>[refSys]]]></Title>
+              <Title><![CDATA[Disposable Income (BHC)</br>[refSys]]]></Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -9230,6 +9028,23 @@
               <TiesWith>baseSysDisp</TiesWith>
             </ReformColumn>
             <ReformColumn>
+              <Name>refSysDispAHC</Name>
+              <Title><![CDATA[Disposable Income (AHC)</br>[refSys]]]></Title>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>VarDecSum</Name>
+                    <VarName>ilsDispyAHC</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>VarTotSum</Name>
+                    <VarName>totalDispyAHC</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+              <TiesWith>baseSysDispAHC</TiesWith>
+            </ReformColumn>
+            <ReformColumn>
               <Title><![CDATA[Difference <br />to base]]></Title>
               <CellAction>
                 <CalculationType>CalculateArithmetic</CalculationType>
@@ -9238,9 +9053,16 @@
               <TiesWith>baseSysDisp</TiesWith>
             </ReformColumn>
             <ReformColumn>
+              <Title><![CDATA[Difference <br />to base]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[REF_COL[refSysDispAHC] - BASE_COL[baseSysDispAHC]]]></FormulaString>
+              </CellAction>
+              <TiesWith>baseSysDispAHC</TiesWith>
+            </ReformColumn>
+            <ReformColumn>
               <Name>refSysOrig</Name>
               <Title><![CDATA[Original Income</br>[refSys]]]></Title>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -9263,7 +9085,165 @@
               </CellAction>
               <TiesWith>baseSysOrig</TiesWith>
             </ReformColumn>
-          </ReformColumns>
+		      </ReformColumns>
+          <Rows>
+            <Row>
+              <Name>Male</Name>
+              <CellAction>
+                <Filter>
+                  <Name>FilterMale</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+            <Row>
+              <Name>Female</Name>
+              <CellAction>
+                <Filter>
+                  <Name>FilterFemale</Name>
+                </Filter>
+              </CellAction>
+            </Row>
+          </Rows>
+        </Table>
+        <Table>
+          <Title>7.4 Income shares by household type</Title>
+          <CellAction>
+            <CalculationType>CalculateSumWeighted</CalculationType>
+            <FormulaString><![CDATA[DATA_VAR[@VarDecSum] / SAVED_VAR[@VarTotSum] ]]></FormulaString>
+          </CellAction>
+          <StringFormat>P2</StringFormat>
+          <Columns>
+            <Column>
+              <Name>baseSysDisp</Name>
+              <Title><![CDATA[Disposable Income (BHC)</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions.</Tooltip>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>VarDecSum</Name>
+                    <VarName>ilsDispy</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>VarTotSum</Name>
+                    <VarName>totalDispy</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Column>
+            <Column>
+              <Name>baseSysDispAHC</Name>
+              <Title><![CDATA[Disposable Income (AHC)</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions - Housing Costs.</Tooltip>
+              <HasSeparatorBefore>True</HasSeparatorBefore>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>VarDecSum</Name>
+                    <VarName>ilsDispyAHC</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>VarTotSum</Name>
+                    <VarName>totalDispyAHC</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Column>
+            <Column>
+              <Name>baseSysOrig</Name>
+              <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
+              <HasSeparatorBefore>True</HasSeparatorBefore>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>VarDecSum</Name>
+                    <VarName>ilsOrigy</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>VarTotSum</Name>
+                    <VarName>totalOrigy</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Column>
+          </Columns>
+          <ReformColumns>
+            <ReformColumn>
+              <Name>refSysDisp</Name>
+              <Title><![CDATA[Disposable Income (BHC)</br>[refSys]]]></Title>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>VarDecSum</Name>
+                    <VarName>ilsDispy</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>VarTotSum</Name>
+                    <VarName>totalDispy</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+              <TiesWith>baseSysDisp</TiesWith>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>refSysDispAHC</Name>
+              <Title><![CDATA[Disposable Income (AHC)</br>[refSys]]]></Title>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>VarDecSum</Name>
+                    <VarName>ilsDispyAHC</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>VarTotSum</Name>
+                    <VarName>totalDispyAHC</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+              <TiesWith>baseSysDispAHC</TiesWith>
+            </ReformColumn>
+            <ReformColumn>
+              <Title><![CDATA[Difference <br />to base]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[REF_COL[refSysDisp] - BASE_COL[baseSysDisp]]]></FormulaString>
+              </CellAction>
+              <TiesWith>baseSysDisp</TiesWith>
+            </ReformColumn>
+            <ReformColumn>
+              <Title><![CDATA[Difference <br />to base]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[REF_COL[refSysDispAHC] - BASE_COL[baseSysDispAHC]]]></FormulaString>
+              </CellAction>
+              <TiesWith>baseSysDispAHC</TiesWith>
+            </ReformColumn>
+            <ReformColumn>
+              <Name>refSysOrig</Name>
+              <Title><![CDATA[Original Income</br>[refSys]]]></Title>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>VarDecSum</Name>
+                    <VarName>ilsOrigy</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>VarTotSum</Name>
+                    <VarName>totalOrigy</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+              <TiesWith>baseSysOrig</TiesWith>
+            </ReformColumn>
+            <ReformColumn>
+              <Title><![CDATA[Difference <br />to base]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[REF_COL[refSysOrig] - BASE_COL[baseSysOrig]]]></FormulaString>
+              </CellAction>
+              <TiesWith>baseSysOrig</TiesWith>
+            </ReformColumn>
+		      </ReformColumns>
           <Rows>
             <Row>
               <Name><![CDATA[	  No Earners]]></Name>
@@ -9392,15 +9372,10 @@
                 </Filter>
               </CellAction>
             </Row>
-            <Row>
-              <Name>All</Name>
-			        <HasSeparatorBefore>True</HasSeparatorBefore>
-              <Strong>true</Strong>
-            </Row>
           </Rows>
         </Table>
         <Table>
-          <Title>7.6 Income shares by household type (AHC income)</Title>
+          <Title>7.5 Income shares by population group</Title>
           <CellAction>
             <CalculationType>CalculateSumWeighted</CalculationType>
             <FormulaString><![CDATA[DATA_VAR[@VarDecSum] / SAVED_VAR[@VarTotSum] ]]></FormulaString>
@@ -9409,251 +9384,8 @@
           <Columns>
             <Column>
               <Name>baseSysDisp</Name>
-              <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
-              <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions.</Tooltip>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>VarDecSum</Name>
-                    <VarName>ilsDispyAHC</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>VarTotSum</Name>
-                    <VarName>totalDispyAHC</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-            </Column>
-            <Column>
-              <Name>baseSysOrig</Name>
-              <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>VarDecSum</Name>
-                    <VarName>ilsOrigy</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>VarTotSum</Name>
-                    <VarName>totalOrigy</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-              <HasSeparatorBefore>True</HasSeparatorBefore>
-            </Column>
-          </Columns>
-		  <ReformColumns>
-		    <ReformColumn>
-              <Name>refSysDisp</Name>
-              <Title><![CDATA[Disposable Income</br>[refSys]]]></Title>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>VarDecSum</Name>
-                    <VarName>ilsDispyAHC</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>VarTotSum</Name>
-                    <VarName>totalDispyAHC</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-              <TiesWith>baseSysDisp</TiesWith>
-		    </ReformColumn>
-            <ReformColumn>
-              <Title><![CDATA[Difference <br />to base]]></Title>
-              <CellAction>
-                <CalculationType>CalculateArithmetic</CalculationType>
-                <FormulaString><![CDATA[REF_COL[refSysDisp] - BASE_COL[baseSysDisp]]]></FormulaString>
-              </CellAction>
-              <TiesWith>baseSysDisp</TiesWith>
-            </ReformColumn>
-		    <ReformColumn>
-              <Name>refSysOrig</Name>
-              <Title><![CDATA[Original Income</br>[refSys]]]></Title>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>VarDecSum</Name>
-                    <VarName>ilsOrigy</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>VarTotSum</Name>
-                    <VarName>totalOrigy</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-              <TiesWith>baseSysOrig</TiesWith>
-            </ReformColumn>
-            <ReformColumn>
-              <Title><![CDATA[Difference <br />to base]]></Title>
-              <CellAction>
-                <CalculationType>CalculateArithmetic</CalculationType>
-                <FormulaString><![CDATA[REF_COL[refSysOrig] - BASE_COL[baseSysOrig]]]></FormulaString>
-              </CellAction>
-              <TiesWith>baseSysOrig</TiesWith>
-            </ReformColumn>
-          </ReformColumns>
-          <Rows>
-            <Row>
-              <Name><![CDATA[	  No Earners]]></Name>
-              <CellAction>
-                <Filter>
-                  <Name>FilterHH_NoEarners</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name><![CDATA[	  One Earner]]></Name>
-              <CellAction>
-                <Filter>
-                  <Name>FilterHH_OneEarner</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name><![CDATA[	  Two+ Earners]]></Name>
-              <CellAction>
-                <Filter>
-                  <Name>FilterHH_TwoPlusEarners</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name><![CDATA[	  With Children]]></Name>
-              <CellAction>
-                <Filter>
-                  <Name>FilterHH_HasChildren</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name><![CDATA[	  Three+ Children]]></Name>
-              <CellAction>
-                <Filter>
-                  <Name>FilterHH_ThreePlusChildren</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name><![CDATA[	  Single no children]]></Name>
-              <Tooltip>Households comprised of a single adult under state pension age.</Tooltip>
-              <CellAction>
-                <Filter>
-                  <Name>FilterSingleNoKids</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name><![CDATA[	  Lone Parent]]></Name>
-              <CellAction>
-                <Filter>
-                  <Name>FilterHH_LoneParent</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name><![CDATA[	  Young mother]]></Name>
-              <Tooltip>Women under age 25 with a dependent child.</Tooltip>
-              <CellAction>
-                <Filter>
-                  <Name>FilterHH_YoungMother</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name><![CDATA[	  Couple one income no children]]></Name>
-              <Tooltip>Households comprised of two adults and no children, where one adult works and both are under state pension age.</Tooltip>
-              <CellAction>
-                <Filter>
-                  <Name>FilterCoupleSingleIncomeNoKids</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name><![CDATA[	  Couple dual income no children]]></Name>
-              <Tooltip>Households comprised of two adults and no children, where both adults work and are under state pension age.</Tooltip>
-              <CellAction>
-                <Filter>
-                  <Name>FilterCoupleDualIncomeNoKids</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name><![CDATA[	  Couple one income with children]]></Name>
-              <Tooltip>Households comprised of two adults and at least one child, where one adult works and both adults are under state pension age.</Tooltip>
-              <CellAction>
-                <Filter>
-                  <Name>FilterCoupleSingleIncomeParents</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name><![CDATA[	  Couple dual income with children]]></Name>
-              <Tooltip>Households comprised of two adults and at least one child, where both adults work and are under state pension age.</Tooltip>
-              <CellAction>
-                <Filter>
-                  <Name>FilterCoupleDualIncomeParents</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name><![CDATA[	  Single pensioners]]></Name>
-              <Tooltip>Households comprised of single adult over state pension age.</Tooltip>
-              <CellAction>
-                <Filter>
-                  <Name>FilterSinglePensioners</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name><![CDATA[	  Couple pensioners]]></Name>
-              <Tooltip>Households comprised of two adults over state pension age.</Tooltip>
-              <CellAction>
-                <Filter>
-                  <Name>FilterCouplePensioners</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name><![CDATA[	  Disabled]]></Name>
-              <CellAction>
-                <Filter>
-                  <Name>FilterHH_Disabled</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name>All</Name>
-			        <HasSeparatorBefore>True</HasSeparatorBefore>
-              <Strong>true</Strong>
-            </Row>
-            <Row>
-              <Name>Poor</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
-              <HasSeparatorBefore>true</HasSeparatorBefore>
-              <CellAction>
-                <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@IsPoorAHC] > 0]]></FormulaString>
-                </Filter>
-              </CellAction>
-            </Row>
-          </Rows>
-        </Table>
-        <Table>
-          <Title>7.7 Income shares by population group (BHC income)</Title>
-          <CellAction>
-            <CalculationType>CalculateSumWeighted</CalculationType>
-            <FormulaString><![CDATA[DATA_VAR[@VarDecSum] / SAVED_VAR[@VarTotSum] ]]></FormulaString>
-          </CellAction>
-          <StringFormat>P2</StringFormat>
-          <Columns>
-            <Column>
-              <Name>baseSysDisp</Name>
-              <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
-              <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions.</Tooltip>
+              <Title><![CDATA[Disposable Income (BHC)</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -9668,9 +9400,28 @@
               </CellAction>
             </Column>
             <Column>
+              <Name>baseSysDispAHC</Name>
+              <Title><![CDATA[Disposable Income (AHC)</br>[baseSys] (base)]]></Title>
+              <Tooltip>ils_dispy: Original income + Benefits (including state pensions) – Taxes – National Insurance Contributions - Housing Costs.</Tooltip>
+              <HasSeparatorBefore>True</HasSeparatorBefore>
+              <CellAction>
+                <Parameters>
+                  <Parameter>
+                    <Name>VarDecSum</Name>
+                    <VarName>ilsDispyAHC</VarName>
+                  </Parameter>
+                  <Parameter>
+                    <Name>VarTotSum</Name>
+                    <VarName>totalDispyAHC</VarName>
+                  </Parameter>
+                </Parameters>
+              </CellAction>
+            </Column>
+            <Column>
               <Name>baseSysOrig</Name>
               <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
+              <Tooltip>ils_origy: Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) less private transfers paid to other households.</Tooltip>
+              <HasSeparatorBefore>True</HasSeparatorBefore>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -9683,13 +9434,12 @@
                   </Parameter>
                 </Parameters>
               </CellAction>
-              <HasSeparatorBefore>True</HasSeparatorBefore>
             </Column>
           </Columns>
-		  <ReformColumns>
-		    <ReformColumn>
+          <ReformColumns>
+            <ReformColumn>
               <Name>refSysDisp</Name>
-              <Title><![CDATA[Disposable Income</br>[refSys]]]></Title>
+              <Title><![CDATA[Disposable Income (BHC)</br>[refSys]]]></Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -9703,107 +9453,10 @@
                 </Parameters>
               </CellAction>
               <TiesWith>baseSysDisp</TiesWith>
-		    </ReformColumn>
-            <ReformColumn>
-              <Title><![CDATA[Difference <br />to base]]></Title>
-              <CellAction>
-                <CalculationType>CalculateArithmetic</CalculationType>
-                <FormulaString><![CDATA[REF_COL[refSysDisp] - BASE_COL[baseSysDisp]]]></FormulaString>
-              </CellAction>
-              <TiesWith>baseSysDisp</TiesWith>
             </ReformColumn>
-		    <ReformColumn>
-              <Name>refSysOrig</Name>
-              <Title><![CDATA[Original Income</br>[refSys]]]></Title>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>VarDecSum</Name>
-                    <VarName>ilsOrigy</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>VarTotSum</Name>
-                    <VarName>totalOrigy</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-              <TiesWith>baseSysOrig</TiesWith>
-		    </ReformColumn>
             <ReformColumn>
-              <Title><![CDATA[Difference <br />to base]]></Title>
-              <CellAction>
-                <CalculationType>CalculateArithmetic</CalculationType>
-                <FormulaString><![CDATA[REF_COL[refSysOrig] - BASE_COL[baseSysOrig]]]></FormulaString>
-              </CellAction>
-              <TiesWith>baseSysOrig</TiesWith>
-            </ReformColumn>
-		  </ReformColumns>
-          <Rows>
-            <Row>
-              <Name>All</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
-            </Row>
-            <Row>
-              <Name>Children</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
-              <CellAction>
-                <Filter>
-                  <Name>FilterChildren</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name>Adults</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
-              <CellAction>
-                <Filter>
-                  <Name>FilterAdults</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name>Adults in work</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
-              <CellAction>
-                <Filter>
-                  <Name>FilterAdultsActive</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name>Elderly</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
-              <CellAction>
-                <Filter>
-                  <Name>FilterElderly</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name>Poor</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
-              <HasSeparatorBefore>true</HasSeparatorBefore>
-              <CellAction>
-                <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@IsPoor] > 0]]></FormulaString>
-                </Filter>
-              </CellAction>
-            </Row>
-          </Rows>
-        </Table>
-        <Table>
-          <Title>7.8 Income shares by population group (AHC income)</Title>
-          <CellAction>
-            <CalculationType>CalculateSumWeighted</CalculationType>
-            <FormulaString><![CDATA[DATA_VAR[@VarDecSum] / SAVED_VAR[@VarTotSum] ]]></FormulaString>
-          </CellAction>
-          <StringFormat>P2</StringFormat>
-          <Columns>
-            <Column>
-              <Name>baseSysDisp</Name>
-              <Title><![CDATA[Disposable Income</br>[baseSys] (base)]]></Title>
-              <Tooltip>Original income + Benefits (incl. Public Pensions) – Taxes – National Insurance Contributions.</Tooltip>
+              <Name>refSysDispAHC</Name>
+              <Title><![CDATA[Disposable Income (AHC)</br>[refSys]]]></Title>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -9816,44 +9469,8 @@
                   </Parameter>
                 </Parameters>
               </CellAction>
-            </Column>
-            <Column>
-              <Name>baseSysOrig</Name>
-              <Title><![CDATA[Original Income</br>[baseSys] (base)]]></Title>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>VarDecSum</Name>
-                    <VarName>ilsOrigy</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>VarTotSum</Name>
-                    <VarName>totalOrigy</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-              <HasSeparatorBefore>True</HasSeparatorBefore>
-            </Column>
-          </Columns>
-		  <ReformColumns>
-		    <ReformColumn>
-              <Name>refSysDisp</Name>
-              <Title><![CDATA[Disposable Income</br>[refSys]]]></Title>
-              <CellAction>
-                <Parameters>
-                  <Parameter>
-                    <Name>VarDecSum</Name>
-                    <VarName>ilsDispyAHC</VarName>
-                  </Parameter>
-                  <Parameter>
-                    <Name>VarTotSum</Name>
-                    <VarName>totalDispyAHC</VarName>
-                  </Parameter>
-                </Parameters>
-              </CellAction>
-              <TiesWith>baseSysDisp</TiesWith>
-		    </ReformColumn>
+              <TiesWith>baseSysDispAHC</TiesWith>
+            </ReformColumn>
             <ReformColumn>
               <Title><![CDATA[Difference <br />to base]]></Title>
               <CellAction>
@@ -9862,10 +9479,17 @@
               </CellAction>
               <TiesWith>baseSysDisp</TiesWith>
             </ReformColumn>
-		    <ReformColumn>
+            <ReformColumn>
+              <Title><![CDATA[Difference <br />to base]]></Title>
+              <CellAction>
+                <CalculationType>CalculateArithmetic</CalculationType>
+                <FormulaString><![CDATA[REF_COL[refSysDispAHC] - BASE_COL[baseSysDispAHC]]]></FormulaString>
+              </CellAction>
+              <TiesWith>baseSysDispAHC</TiesWith>
+            </ReformColumn>
+            <ReformColumn>
               <Name>refSysOrig</Name>
               <Title><![CDATA[Original Income</br>[refSys]]]></Title>
-              <Tooltip>Earnings from employment and self-employment plus other market incomes (from investment, property, private pensions, private transfers, children younger than 16) minus private transfers paid to other households.</Tooltip>
               <CellAction>
                 <Parameters>
                   <Parameter>
@@ -9879,7 +9503,7 @@
                 </Parameters>
               </CellAction>
               <TiesWith>baseSysOrig</TiesWith>
-		    </ReformColumn>
+            </ReformColumn>
             <ReformColumn>
               <Title><![CDATA[Difference <br />to base]]></Title>
               <CellAction>
@@ -9888,15 +9512,10 @@
               </CellAction>
               <TiesWith>baseSysOrig</TiesWith>
             </ReformColumn>
-		  </ReformColumns>
+		      </ReformColumns>
           <Rows>
             <Row>
-              <Name>All</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
-            </Row>
-            <Row>
               <Name>Children</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
                 <Filter>
                   <Name>FilterChildren</Name>
@@ -9905,7 +9524,6 @@
             </Row>
             <Row>
               <Name>Adults</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
                 <Filter>
                   <Name>FilterAdults</Name>
@@ -9914,7 +9532,6 @@
             </Row>
             <Row>
               <Name>Adults in work</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
                 <Filter>
                   <Name>FilterAdultsActive</Name>
@@ -9923,20 +9540,9 @@
             </Row>
             <Row>
               <Name>Elderly</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
               <CellAction>
                 <Filter>
                   <Name>FilterElderly</Name>
-                </Filter>
-              </CellAction>
-            </Row>
-            <Row>
-              <Name>Poor</Name>
-              <Tooltip>Equivalised disposable household income lower than 60% of the country specific median income.</Tooltip>
-              <HasSeparatorBefore>true</HasSeparatorBefore>
-              <CellAction>
-                <Filter>
-                  <FormulaString><![CDATA[DATA_VAR[@IsPoorAHC] > 0]]></FormulaString>
                 </Filter>
               </CellAction>
             </Row>
@@ -9950,17 +9556,7 @@
       <Subtitle>based on changes in equivalised household disposable income</Subtitle>
       <Button>Gainers/Losers</Button>
       <Description>
-        <![CDATA[<p style='line-height:1.5'><span lang=EN>The table shows
-the share of individuals (as % of the population) who are gainers/losers based
-on changes in their equivalised household disposable income, by household type.
-Not all household types are mutually exclusive. The elderly are defined as being
-aged 65 and over. Children are defined as
-being under 16 or under 19 years old and in full-time non-advanced education
-and not married. An earner is defined as having positive employment or
-self-employment income. A lone parent is defined as a parent of resident
-dependent children, not cohabiting with a partner (whether
-or not any other resident is the parent of the child is irrelevant). A young mother is
-defined as being under 25 years old and with a dependent child.</span></p>]]>
+        <![CDATA[<p style='line-height:1.5'><span lang=EN>The table shows the share of individuals (as % of the population) who are gainers/losers based on changes in their equivalised household disposable income, by household type. Not all household types are mutually exclusive. The elderly are defined as being aged 65 and over. Children are defined as being under 16 or under 19 years old and in full-time non-advanced education and not married. An earner is defined as having positive employment or self-employment income. A lone parent is defined as a parent of resident dependent children, not cohabiting with a partner (whether or not any other resident is the parent of the child is irrelevant). A young mother is defined as being under 25 years old and with a dependent child.</span></p>]]>
       </Description>
       <Tables>
         <Table>

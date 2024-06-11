@@ -29,9 +29,9 @@
         <p style='line-height:1.5'>NOTE: negative incomes are recoded to 0 for results on Gini and S80/20 indicators.</p>
         <p style='line-height:1.5'><b><span style='color:#0070C0'>Definition of age-groups:</span></b></p>
         <p style='margin-bottom:0cm;margin-bottom:.0001pt;'>Sub-population groups are defined as follows:</p>
-        <p style='line-height:1.5;margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;'><span style='font-family:Symbol'>·    </span><u>Children</u> are defined as being under 16 or under 19 years old and in full-time non-advanced education and not married.</p>
+        <p style='line-height:1.5;margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;'><span style='font-family:Symbol'>·    </span><u>Children</u> are defined as being under 16 or under 20 years old and in full-time non-advanced education and not married.</p>
         <p style='line-height:1.5;margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;'><span style='font-family:Symbol'>·    </span><u>Elderly</u> are persons aged 65 or older</p>
-        <p style='line-height:1.5;margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;'><span style='font-family:Symbol'>·    </span><u>Adults</u> are defined as anyone who is not a child and not an elderly (i.e. being aged 16 or above, or 19 or above if full-time non-advanced education and not married, and up to the age of 64)</p>
+        <p style='line-height:1.5;margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;'><span style='font-family:Symbol'>·    </span><u>Adults</u> are defined as anyone who is not a child and not an elderly (i.e. being aged 16 or above, or 20 or above if full-time non-advanced education and not married, and up to the age of 64)</p>
         <p style='line-height:1.5;margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;'><span style='font-family:Symbol'>·    </span>Someone is <u>in work</u> if he/she has income from employment or self-employment </p>
         <p style='margin-bottom:8.0pt;line-height:105%;'>&nbsp;</p>
         <p style='line-height:1.5'><b><span style='color:#0070C0'>The income concepts used throughout and the corresponding UKMOD variables are as follows</span></b></p>
@@ -640,7 +640,7 @@
       <Filter>
         <Reform>false</Reform>
         <Name>FilterChildren</Name>
-        <FormulaString><![CDATA[(DATA_VAR[@age]<16 | ((DATA_VAR[@age]<19 & DATA_VAR[@dec]>0 & DATA_VAR[@dec] < 6) & DATA_VAR[@dms]!=2))]]></FormulaString>
+        <FormulaString><![CDATA[(DATA_VAR[@age]<16 | ((DATA_VAR[@age]<20 & DATA_VAR[@dec]>0 & DATA_VAR[@dec] < 6) & DATA_VAR[@dms]!=2))]]></FormulaString>
         <Parameters>
           <Parameter>
             <Name>age</Name>
@@ -682,7 +682,7 @@
       <Filter>
         <Reform>false</Reform>
         <Name>FilterAdults</Name>
-        <FormulaString><![CDATA[!(DATA_VAR[@age]<16 | ((DATA_VAR[@age]<19 & DATA_VAR[@dec]>0 & DATA_VAR[@dec] < 6) & DATA_VAR[@dms]!=2)) && !((DATA_VAR[@age] >= DATA_VAR[@PensionAgeMale] && DATA_VAR[@sex] == 1) || (DATA_VAR[@age] >= DATA_VAR[@PensionAgeFemale] && DATA_VAR[@sex] == 0))]]></FormulaString>
+        <FormulaString><![CDATA[!(DATA_VAR[@age]<16 | ((DATA_VAR[@age]<20 & DATA_VAR[@dec]>0 & DATA_VAR[@dec] < 6) & DATA_VAR[@dms]!=2)) && !((DATA_VAR[@age] >= DATA_VAR[@PensionAgeMale] && DATA_VAR[@sex] == 1) || (DATA_VAR[@age] >= DATA_VAR[@PensionAgeFemale] && DATA_VAR[@sex] == 0))]]></FormulaString>
         <Parameters>
           <Parameter>
             <Name>age</Name>
@@ -713,7 +713,7 @@
       <Filter>
         <Reform>false</Reform>
         <Name>FilterAdultsActive</Name>
-        <FormulaString><![CDATA[!(DATA_VAR[@age]<16 | ((DATA_VAR[@age]<19 & DATA_VAR[@dec]>0 & DATA_VAR[@dec] < 6) & DATA_VAR[@dms]!=2)) && !((DATA_VAR[@age] >= DATA_VAR[@PensionAgeMale] && DATA_VAR[@sex] == 1) || (DATA_VAR[@age] >= DATA_VAR[@PensionAgeFemale] && DATA_VAR[@sex] == 0)) && DATA_VAR[@ilsEarns] > 0]]></FormulaString>
+        <FormulaString><![CDATA[!(DATA_VAR[@age]<16 | ((DATA_VAR[@age]<20 & DATA_VAR[@dec]>0 & DATA_VAR[@dec] < 6) & DATA_VAR[@dms]!=2)) && !((DATA_VAR[@age] >= DATA_VAR[@PensionAgeMale] && DATA_VAR[@sex] == 1) || (DATA_VAR[@age] >= DATA_VAR[@PensionAgeFemale] && DATA_VAR[@sex] == 0)) && DATA_VAR[@ilsEarns] > 0]]></FormulaString>
         <Parameters>
           <Parameter>
             <Name>age</Name>
